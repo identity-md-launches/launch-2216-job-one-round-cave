@@ -1,0 +1,29 @@
+{
+  "repair": "Restore missing named output from intact latest wall, preserving all numbered records and existing artwork.",
+  "source": "artifacts/line-3/wall-v16.png",
+  "outputs": [
+    "artifacts/line-3/wall-v17.png",
+    "artifacts/line-3/wall.png"
+  ],
+  "sha256": "61158a7f486ef5fd5d1998ae193263e6b7591fe45109b57374d1b72d5cbdb8c4",
+  "record": "dist/line-3/34.json",
+  "record_digest_matches": true,
+  "format": "PNG",
+  "width": 1254,
+  "height": 1254,
+  "preview": {
+    "path": "dist/line-3/34.jpg",
+    "format": "JPEG",
+    "width": 512,
+    "height": 512
+  },
+  "visual_review": {
+    "preservation": "Output bytes are identical to the latest existing wall.",
+    "pepe": "Wide mouth and heavy-lidded eyes remain visible.",
+    "letters_or_numbers_observed": false,
+    "unmet_visual_requirements": [
+      "Ancestral hand details are too worn to verify five digits per hand."
+    ]
+  },
+  "tool_check": "Uncertainty Lens: two existing unit tests passed."
+}
