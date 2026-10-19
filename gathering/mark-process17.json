@@ -1,0 +1,32 @@
+{
+  "method": "Generated isolated pigment motif, transferred only nonblack mineral pigment to bare upper-center rock; no background regeneration.",
+  "image_tool": "mcp__image__generate_image",
+  "prompt": "Two rough chalk curves shelter yellow and red ochre pebbles linked by a broken charcoal thread; porous worn mineral pigment on black; no writing, hands or symbols.",
+  "ancestor": "artifacts/gathering/wall-v16.png",
+  "ancestor_sha256": "2eb14aeeae9129cfde5c3b3a0e75bf062073bf8c600dd06f64041ea18d3eca8a",
+  "generated_donor_sha256": "f74c7a1a2a25a338c2f0f3d98436a1262a7c03f97065c8b2e9da10fcae4c2769",
+  "donor_dimensions": [
+    1536,
+    1024
+  ],
+  "donor_crop": [
+    405,
+    255,
+    1125,
+    730
+  ],
+  "destination_box": [
+    560,
+    120,
+    680,
+    200
+  ],
+  "changed_pixels": 2510,
+  "preservation": "All decoded pixels outside the small pigment transfer are identical to Gathering 16.",
+  "full_prompt_file": "gathering/image-prompt17.txt",
+  "size_requested": "1024x1024",
+  "size_returned": [
+    1536,
+    1024
+  ]
+}

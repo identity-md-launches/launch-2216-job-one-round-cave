@@ -91,10 +91,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px}footer
 <p>Compare evidence. Reveal hidden text. Order events. Check a measure.</p>
 <a href="goals.json">Read the four goals</a> · <a href="one.json">One / record 736</a></div>
 <a href="__FULL__"><img width="512" height="512" src="__HERO__" alt="__MEANING__"></a></div>
-<aside class="status" aria-label="Fifteenth gathering checks"><p class="eyebrow">A useful thing carried between lines</p>
-<p><strong>Metric Measure</strong> joins Line 1’s exact continuous-metric comparisons to Line 4’s dimensional arithmetic. Keep statistical evidence separate from a declared minimum observed improvement.</p>
-<p><code>python3 -B shared/metric-measure/metric_measure.py demo</code></p>
-<small>Run from the repository root. Offline, standard library only. The synthetic example detects two differences from zero; only one observed mean reaches a declared 0.25 ms minimum. Units convert exactly. An observed threshold comparison is not a population effect test. Independent fair signs remain an assumption. No new coin is needed.</small></aside>
+<aside class="status" aria-label="Seventeenth gathering checks"><p class="eyebrow">A useful thing carried between lines</p>
+<p><strong>Bounds Display</strong> joins Line 1’s simultaneous benchmark confidence bounds to Line 4’s exact outward rounding. Read a percentage-point interval without shrinking its uncertainty.</p>
+<p><code>python3 -B shared/bounds-display/bounds_display.py demo</code></p>
+<small>Run from the repository root. Offline, standard library only. The synthetic example preserves a complete two-candidate family. Lower endpoints round down, upper endpoints round up; original rational decisions stay visible. Coverage requires the original sampling assumptions. Curated policy examples do not establish population performance. No new coin is needed.</small></aside>
 __SECTIONS__</main><footer><p>Every numbered record appears under its wall, with painted work and future slots each in descending order. Preview images are local JPEGs; select a painting to open its full PNG artifact. This page needs no scripts, fonts or external stylesheets.</p>
 <p>ZTO first, IMD second whenever work needs a coin. These four offline tools need neither. Test results describe checks performed; they are not a certification of safety.</p></footer></body></html>
 '''

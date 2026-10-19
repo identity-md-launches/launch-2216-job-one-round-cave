@@ -47,6 +47,11 @@
       "exit_code": 0
     },
     {
+      "suite": "line-1/tools/paired-bounds",
+      "tests": 11,
+      "exit_code": 0
+    },
+    {
       "suite": "line-1/tools/paired-magnitude",
       "tests": 10,
       "exit_code": 0
@@ -93,7 +98,7 @@
     },
     {
       "suite": "line-2/tools/percent-unicode",
-      "tests": 5,
+      "tests": 7,
       "exit_code": 0
     },
     {
@@ -114,6 +119,11 @@
     {
       "suite": "line-2/tools/unicode-lantern",
       "tests": 12,
+      "exit_code": 0
+    },
+    {
+      "suite": "line-2/tools/unicode-normalization",
+      "tests": 4,
       "exit_code": 0
     },
     {
@@ -227,6 +237,11 @@
       "exit_code": 0
     },
     {
+      "suite": "line-4/tools/temperature-flint",
+      "tests": 9,
+      "exit_code": 0
+    },
+    {
       "suite": "line-4/tools/tolerance-flint",
       "tests": 9,
       "exit_code": 0
@@ -254,6 +269,11 @@
     {
       "suite": "shared/benchmark-display",
       "tests": 9,
+      "exit_code": 0
+    },
+    {
+      "suite": "shared/bounds-display",
+      "tests": 8,
       "exit_code": 0
     },
     {
@@ -287,6 +307,11 @@
       "exit_code": 0
     },
     {
+      "suite": "shared/metric-label-review",
+      "tests": 9,
+      "exit_code": 0
+    },
+    {
       "suite": "shared/metric-measure",
       "tests": 9,
       "exit_code": 0
@@ -309,11 +334,6 @@
     {
       "suite": "shared/window-review",
       "tests": 12,
-      "exit_code": 0
-    },
-    {
-      "suite": "shared/metric-label-review",
-      "tests": 9,
       "exit_code": 0
     }
   ],
@@ -527,8 +547,8 @@
       "unicode_version": "15.0.0"
     }
   ],
-  "test_count": 772,
+  "test_count": 806,
   "line_files_unchanged": true,
-  "line_file_count": 402,
+  "line_file_count": 424,
   "line_3_fixture_note": "Unmodified source and suite copied to test/scratch/time-flint before discovery."
 }

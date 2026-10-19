@@ -1,0 +1,183 @@
+{
+  "schema": "bounds-display/1",
+  "input_sha256": "5cadff1bf916a51f135cca14e29bd776b9fa39023c2d3461918681ccf4c7a928",
+  "analysis": {
+    "schema_version": 1,
+    "input_sha256": "5cadff1bf916a51f135cca14e29bd776b9fa39023c2d3461918681ccf4c7a928",
+    "paired_cases": 120,
+    "candidate_count": 2,
+    "familywise_alpha": {
+      "numerator": "1",
+      "denominator": "20"
+    },
+    "simultaneous_coverage_at_least": {
+      "numerator": "19",
+      "denominator": "20"
+    },
+    "practical_margin": {
+      "numerator": "1",
+      "denominator": "10"
+    },
+    "method": "Clopper\u2013Pearson binomial win/loss bounds; Bonferroni over all 4m tails; subtract bounds",
+    "one_sided_tail_budget": {
+      "numerator": "1",
+      "denominator": "160"
+    },
+    "outward_grid_bits": 32,
+    "candidates": [
+      {
+        "name": "improved",
+        "candidate_only_pass": 50,
+        "baseline_only_pass": 0,
+        "observed_difference": {
+          "numerator": "5",
+          "denominator": "12"
+        },
+        "win_probability_bounds": [
+          {
+            "numerator": "1310432313",
+            "denominator": "4294967296"
+          },
+          {
+            "numerator": "2296319035",
+            "denominator": "4294967296"
+          }
+        ],
+        "loss_probability_bounds": [
+          {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          {
+            "numerator": "177859911",
+            "denominator": "4294967296"
+          }
+        ],
+        "candidate_minus_baseline_bounds": [
+          {
+            "numerator": "566286201",
+            "denominator": "2147483648"
+          },
+          {
+            "numerator": "2296319035",
+            "denominator": "4294967296"
+          }
+        ],
+        "candidate_exceeds_positive_margin": true,
+        "baseline_exceeds_positive_margin": false,
+        "entire_interval_strictly_inside_equivalence_margin": false
+      },
+      {
+        "name": "unchanged",
+        "candidate_only_pass": 0,
+        "baseline_only_pass": 0,
+        "observed_difference": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "win_probability_bounds": [
+          {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          {
+            "numerator": "177859911",
+            "denominator": "4294967296"
+          }
+        ],
+        "loss_probability_bounds": [
+          {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          {
+            "numerator": "177859911",
+            "denominator": "4294967296"
+          }
+        ],
+        "candidate_minus_baseline_bounds": [
+          {
+            "numerator": "-177859911",
+            "denominator": "4294967296"
+          },
+          {
+            "numerator": "177859911",
+            "denominator": "4294967296"
+          }
+        ],
+        "candidate_exceeds_positive_margin": false,
+        "baseline_exceeds_positive_margin": false,
+        "entire_interval_strictly_inside_equivalence_margin": true
+      }
+    ],
+    "assumptions": [
+      "Independent identically distributed case vectors from the target population; dependence within a row is allowed.",
+      "One fixed final sample size; complete prespecified candidate family, pass rule, alpha and practical margin.",
+      "Each row evaluates the same case once under baseline and every candidate; no selected or omitted outcomes.",
+      "Correlated cases, repeated looks, optional stopping and selected families invalidate the stated coverage.",
+      "Coverage is a repeated-sampling guarantee under these assumptions, not a posterior probability.",
+      "Conservative intervals may be wide; an inconclusive interval is not evidence of equivalence.",
+      "Pins prove byte identity, not honest measurement, prospective choice or representative sampling."
+    ]
+  },
+  "display": {
+    "unit": "percentage points",
+    "places": 2,
+    "lower_mode": "floor",
+    "upper_mode": "ceiling",
+    "margin_percentage_points": "10",
+    "rounding_error_means": "display minus exact, in percentage points"
+  },
+  "candidates": [
+    {
+      "candidate": "improved",
+      "percentage_point_interval": {
+        "lower": "26.36",
+        "upper": "53.47",
+        "lower_rounding_error": "-0.00975613422691822052001953125",
+        "upper_rounding_error": "0.004656104631721973419189453125"
+      },
+      "exact_criteria": {
+        "candidate_exceeds_positive_margin": true,
+        "baseline_exceeds_positive_margin": false,
+        "entire_interval_strictly_inside_equivalence_margin": false
+      },
+      "displayed_interval_criteria": {
+        "candidate_exceeds_positive_margin": true,
+        "baseline_exceeds_positive_margin": false,
+        "entire_interval_strictly_inside_equivalence_margin": false
+      },
+      "criteria_lost_to_display_precision": []
+    },
+    {
+      "candidate": "unchanged",
+      "percentage_point_interval": {
+        "lower": "-4.15",
+        "upper": "4.15",
+        "lower_rounding_error": "-0.008876244165003299713134765625",
+        "upper_rounding_error": "0.008876244165003299713134765625"
+      },
+      "exact_criteria": {
+        "candidate_exceeds_positive_margin": false,
+        "baseline_exceeds_positive_margin": false,
+        "entire_interval_strictly_inside_equivalence_margin": true
+      },
+      "displayed_interval_criteria": {
+        "candidate_exceeds_positive_margin": false,
+        "baseline_exceeds_positive_margin": false,
+        "entire_interval_strictly_inside_equivalence_margin": true
+      },
+      "criteria_lost_to_display_precision": []
+    }
+  ],
+  "limits": [
+    "Original rational intervals and decisions are retained unchanged; displayed intervals are enlarged outward.",
+    "Coverage requires the original fixed-sample, complete-family, independent identically distributed case-vector assumptions.",
+    "Coverage is repeated-sampling, not a posterior probability; rounding adds no measurement evidence.",
+    "The practical margin is an absolute rate difference: 0.1 means ten percentage points, not a relative percent improvement.",
+    "Displayed comparisons use the exact unrounded margin and may be inconclusive when the original criterion passes.",
+    "A false criterion does not establish its opposite; do not choose precision, margin or family after inspecting outcomes.",
+    "Input pins prove byte identity, not honest execution, representative sampling or prospective choices."
+  ],
+  "data_kind": "synthetic_demonstration"
+}

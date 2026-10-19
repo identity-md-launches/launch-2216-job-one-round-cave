@@ -1,0 +1,88 @@
+{
+  "normalization": [
+    {
+      "case": "Hangul Jamo",
+      "input_escaped": "\\u1100\\u1161",
+      "whole_string_nfc_escaped": "\\uac00",
+      "whole_string_changes": true,
+      "finding_count": 1,
+      "missed_change": false
+    },
+    {
+      "case": "Bengali vowel signs",
+      "input_escaped": "\\u09c7\\u09be",
+      "whole_string_nfc_escaped": "\\u09cb",
+      "whole_string_changes": true,
+      "finding_count": 0,
+      "missed_change": true
+    },
+    {
+      "case": "Tamil vowel signs",
+      "input_escaped": "\\u0bc6\\u0bbe",
+      "whole_string_nfc_escaped": "\\u0bca",
+      "whole_string_changes": true,
+      "finding_count": 0,
+      "missed_change": true
+    }
+  ],
+  "percent_parser": {
+    "malformed_escapes_rejected_without_crash": true,
+    "valid_following_scalar_retained": true,
+    "details": [
+      {
+        "codepoint": "U+0456",
+        "name": "CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I",
+        "category": "Ll",
+        "decoded": "\\u{456}",
+        "source_byte_range": [
+          8,
+          14
+        ],
+        "source_line": 1,
+        "source_byte_column": 9,
+        "source_escape": "%D1%96"
+      }
+    ]
+  },
+  "uncertainty_lens": [
+    {
+      "case": "NaN endpoint",
+      "accepted": true,
+      "observed": {
+        "events": 2,
+        "definite_orders": [
+          {
+            "before": "a",
+            "after": "b"
+          }
+        ],
+        "uncertain_pairs": []
+      }
+    },
+    {
+      "case": "boolean endpoints",
+      "accepted": true,
+      "observed": {
+        "events": 1,
+        "definite_orders": [],
+        "uncertain_pairs": []
+      }
+    },
+    {
+      "case": "duplicate IDs",
+      "accepted": true,
+      "observed": {
+        "events": 2,
+        "definite_orders": [
+          {
+            "before": "same",
+            "after": "same"
+          }
+        ],
+        "uncertain_pairs": []
+      }
+    }
+  ],
+  "line_files_changed": false,
+  "limits": "Constructed probes of current source, not observed attacks or real incident evidence; script reports gaps rather than treating acceptance as correctness."
+}

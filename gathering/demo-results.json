@@ -1,3051 +1,3444 @@
 {
-  "checks_passed": true,
-  "examples": [
-    {
-      "name": "benchmark label normalization handoff",
-      "command": [
-        "python3",
-        "-B",
-        "shared/metric-label-review/metric_label_review.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "whole-string normalization demo",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-normalization/unicode_normalization.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "analysis_complete": true,
-        "finding_count": 3
-      }
-    },
-    {
-      "name": "percent-escaped Unicode",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/percent-unicode/percent_unicode.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "analysis_complete": true
-      }
-    },
-    {
-      "name": "exact table aggregation",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/table-flint/table_flint.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "passes": true,
-        "unit": "m"
-      }
-    },
-    {
-      "name": "interval order primitive",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/uncertainty-lens/uncertainty_lens.py"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "stdin": [
+ "checks_passed": true,
+ "examples": [
+  {
+   "name": "outward confidence bounds reading view",
+   "command": [
+    "python3",
+    "-B",
+    "shared/bounds-display/bounds_display.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "analysis": {
+     "schema_version": 1,
+     "input_sha256": "5cadff1bf916a51f135cca14e29bd776b9fa39023c2d3461918681ccf4c7a928",
+     "paired_cases": 120,
+     "candidate_count": 2,
+     "familywise_alpha": {
+      "numerator": "1",
+      "denominator": "20"
+     },
+     "simultaneous_coverage_at_least": {
+      "numerator": "19",
+      "denominator": "20"
+     },
+     "practical_margin": {
+      "numerator": "1",
+      "denominator": "10"
+     },
+     "method": "Clopper\u2013Pearson binomial win/loss bounds; Bonferroni over all 4m tails; subtract bounds",
+     "one_sided_tail_budget": {
+      "numerator": "1",
+      "denominator": "160"
+     },
+     "outward_grid_bits": 32,
+     "candidates": [
+      {
+       "name": "improved",
+       "candidate_only_pass": 50,
+       "baseline_only_pass": 0,
+       "observed_difference": {
+        "numerator": "5",
+        "denominator": "12"
+       },
+       "win_probability_bounds": [
         {
-          "id": "ingest",
-          "start": 1,
-          "end": 3
+         "numerator": "1310432313",
+         "denominator": "4294967296"
         },
         {
-          "id": "alert",
-          "start": 3,
-          "end": 4
+         "numerator": "2296319035",
+         "denominator": "4294967296"
+        }
+       ],
+       "loss_probability_bounds": [
+        {
+         "numerator": "0",
+         "denominator": "1"
         },
         {
-          "id": "retry",
-          "start": 2,
-          "end": 5
+         "numerator": "177859911",
+         "denominator": "4294967296"
         }
-      ],
-      "observed": {}
-    },
-    {
-      "name": "dimensioned continuous metric handoff",
-      "command": [
-        "python3",
-        "-B",
-        "shared/metric-measure/metric_measure.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "exact continuous metric family",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/metric-verdict/metric_verdict.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "candidates": [
-          {
-            "candidate": "small_step",
-            "counting": {
-              "extreme_assignments": 2,
-              "gcd_in_millionths": 125000,
-              "nonzero_pairs": 8,
-              "reduced_absolute_sum": 8,
-              "sign_assignments": 256,
-              "zero_pairs": 0
-            },
-            "direction": "candidate ahead",
-            "holm_p": {
-              "denominator": 64,
-              "numerator": 1
-            },
-            "mean_candidate_minus_baseline": {
-              "denominator": 8,
-              "numerator": -1
-            },
-            "raw_p": {
-              "denominator": 128,
-              "numerator": 1
-            },
-            "reject": true,
-            "reject_with_candidate_ahead": true
-          },
-          {
-            "candidate": "large_step",
-            "counting": {
-              "extreme_assignments": 2,
-              "gcd_in_millionths": 500000,
-              "nonzero_pairs": 8,
-              "reduced_absolute_sum": 8,
-              "sign_assignments": 256,
-              "zero_pairs": 0
-            },
-            "direction": "candidate ahead",
-            "holm_p": {
-              "denominator": 64,
-              "numerator": 1
-            },
-            "mean_candidate_minus_baseline": {
-              "denominator": 2,
-              "numerator": -1
-            },
-            "raw_p": {
-              "denominator": 128,
-              "numerator": 1
-            },
-            "reject": true,
-            "reject_with_candidate_ahead": true
-          }
-        ]
-      }
-    },
-    {
-      "name": "continuous paired magnitude",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/paired-magnitude/paired_magnitude.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "HTML entity Unicode",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/entity-unicode/entity_unicode.py",
-        "--demo",
-        "--max-details",
-        "2"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "analysis_complete": true,
-        "finding_count": 4
-      }
-    },
-    {
-      "name": "HTML entity review of gallery",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/entity-unicode/entity_unicode.py",
-        "--file",
-        "dist/index.html"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "analysis_complete": true,
-        "finding_count": 0
-      }
-    },
-    {
-      "name": "timeline pairwise backbone",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-backbone/backbone.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "verified": true,
-        "replay": {
-          "clock_uncertainty_ms": 250,
-          "events": 3,
-          "omitted": 0,
-          "sources": 3,
-          "verified": true
-        }
-      }
-    },
-    {
-      "name": "clock sensitivity profiles",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-sensitivity/sensitivity.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "replay": {
-          "clock_uncertainty_ms": 500,
-          "events": 2,
-          "omitted": 1,
-          "sources": 1,
-          "verified": true
-        }
-      }
-    },
-    {
-      "name": "exact proposed measurement refinements",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/resolution-flint/resolution_flint.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "exact interval subdivision",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/subdivision-flint/subdivision_flint.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "shared original log spacing receipt",
-      "command": [
-        "python3",
-        "-B",
-        "shared/log-spacing-review/log_spacing_review.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "replay": {
-          "findings": 4,
-          "omitted_details": 2,
-          "receipt_sha256": "509063a4affe16620d6b04478ada98e2b3bb7faf1bca0fdcb344710a6ab84e51",
-          "retained_details": 2,
-          "timeline_replay": {
-            "clock_uncertainty_ms": 750,
-            "events": 3,
-            "omitted": 1,
-            "sources": 2,
-            "verified": true
-          },
-          "verified": true
-        }
-      }
-    },
-    {
-      "name": "whole-cluster deletion stability",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/cluster-stability/cluster_stability.py",
-        "--demo",
-        "--max-details",
-        "1"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "details_omitted": 6,
-        "complete_diagnostics_sha256": "b5b8bca306475908c4ea221c69ba9b24d1f5620885b88d8f594a056e6cb610d9",
-        "candidates": [
-          {
-            "name": "first",
-            "decision_changes": 7,
-            "direction_changes": 0,
-            "minimum_effect": {
-              "numerator": "1",
-              "denominator": "1"
-            },
-            "maximum_effect": {
-              "numerator": "1",
-              "denominator": "1"
-            },
-            "minimum_holm_adjusted_p": {
-              "numerator": "1",
-              "denominator": "16"
-            },
-            "maximum_holm_adjusted_p": {
-              "numerator": "1",
-              "denominator": "16"
-            }
-          },
-          {
-            "name": "second",
-            "decision_changes": 7,
-            "direction_changes": 0,
-            "minimum_effect": {
-              "numerator": "1",
-              "denominator": "1"
-            },
-            "maximum_effect": {
-              "numerator": "1",
-              "denominator": "1"
-            },
-            "minimum_holm_adjusted_p": {
-              "numerator": "1",
-              "denominator": "16"
-            },
-            "maximum_holm_adjusted_p": {
-              "numerator": "1",
-              "denominator": "16"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "invisible Unicode spacing",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-gaps/unicode_gaps.py",
-        "--demo",
-        "--max-details",
-        "2"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "analysis_complete": true,
-        "assessment": "review-selected-characters"
-      }
-    },
-    {
-      "name": "shared interval accounting receipt",
-      "command": [
-        "python3",
-        "-B",
-        "shared/load-receipt/load_receipt.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "rehashed_histogram_forgery_rejected": true
-      }
-    },
-    {
-      "name": "literal bidi lexical scope",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/bidi-scope/bidi_scope.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "status_counts": {
-          "closed-by-pdf": 1,
-          "closed-by-pdi": 2,
-          "ended-at-paragraph": 1,
-          "ignored-pdf-at-isolate": 1,
-          "matched-pdf": 1,
-          "matched-pdi": 2,
-          "unmatched-pdi": 1
+       ],
+       "candidate_minus_baseline_bounds": [
+        {
+         "numerator": "566286201",
+         "denominator": "2147483648"
         },
-        "max_lexical_depth": 2,
-        "analysis_complete": true,
-        "assessment": "review-controls"
-      }
-    },
-    {
-      "name": "bidi review actual gathering source",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/bidi-scope/bidi_scope.py",
-        "--file",
-        "gathering/check_tools.py"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "status_counts": {},
-        "max_lexical_depth": 0,
-        "analysis_complete": true,
-        "assessment": "no-covered-controls"
-      }
-    },
-    {
-      "name": "timeline interval-depth profile",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-load/timeline_load.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "duration_by_depth_us": {
-          "0": 1000000,
-          "1": 2000000,
-          "2": 2000000
-        },
-        "replay": {
-          "clock_uncertainty_ms": 500,
-          "events": 3,
-          "omitted": 1,
-          "sources": 1,
-          "verified": true
-        },
-        "counts": {
-          "intersecting_events": 3,
-          "maximum_interval_depth": 2,
-          "segments_not_shown": 0,
-          "segments_shown": 5,
-          "segments_total": 5,
-          "timestamped_events": 3,
-          "undated_lines": 1
+        {
+         "numerator": "2296319035",
+         "denominator": "4294967296"
         }
-      }
-    },
-    {
-      "name": "worksheet receipt replay",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/worksheet-receipt/worksheet_receipt.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "rehashed_altered_intermediate_rejected": true
-      }
-    },
-    {
-      "name": "shared timeline and Unicode change review",
-      "command": [
-        "python3",
-        "-B",
-        "shared/timeline-text-delta/timeline_text_delta.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "whole-cluster exact verdict",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/cluster-verdict/cluster_verdict.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "paired_cases": 12,
-        "candidates": [
-          {
-            "observed": 10,
-            "nonzero_clusters": 2,
-            "zero_clusters": 1,
-            "tail_assignments": "2",
-            "assignments": "4",
-            "distinct_null_sums": 3,
-            "name": "first",
-            "candidate_passes": 12,
-            "case_weighted_effect": {
-              "numerator": "5",
-              "denominator": "6"
-            },
-            "exact_two_sided_p": {
-              "numerator": "1",
-              "denominator": "2"
-            },
-            "holm_adjusted_p": {
-              "numerator": "1",
-              "denominator": "1"
-            },
-            "familywise_reject_sign_exchangeability": false,
-            "observed_direction": "candidate"
-          },
-          {
-            "observed": 10,
-            "nonzero_clusters": 2,
-            "zero_clusters": 1,
-            "tail_assignments": "2",
-            "assignments": "4",
-            "distinct_null_sums": 3,
-            "name": "second",
-            "candidate_passes": 12,
-            "case_weighted_effect": {
-              "numerator": "5",
-              "denominator": "6"
-            },
-            "exact_two_sided_p": {
-              "numerator": "1",
-              "denominator": "2"
-            },
-            "holm_adjusted_p": {
-              "numerator": "1",
-              "denominator": "1"
-            },
-            "familywise_reject_sign_exchangeability": false,
-            "observed_direction": "candidate"
-          }
-        ]
-      }
-    },
-    {
-      "name": "Unicode finding delta",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-delta/unicode_delta.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "assessment": "added-covered-findings",
-        "counts": {
-          "added": 1,
-          "after": 2,
-          "before": 2,
-          "persisting": 1,
-          "removed": 1
-        }
-      }
-    },
-    {
-      "name": "shared gap budget declared failure",
-      "command": [
-        "python3",
-        "-B",
-        "shared/gap-budget/gap_budget.py",
-        "demo"
-      ],
-      "expected_exit": 1,
-      "exit_code": 1,
-      "passed": true,
-      "observed": {
-        "passes": false
-      }
-    },
-    {
-      "name": "observed CLI journal coverage",
-      "command": [
-        "python3",
-        "-B",
-        "gathering/try_gap_budget.py"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "worksheet passing exact chain",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/worksheet-flint/worksheet_flint.py",
-        "check"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "stdin": {
-        "schema": "worksheet-flint/1",
-        "steps": [
-          {
-            "name": "distance",
-            "expression": "10 km"
-          },
-          {
-            "name": "duration",
-            "expression": "2 h"
-          },
-          {
-            "name": "speed",
-            "expression": "$distance / $duration",
-            "to": "m/s",
-            "expect": "5 km/h",
-            "at_least": "1 m/s",
-            "at_most": "2 m/s"
-          }
-        ]
+       ],
+       "candidate_exceeds_positive_margin": true,
+       "baseline_exceeds_positive_margin": false,
+       "entire_interval_strictly_inside_equivalence_margin": false
       },
-      "observed": {
-        "passes": true
-      }
-    },
-    {
-      "name": "cluster deletion influence",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/cluster-influence/cluster_influence.py",
-        "--demo",
-        "--max-details",
-        "1"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "clusters_checked": 3,
-        "clusters_changing_decision_or_direction": 2,
-        "details_omitted": 2,
-        "complete_diagnostics_sha256": "607039c8fdf96abe53d1fd799de86b61051878d0b7c21736b22a596affc5989f",
-        "candidates": [
-          {
-            "name": "first",
-            "decision_changes": 2,
-            "direction_changes": 0,
-            "minimum_effect": {
-              "numerator": "5",
-              "denominator": "7"
-            },
-            "maximum_effect": {
-              "numerator": "1",
-              "denominator": "1"
-            }
-          },
-          {
-            "name": "second",
-            "decision_changes": 2,
-            "direction_changes": 0,
-            "minimum_effect": {
-              "numerator": "5",
-              "denominator": "7"
-            },
-            "maximum_effect": {
-              "numerator": "1",
-              "denominator": "1"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "executed policy cluster review",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/cluster-influence/try_policies.py"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "clusters_checked": 5,
-        "clusters_changing_decision_or_direction": 2,
-        "details_omitted": 0,
-        "complete_diagnostics_sha256": "6ad2ae805f6392985dcec2bcb26b0d937ddf59e4e7d771020f7638bf85a30607",
-        "candidates": [
-          {
-            "decision_changes": 0,
-            "direction_changes": 1,
-            "maximum_effect": {
-              "denominator": "3",
-              "numerator": "1"
-            },
-            "minimum_effect": {
-              "denominator": "1",
-              "numerator": "0"
-            },
-            "name": "reject-constants-v1"
-          },
-          {
-            "decision_changes": 2,
-            "direction_changes": 0,
-            "maximum_effect": {
-              "denominator": "3",
-              "numerator": "2"
-            },
-            "minimum_effect": {
-              "denominator": "7",
-              "numerator": "2"
-            },
-            "name": "unique-finite-v1"
-          }
-        ]
-      }
-    },
-    {
-      "name": "decoded JSON crosscheck",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/json-crosscheck/json_crosscheck.py",
-        "--demo",
-        "--max-findings",
-        "2"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "member_names": 7,
-        "omitted_findings": 1,
-        "total_bytes": 100,
-        "distinct_skeletons": 3,
-        "retained_findings": 2,
-        "truncated": true,
-        "finding_count": 3,
-        "assessment": "review-required"
-      }
-    },
-    {
-      "name": "actual decoded JSON keys",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/json-crosscheck/json_crosscheck.py",
-        "--files",
-        "gathering/measured-effect-band.json",
-        "gathering/benchmark-display-demo.json",
-        "gathering/effect-band-demo.json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "member_names": 650,
-        "omitted_findings": 0,
-        "total_bytes": 29366,
-        "distinct_skeletons": 103,
-        "retained_findings": 0,
-        "truncated": false,
-        "finding_count": 0,
-        "assessment": "no-covered-key-collisions-found"
-      }
-    },
-    {
-      "name": "timeline coverage gaps",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-gaps/timeline_gaps.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "durations_us": {
-          "covered": 3000000,
-          "longest_gap": 1000000,
-          "uncovered": 3000000,
-          "window": 6000000
+      {
+       "name": "unchanged",
+       "candidate_only_pass": 0,
+       "baseline_only_pass": 0,
+       "observed_difference": {
+        "numerator": "0",
+        "denominator": "1"
+       },
+       "win_probability_bounds": [
+        {
+         "numerator": "0",
+         "denominator": "1"
         },
-        "replay": {
-          "clock_uncertainty_ms": 0,
-          "events": 3,
-          "omitted": 1,
-          "sources": 1,
-          "verified": true
-        },
-        "counts": {
-          "covered_components": 2,
-          "gaps_not_shown": 0,
-          "gaps_shown": 3,
-          "gaps_total": 3,
-          "intersecting_events": 3,
-          "timestamped_events": 3,
-          "undated_lines": 1
+        {
+         "numerator": "177859911",
+         "denominator": "4294967296"
         }
-      }
-    },
-    {
-      "name": "worksheet declared budget failure",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/worksheet-flint/worksheet_flint.py",
-        "demo"
-      ],
-      "expected_exit": 1,
-      "exit_code": 1,
-      "passed": true,
-      "observed": {
-        "passes": false
-      }
-    },
-    {
-      "name": "measured effect band",
-      "command": [
-        "python3",
-        "-B",
-        "gathering/try_effect_band.py"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "recheck": "passed"
-      }
-    },
-    {
-      "name": "shared effect band",
-      "command": [
-        "python3",
-        "-B",
-        "shared/effect-band/effect_band.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "candidates": [
-          {
-            "candidate": "first",
-            "full_effect": "7/8",
-            "single_deletion_range": {
-              "minimum": "6/7",
-              "maximum": "1"
-            },
-            "full_data_check": {
-              "schema": "tolerance-flint/v1",
-              "request": {
-                "observed": "7/8",
-                "reference": "4/5",
-                "absolute": "1/10",
-                "relative": "0",
-                "to": "1"
-              },
-              "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
-              "unit": "1",
-              "base_unit": "1",
-              "observed": "0.875",
-              "reference": "0.8",
-              "difference": "0.075",
-              "absolute_error": "0.075",
-              "absolute_tolerance": "0.1",
-              "relative_tolerance": "0",
-              "relative_contribution": "0",
-              "allowed_error": "0.1",
-              "margin": "0.025",
-              "inclusive": true,
-              "passes": true
-            },
-            "minimum_check": {
-              "schema": "tolerance-flint/v1",
-              "request": {
-                "observed": "6/7",
-                "reference": "4/5",
-                "absolute": "1/10",
-                "relative": "0",
-                "to": "1"
-              },
-              "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
-              "unit": "1",
-              "base_unit": "1",
-              "observed": "6/7",
-              "reference": "0.8",
-              "difference": "2/35",
-              "absolute_error": "2/35",
-              "absolute_tolerance": "0.1",
-              "relative_tolerance": "0",
-              "relative_contribution": "0",
-              "allowed_error": "0.1",
-              "margin": "3/70",
-              "inclusive": true,
-              "passes": true
-            },
-            "maximum_check": {
-              "schema": "tolerance-flint/v1",
-              "request": {
-                "observed": "1",
-                "reference": "4/5",
-                "absolute": "1/10",
-                "relative": "0",
-                "to": "1"
-              },
-              "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
-              "unit": "1",
-              "base_unit": "1",
-              "observed": "1",
-              "reference": "0.8",
-              "difference": "0.2",
-              "absolute_error": "0.2",
-              "absolute_tolerance": "0.1",
-              "relative_tolerance": "0",
-              "relative_contribution": "0",
-              "allowed_error": "0.1",
-              "margin": "-0.1",
-              "inclusive": true,
-              "passes": false
-            },
-            "all_single_deletion_effects_within_band": false
-          },
-          {
-            "candidate": "second",
-            "full_effect": "7/8",
-            "single_deletion_range": {
-              "minimum": "6/7",
-              "maximum": "1"
-            },
-            "full_data_check": {
-              "schema": "tolerance-flint/v1",
-              "request": {
-                "observed": "7/8",
-                "reference": "4/5",
-                "absolute": "1/10",
-                "relative": "0",
-                "to": "1"
-              },
-              "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
-              "unit": "1",
-              "base_unit": "1",
-              "observed": "0.875",
-              "reference": "0.8",
-              "difference": "0.075",
-              "absolute_error": "0.075",
-              "absolute_tolerance": "0.1",
-              "relative_tolerance": "0",
-              "relative_contribution": "0",
-              "allowed_error": "0.1",
-              "margin": "0.025",
-              "inclusive": true,
-              "passes": true
-            },
-            "minimum_check": {
-              "schema": "tolerance-flint/v1",
-              "request": {
-                "observed": "6/7",
-                "reference": "4/5",
-                "absolute": "1/10",
-                "relative": "0",
-                "to": "1"
-              },
-              "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
-              "unit": "1",
-              "base_unit": "1",
-              "observed": "6/7",
-              "reference": "0.8",
-              "difference": "2/35",
-              "absolute_error": "2/35",
-              "absolute_tolerance": "0.1",
-              "relative_tolerance": "0",
-              "relative_contribution": "0",
-              "allowed_error": "0.1",
-              "margin": "3/70",
-              "inclusive": true,
-              "passes": true
-            },
-            "maximum_check": {
-              "schema": "tolerance-flint/v1",
-              "request": {
-                "observed": "1",
-                "reference": "4/5",
-                "absolute": "1/10",
-                "relative": "0",
-                "to": "1"
-              },
-              "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
-              "unit": "1",
-              "base_unit": "1",
-              "observed": "1",
-              "reference": "0.8",
-              "difference": "0.2",
-              "absolute_error": "0.2",
-              "absolute_tolerance": "0.1",
-              "relative_tolerance": "0",
-              "relative_contribution": "0",
-              "allowed_error": "0.1",
-              "margin": "-0.1",
-              "inclusive": true,
-              "passes": false
-            },
-            "all_single_deletion_effects_within_band": false
-          }
-        ]
-      }
-    },
-    {
-      "name": "single deletion influence",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/case-influence/case_influence.py",
-        "--demo",
-        "--max-details",
-        "2"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "cases_changing_decision_or_direction": 7,
-        "deletions_checked": 8,
-        "details_omitted": 5,
-        "complete_diagnostics_sha256": "fa257165c224ed95894264aeab1ee3c01bce89e8b145250f71b69a2910a56b2f",
-        "candidates": [
-          {
-            "name": "first",
-            "decision_changes": 7,
-            "direction_changes": 0,
-            "minimum_effect": {
-              "numerator": "6",
-              "denominator": "7"
-            },
-            "maximum_effect": {
-              "numerator": "1",
-              "denominator": "1"
-            }
-          },
-          {
-            "name": "second",
-            "decision_changes": 7,
-            "direction_changes": 0,
-            "minimum_effect": {
-              "numerator": "6",
-              "denominator": "7"
-            },
-            "maximum_effect": {
-              "numerator": "1",
-              "denominator": "1"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "cross-file Unicode collisions",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-crosscheck/unicode_crosscheck.py",
-        "--demo",
-        "--max-findings",
-        "2"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "omitted_findings": 1,
-        "total_bytes": 43,
-        "token_count": 4,
-        "distinct_skeletons": 1,
-        "retained_findings": 2,
-        "truncated": true,
-        "finding_count": 3,
-        "assessment": "review-required"
-      }
-    },
-    {
-      "name": "actual cross-file sources",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-crosscheck/unicode_crosscheck.py",
-        "--files",
-        "line-1/tools/paired-verdict/paired_verdict.py",
-        "line-2/tools/unicode-lantern/unicode_lantern.py",
-        "line-2/tools/unicode-text-window/unicode_text_window.py"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "omitted_findings": 0,
-        "total_bytes": 22733,
-        "token_count": 2483,
-        "distinct_skeletons": 782,
-        "retained_findings": 0,
-        "truncated": false,
-        "finding_count": 0,
-        "assessment": "no-cross-file-collisions-found"
-      }
-    },
-    {
-      "name": "shared-time peaks",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-peaks/timeline_peaks.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "replay": {
-          "clock_uncertainty_ms": 500,
-          "events": 4,
-          "omitted": 0,
-          "sources": 4,
-          "verified": true
+       ],
+       "loss_probability_bounds": [
+        {
+         "numerator": "0",
+         "denominator": "1"
         },
-        "counts": {
-          "largest_transitive_component_events": 3,
-          "maximum_shared_time_events": 2,
-          "peak_windows_not_shown": 0,
-          "peak_windows_shown": 2,
-          "peak_windows_total": 2,
-          "timestamped_events": 4,
-          "transitive_overlap_components": 2,
-          "undated_lines": 0
+        {
+         "numerator": "177859911",
+         "denominator": "4294967296"
         }
-      }
-    },
-    {
-      "name": "tolerance boundaries",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/tolerance-flint/tolerance_flint.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "boundary": {
-          "absolute_error": "6",
-          "absolute_tolerance": "1",
-          "allowed_error": "6",
-          "base_unit": "m",
-          "difference": "6",
-          "inclusive": true,
-          "margin": "0",
-          "observed": "1006",
-          "passes": true,
-          "reference": "1000",
-          "relative_contribution": "5",
-          "relative_tolerance": "0.005",
-          "request": {
-            "absolute": "1 mm",
-            "observed": "100.6 cm",
-            "reference": "1 m",
-            "relative": "0.005",
-            "to": "mm"
-          },
-          "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
-          "schema": "tolerance-flint/v1",
-          "unit": "mm"
+       ],
+       "candidate_minus_baseline_bounds": [
+        {
+         "numerator": "-177859911",
+         "denominator": "4294967296"
         },
-        "outside": {
-          "absolute_error": "6.001",
-          "absolute_tolerance": "1",
-          "allowed_error": "6",
-          "base_unit": "m",
-          "difference": "6.001",
-          "inclusive": true,
-          "margin": "-0.001",
-          "observed": "1006.001",
-          "passes": false,
-          "reference": "1000",
-          "relative_contribution": "5",
-          "relative_tolerance": "0.005",
-          "request": {
-            "absolute": "1 mm",
-            "observed": "100.6001 cm",
-            "reference": "1 m",
-            "relative": "0.005",
-            "to": "mm"
-          },
-          "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
-          "schema": "tolerance-flint/v1",
-          "unit": "mm"
+        {
+         "numerator": "177859911",
+         "denominator": "4294967296"
         }
+       ],
+       "candidate_exceeds_positive_margin": false,
+       "baseline_exceeds_positive_margin": false,
+       "entire_interval_strictly_inside_equivalence_margin": true
       }
+     ],
+     "assumptions": [
+      "Independent identically distributed case vectors from the target population; dependence within a row is allowed.",
+      "One fixed final sample size; complete prespecified candidate family, pass rule, alpha and practical margin.",
+      "Each row evaluates the same case once under baseline and every candidate; no selected or omitted outcomes.",
+      "Correlated cases, repeated looks, optional stopping and selected families invalidate the stated coverage.",
+      "Coverage is a repeated-sampling guarantee under these assumptions, not a posterior probability.",
+      "Conservative intervals may be wide; an inconclusive interval is not evidence of equivalence.",
+      "Pins prove byte identity, not honest measurement, prospective choice or representative sampling."
+     ]
     },
-    {
-      "name": "tolerance boundary pass",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/tolerance-flint/tolerance_flint.py",
-        "check",
-        "100.6 cm",
-        "--reference",
-        "1 m",
-        "--absolute",
-        "1 mm",
-        "--relative",
-        "1/200",
-        "--to",
-        "mm"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "margin": "0",
-        "allowed_error": "6",
-        "absolute_error": "6",
-        "passes": true,
-        "unit": "mm"
-      }
-    },
-    {
-      "name": "tolerance boundary fail",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/tolerance-flint/tolerance_flint.py",
-        "check",
-        "100.6001 cm",
-        "--reference",
-        "1 m",
-        "--absolute",
-        "1 mm",
-        "--relative",
-        "1/200"
-      ],
-      "expected_exit": 1,
-      "exit_code": 1,
-      "passed": true,
-      "observed": {
-        "margin": "-0.000001",
-        "allowed_error": "0.006",
-        "absolute_error": "0.006001",
-        "passes": false,
-        "unit": "m"
-      }
-    },
-    {
-      "name": "invalid tolerance dimension",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/tolerance-flint/tolerance_flint.py",
-        "check",
-        "0 m",
-        "--reference",
-        "0 s"
-      ],
-      "expected_exit": 2,
-      "exit_code": 2,
-      "passed": true,
-      "diagnostic": "tolerance-flint: observed and reference dimensions must match, including zero\n"
-    },
-    {
-      "name": "shared exact benchmark display",
-      "command": [
-        "python3",
-        "-B",
-        "shared/benchmark-display/benchmark_display.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "executed policy benchmark",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/policy-benchmark/policy_benchmark.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "passes": {
-          "python-default-v1": 10,
-          "reject-constants-v1": 14,
-          "unique-finite-v1": 18
-        },
-        "case_count": 18,
-        "recheck": "passed"
-      }
-    },
-    {
-      "name": "plain Unicode window",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-text-window/unicode_text_window.py",
-        "--demo",
-        "--max-findings",
-        "2"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "text": {
-        "bytes": 2742,
-        "sha256": "4a78266f49f3ada14f22f1612aed1de7b459e1a30239bfbb7bfafc1d02de84c1",
-        "printable_ascii_and_lf": true,
-        "opening_lines": [
-          "UNICODE TEXT WINDOW / 1",
-          "Not a safety verdict. Evidence is not redacted.",
-          "Source: \"<synthetic-demo>\"",
-          "Original SHA-256: 7f17bd4cb302aff6547f61f8bb97d85403b5290806ac642e472ca0e146553ddc",
-          "Original bytes: 65",
-          "Unicode database: 15.0.0",
-          "Findings total: 7; retained: 2; omitted: 5"
-        ]
+    "candidates": [
+     {
+      "candidate": "improved",
+      "percentage_point_interval": {
+       "lower": "26.36",
+       "upper": "53.47",
+       "lower_rounding_error": "-0.00975613422691822052001953125",
+       "upper_rounding_error": "0.004656104631721973419189453125"
       },
-      "observed": {}
-    },
-    {
-      "name": "plain Unicode actual policy source",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-text-window/unicode_text_window.py",
-        "--file",
-        "line-1/tools/policy-benchmark/policies.py"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "text": {
-        "bytes": 1259,
-        "sha256": "c70fe7f9cac7df5ecd52d6f5277f30445be5a1d78657370f69c8303489aabfd0",
-        "printable_ascii_and_lf": true,
-        "opening_lines": [
-          "UNICODE TEXT WINDOW / 1",
-          "Not a safety verdict. Evidence is not redacted.",
-          "Source: \"line-1/tools/policy-benchmark/policies.py\"",
-          "Original SHA-256: c9293a464e8515f735693398260f82b2d5d5691438b6baef20e282ea6d9577cc",
-          "Original bytes: 1032",
-          "Unicode database: 15.0.0",
-          "Findings total: 0; retained: 0; omitted: 0"
-        ]
+      "exact_criteria": {
+       "candidate_exceeds_positive_margin": true,
+       "baseline_exceeds_positive_margin": false,
+       "entire_interval_strictly_inside_equivalence_margin": false
       },
-      "observed": {}
-    },
-    {
-      "name": "filtered timeline",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-window/timeline_window.py",
-        "demo",
-        "--source",
-        "front.log",
-        "--contains",
-        "accepted"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "filters": {
-          "case_sensitive": true,
-          "message_contains_literal": "accepted",
-          "source_exact": "front.log",
-          "undated_lines_filtered": false
-        },
-        "replay": {
-          "clock_uncertainty_ms": 250,
-          "events": 3,
-          "omitted": 1,
-          "sources": 2,
-          "verified": true
-        },
-        "counts": {
-          "contained": 0,
-          "events_total": 3,
-          "excluded_by_filter": 1,
-          "matching": 1,
-          "not_shown": 0,
-          "omitted_lines_not_shown": 0,
-          "omitted_lines_shown": 1,
-          "omitted_lines_total": 1,
-          "outside": 1,
-          "possible_overlap": 1,
-          "shown": 1,
-          "window_matching": 2
-        }
-      }
-    },
-    {
-      "name": "exact rounding match",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/round-flint/round_flint.py",
-        "10 km / 2 h",
-        "--to",
-        "m/s",
-        "--places",
-        "2",
-        "--expect",
-        "1.39"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "rounded": "1.39",
-        "exact_value": "25/18",
-        "error": "1/900",
-        "unit": "m/s",
-        "check": {
-          "claim": "1.39",
-          "matches": true
-        }
-      }
-    },
-    {
-      "name": "exact rounding mismatch",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/round-flint/round_flint.py",
-        "10 km / 2 h",
-        "--to",
-        "m/s",
-        "--places",
-        "2",
-        "--expect",
-        "1.38"
-      ],
-      "expected_exit": 1,
-      "exit_code": 1,
-      "passed": true,
-      "observed": {
-        "rounded": "1.39",
-        "exact_value": "25/18",
-        "error": "1/900",
-        "unit": "m/s",
-        "check": {
-          "claim": "1.38",
-          "matches": false
-        }
-      }
-    },
-    {
-      "name": "invalid rounded dimension",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/round-flint/round_flint.py",
-        "0 m",
-        "--to",
-        "s"
-      ],
-      "expected_exit": 2,
-      "exit_code": 2,
-      "passed": true,
-      "diagnostic": "round-flint: target dimensions do not match result dimensions\n"
-    },
-    {
-      "name": "evidence receipt JSON",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/evidence-receipt/evidence_receipt.py",
-        "demo",
-        "--json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {}
-    },
-    {
-      "name": "evidence receipt readable demo",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/evidence-receipt/evidence_receipt.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "text": {
-        "bytes": 2510,
-        "sha256": "d0e3bd54c2e2d910bb41f0b97356af24b33562d82276bcdd9406d0e62592d2ab",
-        "printable_ascii_and_lf": true,
-        "opening_lines": [
-          "# Benchmark evidence receipt",
-          "",
-          "Data: synthetic_demonstration.",
-          "",
-          "Complete paired observations admitted and exact McNemar/Holm analysis replayed.",
-          "",
-          "Baseline: synthetic-parser-v1."
-        ]
+      "displayed_interval_criteria": {
+       "candidate_exceeds_positive_margin": true,
+       "baseline_exceeds_positive_margin": false,
+       "entire_interval_strictly_inside_equivalence_margin": false
       },
-      "observed": {}
-    },
-    {
-      "name": "evidence receipt shipped replay",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/evidence-receipt/evidence_receipt.py",
-        "replay",
-        "--receipt",
-        "line-1/tools/evidence-receipt/example-receipt.json",
-        "--expected-seal-sha256",
-        "0d18499d7dcb9150785724d7121ffeafa8607ace1612900920b715c4f85b3947",
-        "--expected-receipt-sha256",
-        "a48b052b69deb57fe5919d28cbc0ea5d33c65fcf69befaba3dfab2c8d4d0594d",
-        "--markdown"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "text": {
-        "bytes": 2510,
-        "sha256": "d0e3bd54c2e2d910bb41f0b97356af24b33562d82276bcdd9406d0e62592d2ab",
-        "printable_ascii_and_lf": true,
-        "opening_lines": [
-          "# Benchmark evidence receipt",
-          "",
-          "Data: synthetic_demonstration.",
-          "",
-          "Complete paired observations admitted and exact McNemar/Holm analysis replayed.",
-          "",
-          "Baseline: synthetic-parser-v1."
-        ]
+      "criteria_lost_to_display_precision": []
+     },
+     {
+      "candidate": "unchanged",
+      "percentage_point_interval": {
+       "lower": "-4.15",
+       "upper": "4.15",
+       "lower_rounding_error": "-0.008876244165003299713134765625",
+       "upper_rounding_error": "0.008876244165003299713134765625"
       },
-      "observed": {}
-    },
-    {
-      "name": "Unicode window demo",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-window/unicode_window.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "text": {
-        "bytes": 3789,
-        "sha256": "6e1b90f6ff94999bddb794fb1a26f9358ac3b25db4126cf796c54e1ffaecdd14",
-        "printable_ascii_and_lf": true,
-        "opening_lines": [
-          "UNICODE WINDOW / 1",
-          "Replay consistency only; no independent identity pin.",
-          "Not a safety verdict. Evidence is not redacted.",
-          "Original SHA-256: 6041529b8515405f820466096a25d48876a0c98f3d6576de4a74189b9f53f2d2",
-          "Original bytes: 116",
-          "Findings total: 5; retained: 2; omitted: 3",
-          "Truncated: true"
-        ]
+      "exact_criteria": {
+       "candidate_exceeds_positive_margin": false,
+       "baseline_exceeds_positive_margin": false,
+       "entire_interval_strictly_inside_equivalence_margin": true
       },
-      "observed": {}
-    },
-    {
-      "name": "Unicode window actual record",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-window/unicode_window.py",
-        "source",
-        "--file",
-        "dist/line-2/26.json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "text": {
-        "bytes": 1243,
-        "sha256": "6edb8a9d318f7d304ce56e4a005d8e5a2b8bf3af84b4d5f94396f665a9095c6b",
-        "printable_ascii_and_lf": true,
-        "opening_lines": [
-          "UNICODE WINDOW / 1",
-          "Replay consistency only; no independent identity pin.",
-          "Not a safety verdict. Evidence is not redacted.",
-          "Original SHA-256: 6aa5febc76d1d97e9dc429e1682e11c55685080f3a1aee17a5faf9c471aece92",
-          "Original bytes: 664",
-          "Findings total: 0; retained: 0; omitted: 0",
-          "Truncated: false"
-        ]
+      "displayed_interval_criteria": {
+       "candidate_exceeds_positive_margin": false,
+       "baseline_exceeds_positive_margin": false,
+       "entire_interval_strictly_inside_equivalence_margin": true
       },
-      "observed": {}
-    },
-    {
-      "name": "timeline window demo",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-window/timeline_window.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "filters": {
-          "case_sensitive": true,
-          "message_contains_literal": null,
-          "source_exact": null,
-          "undated_lines_filtered": false
-        },
-        "replay": {
-          "clock_uncertainty_ms": 250,
-          "events": 3,
-          "omitted": 1,
-          "sources": 2,
-          "verified": true
-        },
-        "counts": {
-          "contained": 0,
-          "events_total": 3,
-          "excluded_by_filter": 0,
-          "matching": 2,
-          "not_shown": 0,
-          "omitted_lines_not_shown": 0,
-          "omitted_lines_shown": 1,
-          "omitted_lines_total": 1,
-          "outside": 1,
-          "possible_overlap": 2,
-          "shown": 2,
-          "window_matching": 2
-        }
-      }
-    },
-    {
-      "name": "shared window review",
-      "command": [
-        "python3",
-        "-B",
-        "shared/window-review/window_review.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "text": {
-        "bytes": 12201,
-        "sha256": "d69acfc8180b3fccbc6a92b7c8f59bda8d4a1c3e4b5cbfda22ff175f691583ea",
-        "printable_ascii_and_lf": true,
-        "opening_lines": [
-          "SYNTHETIC DEMONSTRATION; NOT A REAL INCIDENT",
-          "WINDOW REVIEW / 1",
-          "Pack exact-byte SHA-256: 1f49e6b957a63eba6f8ea7c0d6b968e7b6743b67a01adfab5043b6719069ed71",
-          "Independent digest checked: false",
-          "Query: {\"end_utc_exclusive\": \"2026-10-18T10:00:04Z\", \"start_utc_inclusive\": \"2026-10-18T10:00:02Z\"}",
-          "Counts: {\"contained\": 0, \"events_total\": 3, \"matching\": 2, \"not_shown\": 0, \"omitted_lines_not_shown\": 0, \"omitted_lines_shown\": 1, \"omitted_lines_total\": 1, \"outside\": 1, \"possible_overlap\": 2, \"shown\": 2}",
-          "Clock assumptions: {\"clock_uncertainty_ms\": 250, \"ignore_unmatched\": true}"
-        ]
+      "criteria_lost_to_display_precision": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "simultaneous binary effect bounds",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/paired-bounds/paired_bounds.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "paired_cases": 120,
+    "candidates": [
+     {
+      "name": "improved",
+      "candidate_only_pass": 50,
+      "baseline_only_pass": 0,
+      "observed_difference": {
+       "numerator": "5",
+       "denominator": "12"
       },
-      "observed": {}
+      "win_probability_bounds": [
+       {
+        "numerator": "1310432313",
+        "denominator": "4294967296"
+       },
+       {
+        "numerator": "2296319035",
+        "denominator": "4294967296"
+       }
+      ],
+      "loss_probability_bounds": [
+       {
+        "numerator": "0",
+        "denominator": "1"
+       },
+       {
+        "numerator": "177859911",
+        "denominator": "4294967296"
+       }
+      ],
+      "candidate_minus_baseline_bounds": [
+       {
+        "numerator": "566286201",
+        "denominator": "2147483648"
+       },
+       {
+        "numerator": "2296319035",
+        "denominator": "4294967296"
+       }
+      ],
+      "candidate_exceeds_positive_margin": true,
+      "baseline_exceeds_positive_margin": false,
+      "entire_interval_strictly_inside_equivalence_margin": false
+     },
+     {
+      "name": "unchanged",
+      "candidate_only_pass": 0,
+      "baseline_only_pass": 0,
+      "observed_difference": {
+       "numerator": "0",
+       "denominator": "1"
+      },
+      "win_probability_bounds": [
+       {
+        "numerator": "0",
+        "denominator": "1"
+       },
+       {
+        "numerator": "177859911",
+        "denominator": "4294967296"
+       }
+      ],
+      "loss_probability_bounds": [
+       {
+        "numerator": "0",
+        "denominator": "1"
+       },
+       {
+        "numerator": "177859911",
+        "denominator": "4294967296"
+       }
+      ],
+      "candidate_minus_baseline_bounds": [
+       {
+        "numerator": "-177859911",
+        "denominator": "4294967296"
+       },
+       {
+        "numerator": "177859911",
+        "denominator": "4294967296"
+       }
+      ],
+      "candidate_exceeds_positive_margin": false,
+      "baseline_exceeds_positive_margin": false,
+      "entire_interval_strictly_inside_equivalence_margin": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "retained policy binary effect bounds",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/paired-bounds/paired_bounds.py",
+    "--input",
+    "line-1/tools/paired-bounds/retained-policy-results.csv",
+    "--expected-input-sha256",
+    "c8e80ed4104f4f85c50a2df9d02c2dbb6ca47fc748ad545815adfe6475226d02"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "paired_cases": 18,
+    "candidates": [
+     {
+      "name": "reject-constants-v1",
+      "candidate_only_pass": 4,
+      "baseline_only_pass": 0,
+      "observed_difference": {
+       "numerator": "2",
+       "denominator": "9"
+      },
+      "win_probability_bounds": [
+       {
+        "numerator": "91556687",
+        "denominator": "2147483648"
+       },
+       {
+        "numerator": "2319648301",
+        "denominator": "4294967296"
+       }
+      ],
+      "loss_probability_bounds": [
+       {
+        "numerator": "0",
+        "denominator": "1"
+       },
+       {
+        "numerator": "32976181",
+        "denominator": "134217728"
+       }
+      ],
+      "candidate_minus_baseline_bounds": [
+       {
+        "numerator": "-436062209",
+        "denominator": "2147483648"
+       },
+       {
+        "numerator": "2319648301",
+        "denominator": "4294967296"
+       }
+      ],
+      "candidate_exceeds_positive_margin": false,
+      "baseline_exceeds_positive_margin": false,
+      "entire_interval_strictly_inside_equivalence_margin": false
+     },
+     {
+      "name": "unique-finite-v1",
+      "candidate_only_pass": 8,
+      "baseline_only_pass": 0,
+      "observed_difference": {
+       "numerator": "4",
+       "denominator": "9"
+      },
+      "win_probability_bounds": [
+       {
+        "numerator": "734019969",
+        "denominator": "4294967296"
+       },
+       {
+        "numerator": "3201162157",
+        "denominator": "4294967296"
+       }
+      ],
+      "loss_probability_bounds": [
+       {
+        "numerator": "0",
+        "denominator": "1"
+       },
+       {
+        "numerator": "32976181",
+        "denominator": "134217728"
+       }
+      ],
+      "candidate_minus_baseline_bounds": [
+       {
+        "numerator": "-321217823",
+        "denominator": "4294967296"
+       },
+       {
+        "numerator": "3201162157",
+        "denominator": "4294967296"
+       }
+      ],
+      "candidate_exceeds_positive_margin": false,
+      "baseline_exceeds_positive_margin": false,
+      "entire_interval_strictly_inside_equivalence_margin": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "temperature point and delta arithmetic",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/temperature-flint/temperature_flint.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "benchmark label normalization handoff",
+   "command": [
+    "python3",
+    "-B",
+    "shared/metric-label-review/metric_label_review.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "whole-string normalization demo",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-normalization/unicode_normalization.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "analysis_complete": true,
+    "finding_count": 3
+   }
+  },
+  {
+   "name": "percent-escaped Unicode",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/percent-unicode/percent_unicode.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "analysis_complete": true
+   }
+  },
+  {
+   "name": "exact table aggregation",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/table-flint/table_flint.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "passes": true,
+    "unit": "m"
+   }
+  },
+  {
+   "name": "interval order primitive",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/uncertainty-lens/uncertainty_lens.py"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "stdin": [
+    {
+     "id": "ingest",
+     "start": 1,
+     "end": 3
     },
     {
-      "name": "interval clock",
-      "command": [
-        "python3",
-        "-B",
-        "shared/interval-clock/interval_clock.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "comparison": {
-          "after_replay": {
-            "clock_uncertainty_ms": 501,
-            "events": 2,
-            "omitted": 0,
-            "sources": 2,
-            "verified": true
-          },
-          "before_replay": {
-            "clock_uncertainty_ms": 0,
-            "events": 2,
-            "omitted": 0,
-            "sources": 2,
-            "verified": true
-          },
-          "format": "timeline-diff/1",
-          "interpretation": "Citations are physical source and line positions. Identical line hashes bind text at those positions, not event identity after line movement. Order is temporal under each asserted clock bound, not causality or measured skew. Verified packs establish internal consistency; authentic evidence requires independently trusted digests.",
-          "line_changes": {
-            "counts": {
-              "added": 0,
-              "changed-interval": 2,
-              "changed-line": 0,
-              "reclassified": 0,
-              "removed": 0
-            },
-            "omitted_details": 0,
-            "shown": [
-              {
-                "after": {
-                  "kind": "event",
-                  "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331"
-                },
-                "before": {
-                  "kind": "event",
-                  "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331"
-                },
-                "change": "changed-interval",
-                "line": 1,
-                "source": "accepted.log"
-              },
-              {
-                "after": {
-                  "kind": "event",
-                  "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d"
-                },
-                "before": {
-                  "kind": "event",
-                  "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d"
-                },
-                "change": "changed-interval",
-                "line": 1,
-                "source": "completed.log"
-              }
-            ],
-            "total": 2
-          },
-          "options": {
-            "after": {
-              "clock_uncertainty_ms": 501,
-              "ignore_unmatched": false
-            },
-            "before": {
-              "clock_uncertainty_ms": 0,
-              "ignore_unmatched": false
-            },
-            "changed": true
-          },
-          "pair": {
-            "after": {
-              "left": {
-                "end_utc_exclusive": "2026-10-18T10:00:01.501000Z",
-                "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-                "start_utc": "2026-10-18T09:59:59.499000Z",
-                "status": "event"
-              },
-              "relation": "unresolved-overlap",
-              "right": {
-                "end_utc_exclusive": "2026-10-18T10:00:03.501000Z",
-                "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-                "start_utc": "2026-10-18T10:00:01.499000Z",
-                "status": "event"
-              }
-            },
-            "assessment": "relation-changed",
-            "before": {
-              "left": {
-                "end_utc_exclusive": "2026-10-18T10:00:01Z",
-                "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-                "start_utc": "2026-10-18T10:00:00Z",
-                "status": "event"
-              },
-              "relation": "left-before-right",
-              "right": {
-                "end_utc_exclusive": "2026-10-18T10:00:03Z",
-                "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-                "start_utc": "2026-10-18T10:00:02Z",
-                "status": "event"
-              }
-            },
-            "left_citation": {
-              "line": 1,
-              "source": "accepted.log"
-            },
-            "right_citation": {
-              "line": 1,
-              "source": "completed.log"
-            },
-            "same_line_evidence": true
-          },
-          "source_changes": []
-        },
-        "asserted_total_bound_ms": 501,
-        "verified": true
-      }
+     "id": "alert",
+     "start": 3,
+     "end": 4
     },
     {
-      "name": "benchmark seal",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/benchmark-seal/benchmark_seal.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "rejected_rehashed_replacement": "seal mismatch against independently retained pin",
-        "check": {
-          "schema": "benchmark-seal-check-v1",
-          "status": "content_matches_pin",
-          "seal_sha256": "0d18499d7dcb9150785724d7121ffeafa8607ace1612900920b715c4f85b3947",
-          "plan_sha256": "13d5c3882c0082a7c603ad464645f312f6ebe6bee4622cc9f4c35710e8086f8e",
-          "assets": {
-            "cases": [
-              {
-                "id": "empty",
-                "bytes": 27,
-                "sha256": "c9e67b313441f60496f263c828e51023a55fe999c627a68a5e28ea578774c87f"
-              },
-              {
-                "id": "unicode",
-                "bytes": 29,
-                "sha256": "f1349ecdd94ff8052b60268dbbde5f7fa357e23765fe729a754af3dc31ef10f0"
-              },
-              {
-                "id": "truncated",
-                "bytes": 31,
-                "sha256": "aecbd64168e41759b407eae8205c65ff044d97a09b9574eafc3e9e466b7cadc2"
-              }
-            ],
-            "systems": [
-              {
-                "id": "synthetic-parser-v1",
-                "bytes": 48,
-                "sha256": "90665a73564fad9940461d345388b9e8cd35b655f3a9dd5509c18f1b55e7b39a"
-              },
-              {
-                "id": "synthetic-fast-v1",
-                "bytes": 46,
-                "sha256": "f34a57cb3207c11ebaf7b5f1e3d03139296cb6a76b66b1c5d2723ca6ef7022a6"
-              },
-              {
-                "id": "synthetic-careful-v1",
-                "bytes": 49,
-                "sha256": "9cbe4fc623d1cabfe6b18d00df52a7514918cdf92face52f00f36328418ba45e"
-              }
-            ]
-          },
-          "limits": [
-            "The independent pin must be retained before outcomes are collected.",
-            "Content consistency proves neither preregistration nor execution of these bytes.",
-            "Assets may contain private data; review before sharing. No redaction is performed.",
-            "Correct scoring, independence, representative cases and fixed stopping remain assertions."
-          ],
-          "observations": {
-            "schema": "frozen-benchmark-check-v1",
-            "status": "complete_observations",
-            "plan_sha256": "13d5c3882c0082a7c603ad464645f312f6ebe6bee4622cc9f4c35710e8086f8e",
-            "manifest_bytes_sha256": "ebecf5db72911452a8cbb59c5a38497db7e270ad661e47a4f939e5cd6c1f497b",
-            "observation_bytes_sha256": "3ee1c2e479379e624def23b5e5f8f960ecac7b8bd4c9c38f24154c35ce9fa691",
-            "normalized_csv_sha256": "3ee1c2e479379e624def23b5e5f8f960ecac7b8bd4c9c38f24154c35ce9fa691",
-            "case_count": 3,
-            "candidates": [
-              "synthetic-fast-v1",
-              "synthetic-careful-v1"
-            ],
-            "baseline": "synthetic-parser-v1",
-            "pass_rule": "Synthetic fixture only: output equals the case expected value exactly.",
-            "alpha": "0.05",
-            "limits": [
-              "Consistency with a pinned plan does not prove preregistration or honest execution.",
-              "Case IDs do not bind case payloads; keep the actual inputs and immutable system versions.",
-              "Independence, pass-rule application and absence of repeated looks are not verified."
-            ]
-          }
-        },
-        "normalized_csv": "case,baseline,synthetic-fast-v1,synthetic-careful-v1\nempty,1,1,1\nunicode,0,1,1\ntruncated,0,0,1\n"
-      }
-    },
-    {
-      "name": "Unicode seal",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-seal/unicode_seal.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "consistent_replacement_rejected": true,
-        "runtime_mismatch_rejected": true,
-        "verified": true,
-        "retained_findings": 2,
-        "truncated": true,
-        "finding_count": 5,
-        "assessment": "review-required"
-      }
-    },
-    {
-      "name": "timeline diff",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-diff/timeline_diff.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "pair": {
-          "after": {
-            "left": {
-              "end_utc_exclusive": "2026-10-18T10:00:01.750000Z",
-              "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-              "start_utc": "2026-10-18T09:59:59.250000Z",
-              "status": "event"
-            },
-            "relation": "unresolved-overlap",
-            "right": {
-              "end_utc_exclusive": "2026-10-18T10:00:03.750000Z",
-              "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-              "start_utc": "2026-10-18T10:00:01.250000Z",
-              "status": "event"
-            }
-          },
-          "assessment": "relation-changed",
-          "before": {
-            "left": {
-              "end_utc_exclusive": "2026-10-18T10:00:01Z",
-              "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-              "start_utc": "2026-10-18T10:00:00Z",
-              "status": "event"
-            },
-            "relation": "left-before-right",
-            "right": {
-              "end_utc_exclusive": "2026-10-18T10:00:03Z",
-              "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-              "start_utc": "2026-10-18T10:00:02Z",
-              "status": "event"
-            }
-          },
-          "left_citation": {
-            "line": 1,
-            "source": "accepted.log"
-          },
-          "right_citation": {
-            "line": 1,
-            "source": "completed.log"
-          },
-          "same_line_evidence": true
-        },
-        "line_changes": {
-          "counts": {
-            "added": 0,
-            "changed-interval": 2,
-            "changed-line": 0,
-            "reclassified": 0,
-            "removed": 0
-          },
-          "omitted_details": 0,
-          "shown": [
-            {
-              "after": {
-                "kind": "event",
-                "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331"
-              },
-              "before": {
-                "kind": "event",
-                "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331"
-              },
-              "change": "changed-interval",
-              "line": 1,
-              "source": "accepted.log"
-            },
-            {
-              "after": {
-                "kind": "event",
-                "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d"
-              },
-              "before": {
-                "kind": "event",
-                "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d"
-              },
-              "change": "changed-interval",
-              "line": 1,
-              "source": "completed.log"
-            }
-          ],
-          "total": 2
-        }
-      }
-    },
-    {
-      "name": "interval arithmetic",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/interval-flint/interval_flint.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "lower": "3.6",
-        "upper": "5.5",
-        "within": {
-          "lower": "3 s",
-          "upper": "6 s",
-          "fully_within": true,
-          "overlaps": true
-        },
-        "unit": "s"
-      }
-    },
-    {
-      "name": "shared clock receipt",
-      "command": [
-        "python3",
-        "-B",
-        "shared/clock-receipt/clock_receipt.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "analysis": {
-          "boundary_replays": [
-            {
-              "bound_ms": 500,
-              "left": {
-                "end_utc_exclusive": "2026-10-18T10:00:01.500000Z",
-                "line": 1,
-                "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-                "source": "accepted.log",
-                "start_utc": "2026-10-18T09:59:59.500000Z"
-              },
-              "relation": "left-before-right",
-              "replayable": true,
-              "right": {
-                "end_utc_exclusive": "2026-10-18T10:00:03.500000Z",
-                "line": 1,
-                "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-                "source": "completed.log",
-                "start_utc": "2026-10-18T10:00:01.500000Z"
-              }
-            },
-            {
-              "bound_ms": 501,
-              "left": {
-                "end_utc_exclusive": "2026-10-18T10:00:01.501000Z",
-                "line": 1,
-                "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-                "source": "accepted.log",
-                "start_utc": "2026-10-18T09:59:59.499000Z"
-              },
-              "relation": "unresolved-overlap",
-              "replayable": true,
-              "right": {
-                "end_utc_exclusive": "2026-10-18T10:00:03.501000Z",
-                "line": 1,
-                "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-                "source": "completed.log",
-                "start_utc": "2026-10-18T10:00:01.499000Z"
-              }
-            }
-          ],
-          "current_bound_ms": 750,
-          "current_relation": "unresolved-overlap",
-          "first_overlap_bound_in_supported_domain_ms": 501,
-          "format": "clock-margin/1",
-          "interpretation": "Total symmetric clock bounds, not additional error or measured skew. Pair limits are interval algebra; boundary replays can fail on other events or calendar/pack limits. No causality or authenticity claim.",
-          "max_order_bound_in_supported_domain_ms": 500,
-          "pair_order_limit_ms": 500,
-          "replay": {
-            "clock_uncertainty_ms": 750,
-            "events": 2,
-            "omitted": 0,
-            "sources": 2,
-            "verified": true
-          },
-          "zero_bound_left": {
-            "end_utc_exclusive": "2026-10-18T10:00:01Z",
-            "line": 1,
-            "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-            "source": "accepted.log",
-            "start_utc": "2026-10-18T10:00:00Z"
-          },
-          "zero_bound_relation": "left-before-right",
-          "zero_bound_right": {
-            "end_utc_exclusive": "2026-10-18T10:00:03Z",
-            "line": 1,
-            "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-            "source": "completed.log",
-            "start_utc": "2026-10-18T10:00:02Z"
-          }
-        },
-        "asserted_total_bound_ms": 750,
-        "different_valid_bound_rejected": true,
-        "verified": true
-      }
-    },
-    {
-      "name": "Unicode replay",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-replay/unicode_replay.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "verified": true,
-        "retained_findings": 2,
-        "truncated": true,
-        "altered_citation_rejected": true,
-        "finding_count": 5,
-        "assessment": "review-required"
-      }
-    },
-    {
-      "name": "clock sensitivity",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/clock-margin/clock_margin.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "analysis": {
-          "boundary_replays": [
-            {
-              "bound_ms": 500,
-              "left": {
-                "end_utc_exclusive": "2026-10-18T10:00:01.500000Z",
-                "line": 1,
-                "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-                "source": "accepted.log",
-                "start_utc": "2026-10-18T09:59:59.500000Z"
-              },
-              "relation": "left-before-right",
-              "replayable": true,
-              "right": {
-                "end_utc_exclusive": "2026-10-18T10:00:03.500000Z",
-                "line": 1,
-                "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-                "source": "completed.log",
-                "start_utc": "2026-10-18T10:00:01.500000Z"
-              }
-            },
-            {
-              "bound_ms": 501,
-              "left": {
-                "end_utc_exclusive": "2026-10-18T10:00:01.501000Z",
-                "line": 1,
-                "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-                "source": "accepted.log",
-                "start_utc": "2026-10-18T09:59:59.499000Z"
-              },
-              "relation": "unresolved-overlap",
-              "replayable": true,
-              "right": {
-                "end_utc_exclusive": "2026-10-18T10:00:03.501000Z",
-                "line": 1,
-                "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-                "source": "completed.log",
-                "start_utc": "2026-10-18T10:00:01.499000Z"
-              }
-            }
-          ],
-          "current_bound_ms": 750,
-          "current_relation": "unresolved-overlap",
-          "first_overlap_bound_in_supported_domain_ms": 501,
-          "format": "clock-margin/1",
-          "interpretation": "Total symmetric clock bounds, not additional error or measured skew. Pair limits are interval algebra; boundary replays can fail on other events or calendar/pack limits. No causality or authenticity claim.",
-          "max_order_bound_in_supported_domain_ms": 500,
-          "pair_order_limit_ms": 500,
-          "replay": {
-            "clock_uncertainty_ms": 750,
-            "events": 2,
-            "omitted": 0,
-            "sources": 2,
-            "verified": true
-          },
-          "zero_bound_left": {
-            "end_utc_exclusive": "2026-10-18T10:00:01Z",
-            "line": 1,
-            "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
-            "source": "accepted.log",
-            "start_utc": "2026-10-18T10:00:00Z"
-          },
-          "zero_bound_relation": "left-before-right",
-          "zero_bound_right": {
-            "end_utc_exclusive": "2026-10-18T10:00:03Z",
-            "line": 1,
-            "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
-            "source": "completed.log",
-            "start_utc": "2026-10-18T10:00:02Z"
-          }
-        }
-      }
-    },
-    {
-      "name": "calculation receipt",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/calculation-receipt/receipt.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "matching_receipt": {
-          "verified": true,
-          "receipt_sha256": "75de69ab94f143f2d263c98179883b60bb56e237de6f0c708b3d9e1a58dd26a6",
-          "calculation_exit": 0,
-          "result": {
-            "expression": "5 MiB / (2 MiB/s)",
-            "value": "2.5",
-            "unit": "s",
-            "base_value": "2.5",
-            "base_unit": "s",
-            "dimensions": {
-              "length": 0,
-              "mass": 0,
-              "time": 1,
-              "data": 0
-            },
-            "check": {
-              "expression": "2500 ms",
-              "expected_base_value": "2.5",
-              "difference_base_value": "0",
-              "base_unit": "s",
-              "matches": true
-            },
-            "bounds": {
-              "base_unit": "s",
-              "inclusive": true,
-              "at_least": {
-                "expression": "2 s",
-                "base_value": "2",
-                "passes": true
-              },
-              "at_most": {
-                "expression": "3 s",
-                "base_value": "3",
-                "passes": true
-              },
-              "passes": true
-            }
-          }
-        },
-        "failed_bound_verified": true,
-        "failed_bound_calculation_exit": 1,
-        "rehashed_altered_result_rejected": true
-      }
-    },
-    {
-      "name": "paired verdict demo",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/paired-verdict/paired_verdict.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "paired_cases": 40,
-        "table": {
-          "both_pass": 24,
-          "both_fail": 4,
-          "candidate_only_pass": 10,
-          "baseline_only_pass": 2
-        },
-        "test": {
-          "name": "two-sided exact conditional McNemar",
-          "alpha": "0.05",
-          "discordant_pairs": 12,
-          "p_value_decimal_16_digits": "0.03857421875",
-          "p_exact_numerator": "158",
-          "p_exact_denominator_power_of_two": 12,
-          "reject_equal_discordance_at_alpha": true,
-          "observed_direction": "candidate"
-        }
-      }
-    },
-    {
-      "name": "paired verdict CSV",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/paired-verdict/paired_verdict.py",
-        "--input",
-        "line-1/tools/paired-verdict/example.csv"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "paired_cases": 3,
-        "table": {
-          "both_pass": 1,
-          "both_fail": 0,
-          "candidate_only_pass": 1,
-          "baseline_only_pass": 1
-        },
-        "test": {
-          "name": "two-sided exact conditional McNemar",
-          "alpha": "0.05",
-          "discordant_pairs": 2,
-          "p_value_decimal_16_digits": "1",
-          "p_exact_numerator": "4",
-          "p_exact_denominator_power_of_two": 2,
-          "reject_equal_discordance_at_alpha": false,
-          "observed_direction": "tie"
-        }
-      }
-    },
-    {
-      "name": "candidate ladder",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/candidate-ladder/candidate_ladder.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "paired_cases": 40,
-        "candidates": [
-          {
-            "name": "swift",
-            "candidate_passes": 32,
-            "candidate_only_pass": 12,
-            "baseline_only_pass": 0,
-            "candidate_minus_baseline_percentage_points": 30.0,
-            "exact_two_sided_p": {
-              "numerator": "1",
-              "denominator": "2048",
-              "decimal_16_digits": "0.00048828125"
-            },
-            "holm_rank": 1,
-            "holm_adjusted_p": {
-              "numerator": "3",
-              "denominator": "2048",
-              "decimal_16_digits": "0.00146484375"
-            },
-            "familywise_reject_equal_discordance": true,
-            "observed_direction": "candidate"
-          },
-          {
-            "name": "steady",
-            "candidate_passes": 26,
-            "candidate_only_pass": 8,
-            "baseline_only_pass": 2,
-            "candidate_minus_baseline_percentage_points": 15.0,
-            "exact_two_sided_p": {
-              "numerator": "7",
-              "denominator": "64",
-              "decimal_16_digits": "0.109375"
-            },
-            "holm_rank": 2,
-            "holm_adjusted_p": {
-              "numerator": "7",
-              "denominator": "32",
-              "decimal_16_digits": "0.21875"
-            },
-            "familywise_reject_equal_discordance": false,
-            "observed_direction": "candidate"
-          },
-          {
-            "name": "noisy",
-            "candidate_passes": 20,
-            "candidate_only_pass": 5,
-            "baseline_only_pass": 5,
-            "candidate_minus_baseline_percentage_points": 0.0,
-            "exact_two_sided_p": {
-              "numerator": "1",
-              "denominator": "1",
-              "decimal_16_digits": "1"
-            },
-            "holm_rank": 3,
-            "holm_adjusted_p": {
-              "numerator": "1",
-              "denominator": "1",
-              "decimal_16_digits": "1"
-            },
-            "familywise_reject_equal_discordance": false,
-            "observed_direction": "tie"
-          }
-        ]
-      }
-    },
-    {
-      "name": "prospective power",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/paired-power/paired_power.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "comparison_threshold": "1/60",
-        "smallest_evaluated_size_meeting_target": 200,
-        "sizes": [
-          {
-            "paired_cases": 40,
-            "expected_discordant_pairs": 12.0,
-            "probability_reject_equal_discordance": 0.16494445245131276,
-            "probability_reject_with_candidate_ahead": 0.16493933744782266,
-            "meets_rejection_target_numerically": false
-          },
-          {
-            "paired_cases": 80,
-            "expected_discordant_pairs": 24.0,
-            "probability_reject_equal_discordance": 0.45566564876280274,
-            "probability_reject_with_candidate_ahead": 0.45566550052214727,
-            "meets_rejection_target_numerically": false
-          },
-          {
-            "paired_cases": 120,
-            "expected_discordant_pairs": 36.0,
-            "probability_reject_equal_discordance": 0.7026894971303423,
-            "probability_reject_with_candidate_ahead": 0.7026894889729931,
-            "meets_rejection_target_numerically": false
-          },
-          {
-            "paired_cases": 200,
-            "expected_discordant_pairs": 60.0,
-            "probability_reject_equal_discordance": 0.9325619932096577,
-            "probability_reject_with_candidate_ahead": 0.9325619931762673,
-            "meets_rejection_target_numerically": true
-          },
-          {
-            "paired_cases": 400,
-            "expected_discordant_pairs": 120.0,
-            "probability_reject_equal_discordance": 0.9993487894109117,
-            "probability_reject_with_candidate_ahead": 0.9993487894109115,
-            "meets_rejection_target_numerically": true
-          }
-        ]
-      }
-    },
-    {
-      "name": "raw Unicode",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/unicode-lantern/unicode_lantern.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "truncated": false,
-        "finding_count": 7,
-        "assessment": "review-required",
-        "sha256": "7f17bd4cb302aff6547f61f8bb97d85403b5290806ac642e472ca0e146553ddc"
-      }
-    },
-    {
-      "name": "decoded JSON",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/json-lantern/json_lantern.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "truncated": false,
-        "finding_count": 6,
-        "assessment": "review-required",
-        "sha256": "066cc7a87f503dd2da5679a1168e6b9a77fd682e0f3408799e58083ddeabf42c"
-      }
-    },
-    {
-      "name": "actual record JSON",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/json-lantern/json_lantern.py",
-        "--file",
-        "dist/line-2/22.json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "truncated": false,
-        "finding_count": 0,
-        "assessment": "no-covered-patterns-found",
-        "sha256": "395bd8167eeb9441c1c082cdb26bf4953f7aafb2e7e60bd28616c05c98a50290"
-      }
-    },
-    {
-      "name": "timeline demo",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/time-flint/time_flint.py",
-        "--demo",
-        "--json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "events": 4,
-        "omitted": 0,
-        "overlap_groups": [
-          1,
-          1,
-          1,
-          1
-        ]
-      }
-    },
-    {
-      "name": "timeline supplied fixtures",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/time-flint/time_flint.py",
-        "--json",
-        "--clock-uncertainty-ms",
-        "750",
-        "line-3/tools/time-flint/examples/client.txt",
-        "line-3/tools/time-flint/examples/server.jsonl"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "events": 2,
-        "omitted": 0,
-        "overlap_groups": [
-          1,
-          1
-        ]
-      }
-    },
-    {
-      "name": "timeline replay",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/timeline-replay/timeline_replay.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "replay": {
-          "clock_uncertainty_ms": 750,
-          "events": 2,
-          "omitted": 1,
-          "sources": 2,
-          "verified": true
-        },
-        "tampered_report_rejected": true
-      }
-    },
-    {
-      "name": "exact distance",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/unit-flint/unit_flint.py",
-        "1.5 km + 350 m",
-        "--to",
-        "m",
-        "--json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "value": "1850",
-        "unit": "m"
-      }
-    },
-    {
-      "name": "exact matching claim",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/unit-flint/unit_flint.py",
-        "10 km / 2 h",
-        "--expect",
-        "5 km/h",
-        "--to",
-        "m/s",
-        "--json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "value": "25/18",
-        "unit": "m/s",
-        "check": {
-          "expression": "5 km/h",
-          "expected_base_value": "25/18",
-          "difference_base_value": "0",
-          "base_unit": "m*s^-1",
-          "matches": true
-        }
-      }
-    },
-    {
-      "name": "exact mismatching claim",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/unit-flint/unit_flint.py",
-        "10 km / 2 h",
-        "--expect",
-        "6 km/h",
-        "--to",
-        "m/s",
-        "--json"
-      ],
-      "expected_exit": 1,
-      "exit_code": 1,
-      "passed": true,
-      "observed": {
-        "value": "25/18",
-        "unit": "m/s",
-        "check": {
-          "expression": "6 km/h",
-          "expected_base_value": "5/3",
-          "difference_base_value": "-5/18",
-          "base_unit": "m*s^-1",
-          "matches": false
-        }
-      }
-    },
-    {
-      "name": "invalid dimension claim",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/unit-flint/unit_flint.py",
-        "0 m",
-        "--expect",
-        "0 s",
-        "--json"
-      ],
-      "expected_exit": 2,
-      "exit_code": 2,
-      "passed": true,
-      "diagnostic": "unit-flint: expected dimension s does not match result m\n  0 s\n  ^\n"
-    },
-    {
-      "name": "frozen benchmark",
-      "command": [
-        "python3",
-        "-B",
-        "line-1/tools/frozen-benchmark/frozen_benchmark.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "check": {
-          "schema": "frozen-benchmark-check-v1",
-          "status": "complete_observations",
-          "plan_sha256": "13d5c3882c0082a7c603ad464645f312f6ebe6bee4622cc9f4c35710e8086f8e",
-          "manifest_bytes_sha256": "ebecf5db72911452a8cbb59c5a38497db7e270ad661e47a4f939e5cd6c1f497b",
-          "observation_bytes_sha256": "ba14a98d2ee63fe84b8f2d970559af3b0e9e11126a9f0cce72e34c56d906bd9b",
-          "normalized_csv_sha256": "3ee1c2e479379e624def23b5e5f8f960ecac7b8bd4c9c38f24154c35ce9fa691",
-          "case_count": 3,
-          "candidates": [
-            "synthetic-fast-v1",
-            "synthetic-careful-v1"
-          ],
-          "baseline": "synthetic-parser-v1",
-          "pass_rule": "Synthetic fixture only: output equals the case expected value exactly.",
-          "alpha": "0.05",
-          "limits": [
-            "Consistency with a pinned plan does not prove preregistration or honest execution.",
-            "Case IDs do not bind case payloads; keep the actual inputs and immutable system versions.",
-            "Independence, pass-rule application and absence of repeated looks are not verified."
-          ]
-        },
-        "rejected": {
-          "missing_case": "missing planned cases: 1",
-          "unplanned_case": "unplanned observed case ID: extra",
-          "family_drift": "CSV header differs from complete planned candidate family and order"
-        },
-        "normalized_csv": "case,baseline,synthetic-fast-v1,synthetic-careful-v1\nempty,1,1,1\nunicode,0,1,1\ntruncated,0,0,1\n"
-      }
-    },
-    {
-      "name": "JSON citations",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/json-citations/json_citations.py",
-        "--demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "truncated": false,
-        "finding_count": 5,
-        "assessment": "review-required",
-        "sha256": "6041529b8515405f820466096a25d48876a0c98f3d6576de4a74189b9f53f2d2"
-      }
-    },
-    {
-      "name": "actual record citations",
-      "command": [
-        "python3",
-        "-B",
-        "line-2/tools/json-citations/json_citations.py",
-        "--file",
-        "dist/line-2/23.json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "truncated": false,
-        "finding_count": 0,
-        "assessment": "no-covered-patterns-found",
-        "sha256": "f13b8825b51e461677535b7704fa8d36f249afdba87c82e8368cf49bf3433ebb"
-      }
-    },
-    {
-      "name": "event order witness",
-      "command": [
-        "python3",
-        "-B",
-        "line-3/tools/order-witness/order_witness.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "same_group_certain_order": {
-          "clock_model": {
-            "uncertainty_ms": 0
-          },
-          "format": "order-witness/1",
-          "interpretation": "Temporal order under asserted clock bounds; no causal claim.",
-          "left": {
-            "end_utc_exclusive": "2026-10-18T10:00:01Z",
-            "line": 1,
-            "line_sha256": "b9e5f05c23074c0b38a1b151747c9bb662ef4f34bd6a1ced4f2fcd204502c10e",
-            "overlap_group": 1,
-            "source": "a.log",
-            "start_utc": "2026-10-18T10:00:00Z"
-          },
-          "relation": "left-before-right",
-          "replay": {
-            "clock_uncertainty_ms": 0,
-            "events": 3,
-            "omitted": 0,
-            "sources": 3,
-            "verified": true
-          },
-          "right": {
-            "end_utc_exclusive": "2026-10-18T10:00:03Z",
-            "line": 1,
-            "line_sha256": "8ea3cacc2e9e7620217a3ead6515a373cdf761628e328b034d004f1710e0d349",
-            "overlap_group": 1,
-            "source": "c.log",
-            "start_utc": "2026-10-18T10:00:02Z"
-          }
-        },
-        "overlap": {
-          "clock_model": {
-            "uncertainty_ms": 0
-          },
-          "format": "order-witness/1",
-          "interpretation": "Temporal order under asserted clock bounds; no causal claim.",
-          "left": {
-            "end_utc_exclusive": "2026-10-18T10:00:01Z",
-            "line": 1,
-            "line_sha256": "b9e5f05c23074c0b38a1b151747c9bb662ef4f34bd6a1ced4f2fcd204502c10e",
-            "overlap_group": 1,
-            "source": "a.log",
-            "start_utc": "2026-10-18T10:00:00Z"
-          },
-          "relation": "unresolved-overlap",
-          "replay": {
-            "clock_uncertainty_ms": 0,
-            "events": 3,
-            "omitted": 0,
-            "sources": 3,
-            "verified": true
-          },
-          "right": {
-            "end_utc_exclusive": "2026-10-18T10:01:00Z",
-            "line": 1,
-            "line_sha256": "c85e4529c382982322e795ea30b2ddb6a9d34dd525e1a0b69b889d9848a36db1",
-            "overlap_group": 1,
-            "source": "bridge.log",
-            "start_utc": "2026-10-18T10:00:00Z"
-          }
-        },
-        "widened": {
-          "clock_model": {
-            "assumption": "Each source clock differs from UTC by at most this bound at every event.",
-            "kind": "asserted_symmetric_bound",
-            "precision_assumption": "Timestamps are truncated to their displayed precision.",
-            "uncertainty_ms": 750
-          },
-          "format": "order-witness/1",
-          "interpretation": "Temporal order under asserted clock bounds; no causal claim.",
-          "left": {
-            "end_utc_exclusive": "2026-10-18T10:00:01.750000Z",
-            "line": 1,
-            "line_sha256": "b9e5f05c23074c0b38a1b151747c9bb662ef4f34bd6a1ced4f2fcd204502c10e",
-            "overlap_group": 1,
-            "source": "a.log",
-            "start_utc": "2026-10-18T09:59:59.250000Z"
-          },
-          "relation": "unresolved-overlap",
-          "replay": {
-            "clock_uncertainty_ms": 750,
-            "events": 2,
-            "omitted": 0,
-            "sources": 2,
-            "verified": true
-          },
-          "right": {
-            "end_utc_exclusive": "2026-10-18T10:00:03.750000Z",
-            "line": 1,
-            "line_sha256": "8ea3cacc2e9e7620217a3ead6515a373cdf761628e328b034d004f1710e0d349",
-            "overlap_group": 1,
-            "source": "c.log",
-            "start_utc": "2026-10-18T10:00:01.250000Z"
-          }
-        }
-      }
-    },
-    {
-      "name": "inclusive duration bounds",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/unit-flint/unit_flint.py",
-        "5 MiB / (2 MiB/s)",
-        "--at-least",
-        "2000 ms",
-        "--at-most",
-        "3 s",
-        "--to",
-        "s",
-        "--json"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "value": "2.5",
-        "unit": "s",
-        "bounds": {
-          "base_unit": "s",
-          "inclusive": true,
-          "at_least": {
-            "expression": "2000 ms",
-            "base_value": "2",
-            "passes": true
-          },
-          "at_most": {
-            "expression": "3 s",
-            "base_value": "3",
-            "passes": true
-          },
-          "passes": true
-        }
-      }
-    },
-    {
-      "name": "duration bound failed",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/unit-flint/unit_flint.py",
-        "5 MiB / (2 MiB/s)",
-        "--at-most",
-        "2400 ms",
-        "--json"
-      ],
-      "expected_exit": 1,
-      "exit_code": 1,
-      "passed": true,
-      "observed": {
-        "value": "2.5",
-        "unit": "s",
-        "bounds": {
-          "base_unit": "s",
-          "inclusive": true,
-          "at_most": {
-            "expression": "2400 ms",
-            "base_value": "2.4",
-            "passes": false
-          },
-          "passes": false
-        }
-      }
-    },
-    {
-      "name": "reversed duration bounds",
-      "command": [
-        "python3",
-        "-B",
-        "line-4/tools/unit-flint/unit_flint.py",
-        "2.5 s",
-        "--at-least",
-        "3 s",
-        "--at-most",
-        "2 s",
-        "--json"
-      ],
-      "expected_exit": 2,
-      "exit_code": 2,
-      "passed": true,
-      "diagnostic": "unit-flint: lower bound exceeds upper bound\n  2 s\n  ^\n"
-    },
-    {
-      "name": "shared reviewed timeline",
-      "command": [
-        "python3",
-        "-B",
-        "shared/reviewed-timeline/reviewed_timeline.py",
-        "--demo",
-        "--clock-bound",
-        "0.75 s"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "assessment": "review-required"
-      }
-    },
-    {
-      "name": "shared replay review",
-      "command": [
-        "python3",
-        "-B",
-        "shared/replay-review/replay_review.py",
-        "demo"
-      ],
-      "expected_exit": 0,
-      "exit_code": 0,
-      "passed": true,
-      "observed": {
-        "finding_count": 7,
-        "assessment": "review-required",
-        "replay": {
-          "clock_uncertainty_ms": 750,
-          "events": 2,
-          "omitted": 1,
-          "sources": 2,
-          "verified": true
-        },
-        "tampered_timeline_rejected": true,
-        "review_errors": 0,
-        "json_lines_checked": 2,
-        "digest_pin_checked": true
-      }
+     "id": "retry",
+     "start": 2,
+     "end": 5
     }
-  ],
-  "note": "Demos and fixtures are synthetic; the actual record scan checks real workspace bytes. No live system performance or incident is claimed."
+   ],
+   "observed": {}
+  },
+  {
+   "name": "dimensioned continuous metric handoff",
+   "command": [
+    "python3",
+    "-B",
+    "shared/metric-measure/metric_measure.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "exact continuous metric family",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/metric-verdict/metric_verdict.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "candidates": [
+     {
+      "candidate": "small_step",
+      "counting": {
+       "extreme_assignments": 2,
+       "gcd_in_millionths": 125000,
+       "nonzero_pairs": 8,
+       "reduced_absolute_sum": 8,
+       "sign_assignments": 256,
+       "zero_pairs": 0
+      },
+      "direction": "candidate ahead",
+      "holm_p": {
+       "denominator": 64,
+       "numerator": 1
+      },
+      "mean_candidate_minus_baseline": {
+       "denominator": 8,
+       "numerator": -1
+      },
+      "raw_p": {
+       "denominator": 128,
+       "numerator": 1
+      },
+      "reject": true,
+      "reject_with_candidate_ahead": true
+     },
+     {
+      "candidate": "large_step",
+      "counting": {
+       "extreme_assignments": 2,
+       "gcd_in_millionths": 500000,
+       "nonzero_pairs": 8,
+       "reduced_absolute_sum": 8,
+       "sign_assignments": 256,
+       "zero_pairs": 0
+      },
+      "direction": "candidate ahead",
+      "holm_p": {
+       "denominator": 64,
+       "numerator": 1
+      },
+      "mean_candidate_minus_baseline": {
+       "denominator": 2,
+       "numerator": -1
+      },
+      "raw_p": {
+       "denominator": 128,
+       "numerator": 1
+      },
+      "reject": true,
+      "reject_with_candidate_ahead": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "continuous paired magnitude",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/paired-magnitude/paired_magnitude.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "HTML entity Unicode",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/entity-unicode/entity_unicode.py",
+    "--demo",
+    "--max-details",
+    "2"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "analysis_complete": true,
+    "finding_count": 4
+   }
+  },
+  {
+   "name": "HTML entity review of gallery",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/entity-unicode/entity_unicode.py",
+    "--file",
+    "dist/index.html"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "analysis_complete": true,
+    "finding_count": 0
+   }
+  },
+  {
+   "name": "timeline pairwise backbone",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-backbone/backbone.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "verified": true,
+    "replay": {
+     "clock_uncertainty_ms": 250,
+     "events": 3,
+     "omitted": 0,
+     "sources": 3,
+     "verified": true
+    }
+   }
+  },
+  {
+   "name": "clock sensitivity profiles",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-sensitivity/sensitivity.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "replay": {
+     "clock_uncertainty_ms": 500,
+     "events": 2,
+     "omitted": 1,
+     "sources": 1,
+     "verified": true
+    }
+   }
+  },
+  {
+   "name": "exact proposed measurement refinements",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/resolution-flint/resolution_flint.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "exact interval subdivision",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/subdivision-flint/subdivision_flint.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "shared original log spacing receipt",
+   "command": [
+    "python3",
+    "-B",
+    "shared/log-spacing-review/log_spacing_review.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "replay": {
+     "findings": 4,
+     "omitted_details": 2,
+     "receipt_sha256": "509063a4affe16620d6b04478ada98e2b3bb7faf1bca0fdcb344710a6ab84e51",
+     "retained_details": 2,
+     "timeline_replay": {
+      "clock_uncertainty_ms": 750,
+      "events": 3,
+      "omitted": 1,
+      "sources": 2,
+      "verified": true
+     },
+     "verified": true
+    }
+   }
+  },
+  {
+   "name": "whole-cluster deletion stability",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/cluster-stability/cluster_stability.py",
+    "--demo",
+    "--max-details",
+    "1"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "details_omitted": 6,
+    "complete_diagnostics_sha256": "b5b8bca306475908c4ea221c69ba9b24d1f5620885b88d8f594a056e6cb610d9",
+    "candidates": [
+     {
+      "name": "first",
+      "decision_changes": 7,
+      "direction_changes": 0,
+      "minimum_effect": {
+       "numerator": "1",
+       "denominator": "1"
+      },
+      "maximum_effect": {
+       "numerator": "1",
+       "denominator": "1"
+      },
+      "minimum_holm_adjusted_p": {
+       "numerator": "1",
+       "denominator": "16"
+      },
+      "maximum_holm_adjusted_p": {
+       "numerator": "1",
+       "denominator": "16"
+      }
+     },
+     {
+      "name": "second",
+      "decision_changes": 7,
+      "direction_changes": 0,
+      "minimum_effect": {
+       "numerator": "1",
+       "denominator": "1"
+      },
+      "maximum_effect": {
+       "numerator": "1",
+       "denominator": "1"
+      },
+      "minimum_holm_adjusted_p": {
+       "numerator": "1",
+       "denominator": "16"
+      },
+      "maximum_holm_adjusted_p": {
+       "numerator": "1",
+       "denominator": "16"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "invisible Unicode spacing",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-gaps/unicode_gaps.py",
+    "--demo",
+    "--max-details",
+    "2"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "analysis_complete": true,
+    "assessment": "review-selected-characters"
+   }
+  },
+  {
+   "name": "shared interval accounting receipt",
+   "command": [
+    "python3",
+    "-B",
+    "shared/load-receipt/load_receipt.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "rehashed_histogram_forgery_rejected": true
+   }
+  },
+  {
+   "name": "literal bidi lexical scope",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/bidi-scope/bidi_scope.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "status_counts": {
+     "closed-by-pdf": 1,
+     "closed-by-pdi": 2,
+     "ended-at-paragraph": 1,
+     "ignored-pdf-at-isolate": 1,
+     "matched-pdf": 1,
+     "matched-pdi": 2,
+     "unmatched-pdi": 1
+    },
+    "max_lexical_depth": 2,
+    "analysis_complete": true,
+    "assessment": "review-controls"
+   }
+  },
+  {
+   "name": "bidi review actual gathering source",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/bidi-scope/bidi_scope.py",
+    "--file",
+    "gathering/check_tools.py"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "status_counts": {},
+    "max_lexical_depth": 0,
+    "analysis_complete": true,
+    "assessment": "no-covered-controls"
+   }
+  },
+  {
+   "name": "timeline interval-depth profile",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-load/timeline_load.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "duration_by_depth_us": {
+     "0": 1000000,
+     "1": 2000000,
+     "2": 2000000
+    },
+    "replay": {
+     "clock_uncertainty_ms": 500,
+     "events": 3,
+     "omitted": 1,
+     "sources": 1,
+     "verified": true
+    },
+    "counts": {
+     "intersecting_events": 3,
+     "maximum_interval_depth": 2,
+     "segments_not_shown": 0,
+     "segments_shown": 5,
+     "segments_total": 5,
+     "timestamped_events": 3,
+     "undated_lines": 1
+    }
+   }
+  },
+  {
+   "name": "worksheet receipt replay",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/worksheet-receipt/worksheet_receipt.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "rehashed_altered_intermediate_rejected": true
+   }
+  },
+  {
+   "name": "shared timeline and Unicode change review",
+   "command": [
+    "python3",
+    "-B",
+    "shared/timeline-text-delta/timeline_text_delta.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "whole-cluster exact verdict",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/cluster-verdict/cluster_verdict.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "paired_cases": 12,
+    "candidates": [
+     {
+      "observed": 10,
+      "nonzero_clusters": 2,
+      "zero_clusters": 1,
+      "tail_assignments": "2",
+      "assignments": "4",
+      "distinct_null_sums": 3,
+      "name": "first",
+      "candidate_passes": 12,
+      "case_weighted_effect": {
+       "numerator": "5",
+       "denominator": "6"
+      },
+      "exact_two_sided_p": {
+       "numerator": "1",
+       "denominator": "2"
+      },
+      "holm_adjusted_p": {
+       "numerator": "1",
+       "denominator": "1"
+      },
+      "familywise_reject_sign_exchangeability": false,
+      "observed_direction": "candidate"
+     },
+     {
+      "observed": 10,
+      "nonzero_clusters": 2,
+      "zero_clusters": 1,
+      "tail_assignments": "2",
+      "assignments": "4",
+      "distinct_null_sums": 3,
+      "name": "second",
+      "candidate_passes": 12,
+      "case_weighted_effect": {
+       "numerator": "5",
+       "denominator": "6"
+      },
+      "exact_two_sided_p": {
+       "numerator": "1",
+       "denominator": "2"
+      },
+      "holm_adjusted_p": {
+       "numerator": "1",
+       "denominator": "1"
+      },
+      "familywise_reject_sign_exchangeability": false,
+      "observed_direction": "candidate"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Unicode finding delta",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-delta/unicode_delta.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "assessment": "added-covered-findings",
+    "counts": {
+     "added": 1,
+     "after": 2,
+     "before": 2,
+     "persisting": 1,
+     "removed": 1
+    }
+   }
+  },
+  {
+   "name": "shared gap budget declared failure",
+   "command": [
+    "python3",
+    "-B",
+    "shared/gap-budget/gap_budget.py",
+    "demo"
+   ],
+   "expected_exit": 1,
+   "exit_code": 1,
+   "passed": true,
+   "observed": {
+    "passes": false
+   }
+  },
+  {
+   "name": "observed CLI journal coverage",
+   "command": [
+    "python3",
+    "-B",
+    "gathering/try_gap_budget.py"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "worksheet passing exact chain",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/worksheet-flint/worksheet_flint.py",
+    "check"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "stdin": {
+    "schema": "worksheet-flint/1",
+    "steps": [
+     {
+      "name": "distance",
+      "expression": "10 km"
+     },
+     {
+      "name": "duration",
+      "expression": "2 h"
+     },
+     {
+      "name": "speed",
+      "expression": "$distance / $duration",
+      "to": "m/s",
+      "expect": "5 km/h",
+      "at_least": "1 m/s",
+      "at_most": "2 m/s"
+     }
+    ]
+   },
+   "observed": {
+    "passes": true
+   }
+  },
+  {
+   "name": "cluster deletion influence",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/cluster-influence/cluster_influence.py",
+    "--demo",
+    "--max-details",
+    "1"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "clusters_checked": 3,
+    "clusters_changing_decision_or_direction": 2,
+    "details_omitted": 2,
+    "complete_diagnostics_sha256": "607039c8fdf96abe53d1fd799de86b61051878d0b7c21736b22a596affc5989f",
+    "candidates": [
+     {
+      "name": "first",
+      "decision_changes": 2,
+      "direction_changes": 0,
+      "minimum_effect": {
+       "numerator": "5",
+       "denominator": "7"
+      },
+      "maximum_effect": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "name": "second",
+      "decision_changes": 2,
+      "direction_changes": 0,
+      "minimum_effect": {
+       "numerator": "5",
+       "denominator": "7"
+      },
+      "maximum_effect": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "executed policy cluster review",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/cluster-influence/try_policies.py"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "clusters_checked": 5,
+    "clusters_changing_decision_or_direction": 2,
+    "details_omitted": 0,
+    "complete_diagnostics_sha256": "6ad2ae805f6392985dcec2bcb26b0d937ddf59e4e7d771020f7638bf85a30607",
+    "candidates": [
+     {
+      "decision_changes": 0,
+      "direction_changes": 1,
+      "maximum_effect": {
+       "denominator": "3",
+       "numerator": "1"
+      },
+      "minimum_effect": {
+       "denominator": "1",
+       "numerator": "0"
+      },
+      "name": "reject-constants-v1"
+     },
+     {
+      "decision_changes": 2,
+      "direction_changes": 0,
+      "maximum_effect": {
+       "denominator": "3",
+       "numerator": "2"
+      },
+      "minimum_effect": {
+       "denominator": "7",
+       "numerator": "2"
+      },
+      "name": "unique-finite-v1"
+     }
+    ]
+   }
+  },
+  {
+   "name": "decoded JSON crosscheck",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/json-crosscheck/json_crosscheck.py",
+    "--demo",
+    "--max-findings",
+    "2"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "member_names": 7,
+    "omitted_findings": 1,
+    "total_bytes": 100,
+    "distinct_skeletons": 3,
+    "retained_findings": 2,
+    "truncated": true,
+    "finding_count": 3,
+    "assessment": "review-required"
+   }
+  },
+  {
+   "name": "actual decoded JSON keys",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/json-crosscheck/json_crosscheck.py",
+    "--files",
+    "gathering/measured-effect-band.json",
+    "gathering/benchmark-display-demo.json",
+    "gathering/effect-band-demo.json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "member_names": 650,
+    "omitted_findings": 0,
+    "total_bytes": 29366,
+    "distinct_skeletons": 103,
+    "retained_findings": 0,
+    "truncated": false,
+    "finding_count": 0,
+    "assessment": "no-covered-key-collisions-found"
+   }
+  },
+  {
+   "name": "timeline coverage gaps",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-gaps/timeline_gaps.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "durations_us": {
+     "covered": 3000000,
+     "longest_gap": 1000000,
+     "uncovered": 3000000,
+     "window": 6000000
+    },
+    "replay": {
+     "clock_uncertainty_ms": 0,
+     "events": 3,
+     "omitted": 1,
+     "sources": 1,
+     "verified": true
+    },
+    "counts": {
+     "covered_components": 2,
+     "gaps_not_shown": 0,
+     "gaps_shown": 3,
+     "gaps_total": 3,
+     "intersecting_events": 3,
+     "timestamped_events": 3,
+     "undated_lines": 1
+    }
+   }
+  },
+  {
+   "name": "worksheet declared budget failure",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/worksheet-flint/worksheet_flint.py",
+    "demo"
+   ],
+   "expected_exit": 1,
+   "exit_code": 1,
+   "passed": true,
+   "observed": {
+    "passes": false
+   }
+  },
+  {
+   "name": "measured effect band",
+   "command": [
+    "python3",
+    "-B",
+    "gathering/try_effect_band.py"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "recheck": "passed"
+   }
+  },
+  {
+   "name": "shared effect band",
+   "command": [
+    "python3",
+    "-B",
+    "shared/effect-band/effect_band.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "candidates": [
+     {
+      "candidate": "first",
+      "full_effect": "7/8",
+      "single_deletion_range": {
+       "minimum": "6/7",
+       "maximum": "1"
+      },
+      "full_data_check": {
+       "schema": "tolerance-flint/v1",
+       "request": {
+        "observed": "7/8",
+        "reference": "4/5",
+        "absolute": "1/10",
+        "relative": "0",
+        "to": "1"
+       },
+       "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
+       "unit": "1",
+       "base_unit": "1",
+       "observed": "0.875",
+       "reference": "0.8",
+       "difference": "0.075",
+       "absolute_error": "0.075",
+       "absolute_tolerance": "0.1",
+       "relative_tolerance": "0",
+       "relative_contribution": "0",
+       "allowed_error": "0.1",
+       "margin": "0.025",
+       "inclusive": true,
+       "passes": true
+      },
+      "minimum_check": {
+       "schema": "tolerance-flint/v1",
+       "request": {
+        "observed": "6/7",
+        "reference": "4/5",
+        "absolute": "1/10",
+        "relative": "0",
+        "to": "1"
+       },
+       "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
+       "unit": "1",
+       "base_unit": "1",
+       "observed": "6/7",
+       "reference": "0.8",
+       "difference": "2/35",
+       "absolute_error": "2/35",
+       "absolute_tolerance": "0.1",
+       "relative_tolerance": "0",
+       "relative_contribution": "0",
+       "allowed_error": "0.1",
+       "margin": "3/70",
+       "inclusive": true,
+       "passes": true
+      },
+      "maximum_check": {
+       "schema": "tolerance-flint/v1",
+       "request": {
+        "observed": "1",
+        "reference": "4/5",
+        "absolute": "1/10",
+        "relative": "0",
+        "to": "1"
+       },
+       "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
+       "unit": "1",
+       "base_unit": "1",
+       "observed": "1",
+       "reference": "0.8",
+       "difference": "0.2",
+       "absolute_error": "0.2",
+       "absolute_tolerance": "0.1",
+       "relative_tolerance": "0",
+       "relative_contribution": "0",
+       "allowed_error": "0.1",
+       "margin": "-0.1",
+       "inclusive": true,
+       "passes": false
+      },
+      "all_single_deletion_effects_within_band": false
+     },
+     {
+      "candidate": "second",
+      "full_effect": "7/8",
+      "single_deletion_range": {
+       "minimum": "6/7",
+       "maximum": "1"
+      },
+      "full_data_check": {
+       "schema": "tolerance-flint/v1",
+       "request": {
+        "observed": "7/8",
+        "reference": "4/5",
+        "absolute": "1/10",
+        "relative": "0",
+        "to": "1"
+       },
+       "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
+       "unit": "1",
+       "base_unit": "1",
+       "observed": "0.875",
+       "reference": "0.8",
+       "difference": "0.075",
+       "absolute_error": "0.075",
+       "absolute_tolerance": "0.1",
+       "relative_tolerance": "0",
+       "relative_contribution": "0",
+       "allowed_error": "0.1",
+       "margin": "0.025",
+       "inclusive": true,
+       "passes": true
+      },
+      "minimum_check": {
+       "schema": "tolerance-flint/v1",
+       "request": {
+        "observed": "6/7",
+        "reference": "4/5",
+        "absolute": "1/10",
+        "relative": "0",
+        "to": "1"
+       },
+       "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
+       "unit": "1",
+       "base_unit": "1",
+       "observed": "6/7",
+       "reference": "0.8",
+       "difference": "2/35",
+       "absolute_error": "2/35",
+       "absolute_tolerance": "0.1",
+       "relative_tolerance": "0",
+       "relative_contribution": "0",
+       "allowed_error": "0.1",
+       "margin": "3/70",
+       "inclusive": true,
+       "passes": true
+      },
+      "maximum_check": {
+       "schema": "tolerance-flint/v1",
+       "request": {
+        "observed": "1",
+        "reference": "4/5",
+        "absolute": "1/10",
+        "relative": "0",
+        "to": "1"
+       },
+       "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
+       "unit": "1",
+       "base_unit": "1",
+       "observed": "1",
+       "reference": "0.8",
+       "difference": "0.2",
+       "absolute_error": "0.2",
+       "absolute_tolerance": "0.1",
+       "relative_tolerance": "0",
+       "relative_contribution": "0",
+       "allowed_error": "0.1",
+       "margin": "-0.1",
+       "inclusive": true,
+       "passes": false
+      },
+      "all_single_deletion_effects_within_band": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "single deletion influence",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/case-influence/case_influence.py",
+    "--demo",
+    "--max-details",
+    "2"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "cases_changing_decision_or_direction": 7,
+    "deletions_checked": 8,
+    "details_omitted": 5,
+    "complete_diagnostics_sha256": "fa257165c224ed95894264aeab1ee3c01bce89e8b145250f71b69a2910a56b2f",
+    "candidates": [
+     {
+      "name": "first",
+      "decision_changes": 7,
+      "direction_changes": 0,
+      "minimum_effect": {
+       "numerator": "6",
+       "denominator": "7"
+      },
+      "maximum_effect": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "name": "second",
+      "decision_changes": 7,
+      "direction_changes": 0,
+      "minimum_effect": {
+       "numerator": "6",
+       "denominator": "7"
+      },
+      "maximum_effect": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "cross-file Unicode collisions",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-crosscheck/unicode_crosscheck.py",
+    "--demo",
+    "--max-findings",
+    "2"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "omitted_findings": 1,
+    "total_bytes": 43,
+    "token_count": 4,
+    "distinct_skeletons": 1,
+    "retained_findings": 2,
+    "truncated": true,
+    "finding_count": 3,
+    "assessment": "review-required"
+   }
+  },
+  {
+   "name": "actual cross-file sources",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-crosscheck/unicode_crosscheck.py",
+    "--files",
+    "line-1/tools/paired-verdict/paired_verdict.py",
+    "line-2/tools/unicode-lantern/unicode_lantern.py",
+    "line-2/tools/unicode-text-window/unicode_text_window.py"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "omitted_findings": 0,
+    "total_bytes": 22733,
+    "token_count": 2483,
+    "distinct_skeletons": 782,
+    "retained_findings": 0,
+    "truncated": false,
+    "finding_count": 0,
+    "assessment": "no-cross-file-collisions-found"
+   }
+  },
+  {
+   "name": "shared-time peaks",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-peaks/timeline_peaks.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "replay": {
+     "clock_uncertainty_ms": 500,
+     "events": 4,
+     "omitted": 0,
+     "sources": 4,
+     "verified": true
+    },
+    "counts": {
+     "largest_transitive_component_events": 3,
+     "maximum_shared_time_events": 2,
+     "peak_windows_not_shown": 0,
+     "peak_windows_shown": 2,
+     "peak_windows_total": 2,
+     "timestamped_events": 4,
+     "transitive_overlap_components": 2,
+     "undated_lines": 0
+    }
+   }
+  },
+  {
+   "name": "tolerance boundaries",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/tolerance-flint/tolerance_flint.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "boundary": {
+     "absolute_error": "6",
+     "absolute_tolerance": "1",
+     "allowed_error": "6",
+     "base_unit": "m",
+     "difference": "6",
+     "inclusive": true,
+     "margin": "0",
+     "observed": "1006",
+     "passes": true,
+     "reference": "1000",
+     "relative_contribution": "5",
+     "relative_tolerance": "0.005",
+     "request": {
+      "absolute": "1 mm",
+      "observed": "100.6 cm",
+      "reference": "1 m",
+      "relative": "0.005",
+      "to": "mm"
+     },
+     "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
+     "schema": "tolerance-flint/v1",
+     "unit": "mm"
+    },
+    "outside": {
+     "absolute_error": "6.001",
+     "absolute_tolerance": "1",
+     "allowed_error": "6",
+     "base_unit": "m",
+     "difference": "6.001",
+     "inclusive": true,
+     "margin": "-0.001",
+     "observed": "1006.001",
+     "passes": false,
+     "reference": "1000",
+     "relative_contribution": "5",
+     "relative_tolerance": "0.005",
+     "request": {
+      "absolute": "1 mm",
+      "observed": "100.6001 cm",
+      "reference": "1 m",
+      "relative": "0.005",
+      "to": "mm"
+     },
+     "rule": "abs(observed-reference) <= absolute + relative*abs(reference)",
+     "schema": "tolerance-flint/v1",
+     "unit": "mm"
+    }
+   }
+  },
+  {
+   "name": "tolerance boundary pass",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/tolerance-flint/tolerance_flint.py",
+    "check",
+    "100.6 cm",
+    "--reference",
+    "1 m",
+    "--absolute",
+    "1 mm",
+    "--relative",
+    "1/200",
+    "--to",
+    "mm"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "margin": "0",
+    "allowed_error": "6",
+    "absolute_error": "6",
+    "passes": true,
+    "unit": "mm"
+   }
+  },
+  {
+   "name": "tolerance boundary fail",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/tolerance-flint/tolerance_flint.py",
+    "check",
+    "100.6001 cm",
+    "--reference",
+    "1 m",
+    "--absolute",
+    "1 mm",
+    "--relative",
+    "1/200"
+   ],
+   "expected_exit": 1,
+   "exit_code": 1,
+   "passed": true,
+   "observed": {
+    "margin": "-0.000001",
+    "allowed_error": "0.006",
+    "absolute_error": "0.006001",
+    "passes": false,
+    "unit": "m"
+   }
+  },
+  {
+   "name": "invalid tolerance dimension",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/tolerance-flint/tolerance_flint.py",
+    "check",
+    "0 m",
+    "--reference",
+    "0 s"
+   ],
+   "expected_exit": 2,
+   "exit_code": 2,
+   "passed": true,
+   "diagnostic": "tolerance-flint: observed and reference dimensions must match, including zero\n"
+  },
+  {
+   "name": "shared exact benchmark display",
+   "command": [
+    "python3",
+    "-B",
+    "shared/benchmark-display/benchmark_display.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "executed policy benchmark",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/policy-benchmark/policy_benchmark.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "passes": {
+     "python-default-v1": 10,
+     "reject-constants-v1": 14,
+     "unique-finite-v1": 18
+    },
+    "case_count": 18,
+    "recheck": "passed"
+   }
+  },
+  {
+   "name": "plain Unicode window",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-text-window/unicode_text_window.py",
+    "--demo",
+    "--max-findings",
+    "2"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "text": {
+    "bytes": 2742,
+    "sha256": "4a78266f49f3ada14f22f1612aed1de7b459e1a30239bfbb7bfafc1d02de84c1",
+    "printable_ascii_and_lf": true,
+    "opening_lines": [
+     "UNICODE TEXT WINDOW / 1",
+     "Not a safety verdict. Evidence is not redacted.",
+     "Source: \"<synthetic-demo>\"",
+     "Original SHA-256: 7f17bd4cb302aff6547f61f8bb97d85403b5290806ac642e472ca0e146553ddc",
+     "Original bytes: 65",
+     "Unicode database: 15.0.0",
+     "Findings total: 7; retained: 2; omitted: 5"
+    ]
+   },
+   "observed": {}
+  },
+  {
+   "name": "plain Unicode actual policy source",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-text-window/unicode_text_window.py",
+    "--file",
+    "line-1/tools/policy-benchmark/policies.py"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "text": {
+    "bytes": 1259,
+    "sha256": "c70fe7f9cac7df5ecd52d6f5277f30445be5a1d78657370f69c8303489aabfd0",
+    "printable_ascii_and_lf": true,
+    "opening_lines": [
+     "UNICODE TEXT WINDOW / 1",
+     "Not a safety verdict. Evidence is not redacted.",
+     "Source: \"line-1/tools/policy-benchmark/policies.py\"",
+     "Original SHA-256: c9293a464e8515f735693398260f82b2d5d5691438b6baef20e282ea6d9577cc",
+     "Original bytes: 1032",
+     "Unicode database: 15.0.0",
+     "Findings total: 0; retained: 0; omitted: 0"
+    ]
+   },
+   "observed": {}
+  },
+  {
+   "name": "filtered timeline",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-window/timeline_window.py",
+    "demo",
+    "--source",
+    "front.log",
+    "--contains",
+    "accepted"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "filters": {
+     "case_sensitive": true,
+     "message_contains_literal": "accepted",
+     "source_exact": "front.log",
+     "undated_lines_filtered": false
+    },
+    "replay": {
+     "clock_uncertainty_ms": 250,
+     "events": 3,
+     "omitted": 1,
+     "sources": 2,
+     "verified": true
+    },
+    "counts": {
+     "contained": 0,
+     "events_total": 3,
+     "excluded_by_filter": 1,
+     "matching": 1,
+     "not_shown": 0,
+     "omitted_lines_not_shown": 0,
+     "omitted_lines_shown": 1,
+     "omitted_lines_total": 1,
+     "outside": 1,
+     "possible_overlap": 1,
+     "shown": 1,
+     "window_matching": 2
+    }
+   }
+  },
+  {
+   "name": "exact rounding match",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/round-flint/round_flint.py",
+    "10 km / 2 h",
+    "--to",
+    "m/s",
+    "--places",
+    "2",
+    "--expect",
+    "1.39"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "rounded": "1.39",
+    "exact_value": "25/18",
+    "error": "1/900",
+    "unit": "m/s",
+    "check": {
+     "claim": "1.39",
+     "matches": true
+    }
+   }
+  },
+  {
+   "name": "exact rounding mismatch",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/round-flint/round_flint.py",
+    "10 km / 2 h",
+    "--to",
+    "m/s",
+    "--places",
+    "2",
+    "--expect",
+    "1.38"
+   ],
+   "expected_exit": 1,
+   "exit_code": 1,
+   "passed": true,
+   "observed": {
+    "rounded": "1.39",
+    "exact_value": "25/18",
+    "error": "1/900",
+    "unit": "m/s",
+    "check": {
+     "claim": "1.38",
+     "matches": false
+    }
+   }
+  },
+  {
+   "name": "invalid rounded dimension",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/round-flint/round_flint.py",
+    "0 m",
+    "--to",
+    "s"
+   ],
+   "expected_exit": 2,
+   "exit_code": 2,
+   "passed": true,
+   "diagnostic": "round-flint: target dimensions do not match result dimensions\n"
+  },
+  {
+   "name": "evidence receipt JSON",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/evidence-receipt/evidence_receipt.py",
+    "demo",
+    "--json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {}
+  },
+  {
+   "name": "evidence receipt readable demo",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/evidence-receipt/evidence_receipt.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "text": {
+    "bytes": 2510,
+    "sha256": "d0e3bd54c2e2d910bb41f0b97356af24b33562d82276bcdd9406d0e62592d2ab",
+    "printable_ascii_and_lf": true,
+    "opening_lines": [
+     "# Benchmark evidence receipt",
+     "",
+     "Data: synthetic_demonstration.",
+     "",
+     "Complete paired observations admitted and exact McNemar/Holm analysis replayed.",
+     "",
+     "Baseline: synthetic-parser-v1."
+    ]
+   },
+   "observed": {}
+  },
+  {
+   "name": "evidence receipt shipped replay",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/evidence-receipt/evidence_receipt.py",
+    "replay",
+    "--receipt",
+    "line-1/tools/evidence-receipt/example-receipt.json",
+    "--expected-seal-sha256",
+    "0d18499d7dcb9150785724d7121ffeafa8607ace1612900920b715c4f85b3947",
+    "--expected-receipt-sha256",
+    "a48b052b69deb57fe5919d28cbc0ea5d33c65fcf69befaba3dfab2c8d4d0594d",
+    "--markdown"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "text": {
+    "bytes": 2510,
+    "sha256": "d0e3bd54c2e2d910bb41f0b97356af24b33562d82276bcdd9406d0e62592d2ab",
+    "printable_ascii_and_lf": true,
+    "opening_lines": [
+     "# Benchmark evidence receipt",
+     "",
+     "Data: synthetic_demonstration.",
+     "",
+     "Complete paired observations admitted and exact McNemar/Holm analysis replayed.",
+     "",
+     "Baseline: synthetic-parser-v1."
+    ]
+   },
+   "observed": {}
+  },
+  {
+   "name": "Unicode window demo",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-window/unicode_window.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "text": {
+    "bytes": 3789,
+    "sha256": "6e1b90f6ff94999bddb794fb1a26f9358ac3b25db4126cf796c54e1ffaecdd14",
+    "printable_ascii_and_lf": true,
+    "opening_lines": [
+     "UNICODE WINDOW / 1",
+     "Replay consistency only; no independent identity pin.",
+     "Not a safety verdict. Evidence is not redacted.",
+     "Original SHA-256: 6041529b8515405f820466096a25d48876a0c98f3d6576de4a74189b9f53f2d2",
+     "Original bytes: 116",
+     "Findings total: 5; retained: 2; omitted: 3",
+     "Truncated: true"
+    ]
+   },
+   "observed": {}
+  },
+  {
+   "name": "Unicode window actual record",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-window/unicode_window.py",
+    "source",
+    "--file",
+    "dist/line-2/26.json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "text": {
+    "bytes": 1243,
+    "sha256": "6edb8a9d318f7d304ce56e4a005d8e5a2b8bf3af84b4d5f94396f665a9095c6b",
+    "printable_ascii_and_lf": true,
+    "opening_lines": [
+     "UNICODE WINDOW / 1",
+     "Replay consistency only; no independent identity pin.",
+     "Not a safety verdict. Evidence is not redacted.",
+     "Original SHA-256: 6aa5febc76d1d97e9dc429e1682e11c55685080f3a1aee17a5faf9c471aece92",
+     "Original bytes: 664",
+     "Findings total: 0; retained: 0; omitted: 0",
+     "Truncated: false"
+    ]
+   },
+   "observed": {}
+  },
+  {
+   "name": "timeline window demo",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-window/timeline_window.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "filters": {
+     "case_sensitive": true,
+     "message_contains_literal": null,
+     "source_exact": null,
+     "undated_lines_filtered": false
+    },
+    "replay": {
+     "clock_uncertainty_ms": 250,
+     "events": 3,
+     "omitted": 1,
+     "sources": 2,
+     "verified": true
+    },
+    "counts": {
+     "contained": 0,
+     "events_total": 3,
+     "excluded_by_filter": 0,
+     "matching": 2,
+     "not_shown": 0,
+     "omitted_lines_not_shown": 0,
+     "omitted_lines_shown": 1,
+     "omitted_lines_total": 1,
+     "outside": 1,
+     "possible_overlap": 2,
+     "shown": 2,
+     "window_matching": 2
+    }
+   }
+  },
+  {
+   "name": "shared window review",
+   "command": [
+    "python3",
+    "-B",
+    "shared/window-review/window_review.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "text": {
+    "bytes": 12201,
+    "sha256": "d69acfc8180b3fccbc6a92b7c8f59bda8d4a1c3e4b5cbfda22ff175f691583ea",
+    "printable_ascii_and_lf": true,
+    "opening_lines": [
+     "SYNTHETIC DEMONSTRATION; NOT A REAL INCIDENT",
+     "WINDOW REVIEW / 1",
+     "Pack exact-byte SHA-256: 1f49e6b957a63eba6f8ea7c0d6b968e7b6743b67a01adfab5043b6719069ed71",
+     "Independent digest checked: false",
+     "Query: {\"end_utc_exclusive\": \"2026-10-18T10:00:04Z\", \"start_utc_inclusive\": \"2026-10-18T10:00:02Z\"}",
+     "Counts: {\"contained\": 0, \"events_total\": 3, \"matching\": 2, \"not_shown\": 0, \"omitted_lines_not_shown\": 0, \"omitted_lines_shown\": 1, \"omitted_lines_total\": 1, \"outside\": 1, \"possible_overlap\": 2, \"shown\": 2}",
+     "Clock assumptions: {\"clock_uncertainty_ms\": 250, \"ignore_unmatched\": true}"
+    ]
+   },
+   "observed": {}
+  },
+  {
+   "name": "interval clock",
+   "command": [
+    "python3",
+    "-B",
+    "shared/interval-clock/interval_clock.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "comparison": {
+     "after_replay": {
+      "clock_uncertainty_ms": 501,
+      "events": 2,
+      "omitted": 0,
+      "sources": 2,
+      "verified": true
+     },
+     "before_replay": {
+      "clock_uncertainty_ms": 0,
+      "events": 2,
+      "omitted": 0,
+      "sources": 2,
+      "verified": true
+     },
+     "format": "timeline-diff/1",
+     "interpretation": "Citations are physical source and line positions. Identical line hashes bind text at those positions, not event identity after line movement. Order is temporal under each asserted clock bound, not causality or measured skew. Verified packs establish internal consistency; authentic evidence requires independently trusted digests.",
+     "line_changes": {
+      "counts": {
+       "added": 0,
+       "changed-interval": 2,
+       "changed-line": 0,
+       "reclassified": 0,
+       "removed": 0
+      },
+      "omitted_details": 0,
+      "shown": [
+       {
+        "after": {
+         "kind": "event",
+         "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331"
+        },
+        "before": {
+         "kind": "event",
+         "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331"
+        },
+        "change": "changed-interval",
+        "line": 1,
+        "source": "accepted.log"
+       },
+       {
+        "after": {
+         "kind": "event",
+         "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d"
+        },
+        "before": {
+         "kind": "event",
+         "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d"
+        },
+        "change": "changed-interval",
+        "line": 1,
+        "source": "completed.log"
+       }
+      ],
+      "total": 2
+     },
+     "options": {
+      "after": {
+       "clock_uncertainty_ms": 501,
+       "ignore_unmatched": false
+      },
+      "before": {
+       "clock_uncertainty_ms": 0,
+       "ignore_unmatched": false
+      },
+      "changed": true
+     },
+     "pair": {
+      "after": {
+       "left": {
+        "end_utc_exclusive": "2026-10-18T10:00:01.501000Z",
+        "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+        "start_utc": "2026-10-18T09:59:59.499000Z",
+        "status": "event"
+       },
+       "relation": "unresolved-overlap",
+       "right": {
+        "end_utc_exclusive": "2026-10-18T10:00:03.501000Z",
+        "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+        "start_utc": "2026-10-18T10:00:01.499000Z",
+        "status": "event"
+       }
+      },
+      "assessment": "relation-changed",
+      "before": {
+       "left": {
+        "end_utc_exclusive": "2026-10-18T10:00:01Z",
+        "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+        "start_utc": "2026-10-18T10:00:00Z",
+        "status": "event"
+       },
+       "relation": "left-before-right",
+       "right": {
+        "end_utc_exclusive": "2026-10-18T10:00:03Z",
+        "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+        "start_utc": "2026-10-18T10:00:02Z",
+        "status": "event"
+       }
+      },
+      "left_citation": {
+       "line": 1,
+       "source": "accepted.log"
+      },
+      "right_citation": {
+       "line": 1,
+       "source": "completed.log"
+      },
+      "same_line_evidence": true
+     },
+     "source_changes": []
+    },
+    "asserted_total_bound_ms": 501,
+    "verified": true
+   }
+  },
+  {
+   "name": "benchmark seal",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/benchmark-seal/benchmark_seal.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "rejected_rehashed_replacement": "seal mismatch against independently retained pin",
+    "check": {
+     "schema": "benchmark-seal-check-v1",
+     "status": "content_matches_pin",
+     "seal_sha256": "0d18499d7dcb9150785724d7121ffeafa8607ace1612900920b715c4f85b3947",
+     "plan_sha256": "13d5c3882c0082a7c603ad464645f312f6ebe6bee4622cc9f4c35710e8086f8e",
+     "assets": {
+      "cases": [
+       {
+        "id": "empty",
+        "bytes": 27,
+        "sha256": "c9e67b313441f60496f263c828e51023a55fe999c627a68a5e28ea578774c87f"
+       },
+       {
+        "id": "unicode",
+        "bytes": 29,
+        "sha256": "f1349ecdd94ff8052b60268dbbde5f7fa357e23765fe729a754af3dc31ef10f0"
+       },
+       {
+        "id": "truncated",
+        "bytes": 31,
+        "sha256": "aecbd64168e41759b407eae8205c65ff044d97a09b9574eafc3e9e466b7cadc2"
+       }
+      ],
+      "systems": [
+       {
+        "id": "synthetic-parser-v1",
+        "bytes": 48,
+        "sha256": "90665a73564fad9940461d345388b9e8cd35b655f3a9dd5509c18f1b55e7b39a"
+       },
+       {
+        "id": "synthetic-fast-v1",
+        "bytes": 46,
+        "sha256": "f34a57cb3207c11ebaf7b5f1e3d03139296cb6a76b66b1c5d2723ca6ef7022a6"
+       },
+       {
+        "id": "synthetic-careful-v1",
+        "bytes": 49,
+        "sha256": "9cbe4fc623d1cabfe6b18d00df52a7514918cdf92face52f00f36328418ba45e"
+       }
+      ]
+     },
+     "limits": [
+      "The independent pin must be retained before outcomes are collected.",
+      "Content consistency proves neither preregistration nor execution of these bytes.",
+      "Assets may contain private data; review before sharing. No redaction is performed.",
+      "Correct scoring, independence, representative cases and fixed stopping remain assertions."
+     ],
+     "observations": {
+      "schema": "frozen-benchmark-check-v1",
+      "status": "complete_observations",
+      "plan_sha256": "13d5c3882c0082a7c603ad464645f312f6ebe6bee4622cc9f4c35710e8086f8e",
+      "manifest_bytes_sha256": "ebecf5db72911452a8cbb59c5a38497db7e270ad661e47a4f939e5cd6c1f497b",
+      "observation_bytes_sha256": "3ee1c2e479379e624def23b5e5f8f960ecac7b8bd4c9c38f24154c35ce9fa691",
+      "normalized_csv_sha256": "3ee1c2e479379e624def23b5e5f8f960ecac7b8bd4c9c38f24154c35ce9fa691",
+      "case_count": 3,
+      "candidates": [
+       "synthetic-fast-v1",
+       "synthetic-careful-v1"
+      ],
+      "baseline": "synthetic-parser-v1",
+      "pass_rule": "Synthetic fixture only: output equals the case expected value exactly.",
+      "alpha": "0.05",
+      "limits": [
+       "Consistency with a pinned plan does not prove preregistration or honest execution.",
+       "Case IDs do not bind case payloads; keep the actual inputs and immutable system versions.",
+       "Independence, pass-rule application and absence of repeated looks are not verified."
+      ]
+     }
+    },
+    "normalized_csv": "case,baseline,synthetic-fast-v1,synthetic-careful-v1\nempty,1,1,1\nunicode,0,1,1\ntruncated,0,0,1\n"
+   }
+  },
+  {
+   "name": "Unicode seal",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-seal/unicode_seal.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "consistent_replacement_rejected": true,
+    "runtime_mismatch_rejected": true,
+    "verified": true,
+    "retained_findings": 2,
+    "truncated": true,
+    "finding_count": 5,
+    "assessment": "review-required"
+   }
+  },
+  {
+   "name": "timeline diff",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-diff/timeline_diff.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "pair": {
+     "after": {
+      "left": {
+       "end_utc_exclusive": "2026-10-18T10:00:01.750000Z",
+       "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+       "start_utc": "2026-10-18T09:59:59.250000Z",
+       "status": "event"
+      },
+      "relation": "unresolved-overlap",
+      "right": {
+       "end_utc_exclusive": "2026-10-18T10:00:03.750000Z",
+       "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+       "start_utc": "2026-10-18T10:00:01.250000Z",
+       "status": "event"
+      }
+     },
+     "assessment": "relation-changed",
+     "before": {
+      "left": {
+       "end_utc_exclusive": "2026-10-18T10:00:01Z",
+       "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+       "start_utc": "2026-10-18T10:00:00Z",
+       "status": "event"
+      },
+      "relation": "left-before-right",
+      "right": {
+       "end_utc_exclusive": "2026-10-18T10:00:03Z",
+       "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+       "start_utc": "2026-10-18T10:00:02Z",
+       "status": "event"
+      }
+     },
+     "left_citation": {
+      "line": 1,
+      "source": "accepted.log"
+     },
+     "right_citation": {
+      "line": 1,
+      "source": "completed.log"
+     },
+     "same_line_evidence": true
+    },
+    "line_changes": {
+     "counts": {
+      "added": 0,
+      "changed-interval": 2,
+      "changed-line": 0,
+      "reclassified": 0,
+      "removed": 0
+     },
+     "omitted_details": 0,
+     "shown": [
+      {
+       "after": {
+        "kind": "event",
+        "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331"
+       },
+       "before": {
+        "kind": "event",
+        "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331"
+       },
+       "change": "changed-interval",
+       "line": 1,
+       "source": "accepted.log"
+      },
+      {
+       "after": {
+        "kind": "event",
+        "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d"
+       },
+       "before": {
+        "kind": "event",
+        "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d"
+       },
+       "change": "changed-interval",
+       "line": 1,
+       "source": "completed.log"
+      }
+     ],
+     "total": 2
+    }
+   }
+  },
+  {
+   "name": "interval arithmetic",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/interval-flint/interval_flint.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "lower": "3.6",
+    "upper": "5.5",
+    "within": {
+     "lower": "3 s",
+     "upper": "6 s",
+     "fully_within": true,
+     "overlaps": true
+    },
+    "unit": "s"
+   }
+  },
+  {
+   "name": "shared clock receipt",
+   "command": [
+    "python3",
+    "-B",
+    "shared/clock-receipt/clock_receipt.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "analysis": {
+     "boundary_replays": [
+      {
+       "bound_ms": 500,
+       "left": {
+        "end_utc_exclusive": "2026-10-18T10:00:01.500000Z",
+        "line": 1,
+        "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+        "source": "accepted.log",
+        "start_utc": "2026-10-18T09:59:59.500000Z"
+       },
+       "relation": "left-before-right",
+       "replayable": true,
+       "right": {
+        "end_utc_exclusive": "2026-10-18T10:00:03.500000Z",
+        "line": 1,
+        "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+        "source": "completed.log",
+        "start_utc": "2026-10-18T10:00:01.500000Z"
+       }
+      },
+      {
+       "bound_ms": 501,
+       "left": {
+        "end_utc_exclusive": "2026-10-18T10:00:01.501000Z",
+        "line": 1,
+        "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+        "source": "accepted.log",
+        "start_utc": "2026-10-18T09:59:59.499000Z"
+       },
+       "relation": "unresolved-overlap",
+       "replayable": true,
+       "right": {
+        "end_utc_exclusive": "2026-10-18T10:00:03.501000Z",
+        "line": 1,
+        "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+        "source": "completed.log",
+        "start_utc": "2026-10-18T10:00:01.499000Z"
+       }
+      }
+     ],
+     "current_bound_ms": 750,
+     "current_relation": "unresolved-overlap",
+     "first_overlap_bound_in_supported_domain_ms": 501,
+     "format": "clock-margin/1",
+     "interpretation": "Total symmetric clock bounds, not additional error or measured skew. Pair limits are interval algebra; boundary replays can fail on other events or calendar/pack limits. No causality or authenticity claim.",
+     "max_order_bound_in_supported_domain_ms": 500,
+     "pair_order_limit_ms": 500,
+     "replay": {
+      "clock_uncertainty_ms": 750,
+      "events": 2,
+      "omitted": 0,
+      "sources": 2,
+      "verified": true
+     },
+     "zero_bound_left": {
+      "end_utc_exclusive": "2026-10-18T10:00:01Z",
+      "line": 1,
+      "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+      "source": "accepted.log",
+      "start_utc": "2026-10-18T10:00:00Z"
+     },
+     "zero_bound_relation": "left-before-right",
+     "zero_bound_right": {
+      "end_utc_exclusive": "2026-10-18T10:00:03Z",
+      "line": 1,
+      "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+      "source": "completed.log",
+      "start_utc": "2026-10-18T10:00:02Z"
+     }
+    },
+    "asserted_total_bound_ms": 750,
+    "different_valid_bound_rejected": true,
+    "verified": true
+   }
+  },
+  {
+   "name": "Unicode replay",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-replay/unicode_replay.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "verified": true,
+    "retained_findings": 2,
+    "truncated": true,
+    "altered_citation_rejected": true,
+    "finding_count": 5,
+    "assessment": "review-required"
+   }
+  },
+  {
+   "name": "clock sensitivity",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/clock-margin/clock_margin.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "analysis": {
+     "boundary_replays": [
+      {
+       "bound_ms": 500,
+       "left": {
+        "end_utc_exclusive": "2026-10-18T10:00:01.500000Z",
+        "line": 1,
+        "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+        "source": "accepted.log",
+        "start_utc": "2026-10-18T09:59:59.500000Z"
+       },
+       "relation": "left-before-right",
+       "replayable": true,
+       "right": {
+        "end_utc_exclusive": "2026-10-18T10:00:03.500000Z",
+        "line": 1,
+        "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+        "source": "completed.log",
+        "start_utc": "2026-10-18T10:00:01.500000Z"
+       }
+      },
+      {
+       "bound_ms": 501,
+       "left": {
+        "end_utc_exclusive": "2026-10-18T10:00:01.501000Z",
+        "line": 1,
+        "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+        "source": "accepted.log",
+        "start_utc": "2026-10-18T09:59:59.499000Z"
+       },
+       "relation": "unresolved-overlap",
+       "replayable": true,
+       "right": {
+        "end_utc_exclusive": "2026-10-18T10:00:03.501000Z",
+        "line": 1,
+        "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+        "source": "completed.log",
+        "start_utc": "2026-10-18T10:00:01.499000Z"
+       }
+      }
+     ],
+     "current_bound_ms": 750,
+     "current_relation": "unresolved-overlap",
+     "first_overlap_bound_in_supported_domain_ms": 501,
+     "format": "clock-margin/1",
+     "interpretation": "Total symmetric clock bounds, not additional error or measured skew. Pair limits are interval algebra; boundary replays can fail on other events or calendar/pack limits. No causality or authenticity claim.",
+     "max_order_bound_in_supported_domain_ms": 500,
+     "pair_order_limit_ms": 500,
+     "replay": {
+      "clock_uncertainty_ms": 750,
+      "events": 2,
+      "omitted": 0,
+      "sources": 2,
+      "verified": true
+     },
+     "zero_bound_left": {
+      "end_utc_exclusive": "2026-10-18T10:00:01Z",
+      "line": 1,
+      "line_sha256": "6c6fccad5faaefc26c00d7ee6ae1092d98f05b574edbf2241517b5d0b6cc1331",
+      "source": "accepted.log",
+      "start_utc": "2026-10-18T10:00:00Z"
+     },
+     "zero_bound_relation": "left-before-right",
+     "zero_bound_right": {
+      "end_utc_exclusive": "2026-10-18T10:00:03Z",
+      "line": 1,
+      "line_sha256": "de779b3e4a2b6c6c6cc42072eb2c722cb0dde5205cbfc4157b2a2abcfd90b82d",
+      "source": "completed.log",
+      "start_utc": "2026-10-18T10:00:02Z"
+     }
+    }
+   }
+  },
+  {
+   "name": "calculation receipt",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/calculation-receipt/receipt.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "matching_receipt": {
+     "verified": true,
+     "receipt_sha256": "75de69ab94f143f2d263c98179883b60bb56e237de6f0c708b3d9e1a58dd26a6",
+     "calculation_exit": 0,
+     "result": {
+      "expression": "5 MiB / (2 MiB/s)",
+      "value": "2.5",
+      "unit": "s",
+      "base_value": "2.5",
+      "base_unit": "s",
+      "dimensions": {
+       "length": 0,
+       "mass": 0,
+       "time": 1,
+       "data": 0
+      },
+      "check": {
+       "expression": "2500 ms",
+       "expected_base_value": "2.5",
+       "difference_base_value": "0",
+       "base_unit": "s",
+       "matches": true
+      },
+      "bounds": {
+       "base_unit": "s",
+       "inclusive": true,
+       "at_least": {
+        "expression": "2 s",
+        "base_value": "2",
+        "passes": true
+       },
+       "at_most": {
+        "expression": "3 s",
+        "base_value": "3",
+        "passes": true
+       },
+       "passes": true
+      }
+     }
+    },
+    "failed_bound_verified": true,
+    "failed_bound_calculation_exit": 1,
+    "rehashed_altered_result_rejected": true
+   }
+  },
+  {
+   "name": "paired verdict demo",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/paired-verdict/paired_verdict.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "paired_cases": 40,
+    "table": {
+     "both_pass": 24,
+     "both_fail": 4,
+     "candidate_only_pass": 10,
+     "baseline_only_pass": 2
+    },
+    "test": {
+     "name": "two-sided exact conditional McNemar",
+     "alpha": "0.05",
+     "discordant_pairs": 12,
+     "p_value_decimal_16_digits": "0.03857421875",
+     "p_exact_numerator": "158",
+     "p_exact_denominator_power_of_two": 12,
+     "reject_equal_discordance_at_alpha": true,
+     "observed_direction": "candidate"
+    }
+   }
+  },
+  {
+   "name": "paired verdict CSV",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/paired-verdict/paired_verdict.py",
+    "--input",
+    "line-1/tools/paired-verdict/example.csv"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "paired_cases": 3,
+    "table": {
+     "both_pass": 1,
+     "both_fail": 0,
+     "candidate_only_pass": 1,
+     "baseline_only_pass": 1
+    },
+    "test": {
+     "name": "two-sided exact conditional McNemar",
+     "alpha": "0.05",
+     "discordant_pairs": 2,
+     "p_value_decimal_16_digits": "1",
+     "p_exact_numerator": "4",
+     "p_exact_denominator_power_of_two": 2,
+     "reject_equal_discordance_at_alpha": false,
+     "observed_direction": "tie"
+    }
+   }
+  },
+  {
+   "name": "candidate ladder",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/candidate-ladder/candidate_ladder.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "paired_cases": 40,
+    "candidates": [
+     {
+      "name": "swift",
+      "candidate_passes": 32,
+      "candidate_only_pass": 12,
+      "baseline_only_pass": 0,
+      "candidate_minus_baseline_percentage_points": 30.0,
+      "exact_two_sided_p": {
+       "numerator": "1",
+       "denominator": "2048",
+       "decimal_16_digits": "0.00048828125"
+      },
+      "holm_rank": 1,
+      "holm_adjusted_p": {
+       "numerator": "3",
+       "denominator": "2048",
+       "decimal_16_digits": "0.00146484375"
+      },
+      "familywise_reject_equal_discordance": true,
+      "observed_direction": "candidate"
+     },
+     {
+      "name": "steady",
+      "candidate_passes": 26,
+      "candidate_only_pass": 8,
+      "baseline_only_pass": 2,
+      "candidate_minus_baseline_percentage_points": 15.0,
+      "exact_two_sided_p": {
+       "numerator": "7",
+       "denominator": "64",
+       "decimal_16_digits": "0.109375"
+      },
+      "holm_rank": 2,
+      "holm_adjusted_p": {
+       "numerator": "7",
+       "denominator": "32",
+       "decimal_16_digits": "0.21875"
+      },
+      "familywise_reject_equal_discordance": false,
+      "observed_direction": "candidate"
+     },
+     {
+      "name": "noisy",
+      "candidate_passes": 20,
+      "candidate_only_pass": 5,
+      "baseline_only_pass": 5,
+      "candidate_minus_baseline_percentage_points": 0.0,
+      "exact_two_sided_p": {
+       "numerator": "1",
+       "denominator": "1",
+       "decimal_16_digits": "1"
+      },
+      "holm_rank": 3,
+      "holm_adjusted_p": {
+       "numerator": "1",
+       "denominator": "1",
+       "decimal_16_digits": "1"
+      },
+      "familywise_reject_equal_discordance": false,
+      "observed_direction": "tie"
+     }
+    ]
+   }
+  },
+  {
+   "name": "prospective power",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/paired-power/paired_power.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "comparison_threshold": "1/60",
+    "smallest_evaluated_size_meeting_target": 200,
+    "sizes": [
+     {
+      "paired_cases": 40,
+      "expected_discordant_pairs": 12.0,
+      "probability_reject_equal_discordance": 0.16494445245131276,
+      "probability_reject_with_candidate_ahead": 0.16493933744782266,
+      "meets_rejection_target_numerically": false
+     },
+     {
+      "paired_cases": 80,
+      "expected_discordant_pairs": 24.0,
+      "probability_reject_equal_discordance": 0.45566564876280274,
+      "probability_reject_with_candidate_ahead": 0.45566550052214727,
+      "meets_rejection_target_numerically": false
+     },
+     {
+      "paired_cases": 120,
+      "expected_discordant_pairs": 36.0,
+      "probability_reject_equal_discordance": 0.7026894971303423,
+      "probability_reject_with_candidate_ahead": 0.7026894889729931,
+      "meets_rejection_target_numerically": false
+     },
+     {
+      "paired_cases": 200,
+      "expected_discordant_pairs": 60.0,
+      "probability_reject_equal_discordance": 0.9325619932096577,
+      "probability_reject_with_candidate_ahead": 0.9325619931762673,
+      "meets_rejection_target_numerically": true
+     },
+     {
+      "paired_cases": 400,
+      "expected_discordant_pairs": 120.0,
+      "probability_reject_equal_discordance": 0.9993487894109117,
+      "probability_reject_with_candidate_ahead": 0.9993487894109115,
+      "meets_rejection_target_numerically": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "raw Unicode",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/unicode-lantern/unicode_lantern.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "truncated": false,
+    "finding_count": 7,
+    "assessment": "review-required",
+    "sha256": "7f17bd4cb302aff6547f61f8bb97d85403b5290806ac642e472ca0e146553ddc"
+   }
+  },
+  {
+   "name": "decoded JSON",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/json-lantern/json_lantern.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "truncated": false,
+    "finding_count": 6,
+    "assessment": "review-required",
+    "sha256": "066cc7a87f503dd2da5679a1168e6b9a77fd682e0f3408799e58083ddeabf42c"
+   }
+  },
+  {
+   "name": "actual record JSON",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/json-lantern/json_lantern.py",
+    "--file",
+    "dist/line-2/22.json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "truncated": false,
+    "finding_count": 0,
+    "assessment": "no-covered-patterns-found",
+    "sha256": "395bd8167eeb9441c1c082cdb26bf4953f7aafb2e7e60bd28616c05c98a50290"
+   }
+  },
+  {
+   "name": "timeline demo",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/time-flint/time_flint.py",
+    "--demo",
+    "--json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "events": 4,
+    "omitted": 0,
+    "overlap_groups": [
+     1,
+     1,
+     1,
+     1
+    ]
+   }
+  },
+  {
+   "name": "timeline supplied fixtures",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/time-flint/time_flint.py",
+    "--json",
+    "--clock-uncertainty-ms",
+    "750",
+    "line-3/tools/time-flint/examples/client.txt",
+    "line-3/tools/time-flint/examples/server.jsonl"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "events": 2,
+    "omitted": 0,
+    "overlap_groups": [
+     1,
+     1
+    ]
+   }
+  },
+  {
+   "name": "timeline replay",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/timeline-replay/timeline_replay.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "replay": {
+     "clock_uncertainty_ms": 750,
+     "events": 2,
+     "omitted": 1,
+     "sources": 2,
+     "verified": true
+    },
+    "tampered_report_rejected": true
+   }
+  },
+  {
+   "name": "exact distance",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/unit-flint/unit_flint.py",
+    "1.5 km + 350 m",
+    "--to",
+    "m",
+    "--json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "value": "1850",
+    "unit": "m"
+   }
+  },
+  {
+   "name": "exact matching claim",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/unit-flint/unit_flint.py",
+    "10 km / 2 h",
+    "--expect",
+    "5 km/h",
+    "--to",
+    "m/s",
+    "--json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "value": "25/18",
+    "unit": "m/s",
+    "check": {
+     "expression": "5 km/h",
+     "expected_base_value": "25/18",
+     "difference_base_value": "0",
+     "base_unit": "m*s^-1",
+     "matches": true
+    }
+   }
+  },
+  {
+   "name": "exact mismatching claim",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/unit-flint/unit_flint.py",
+    "10 km / 2 h",
+    "--expect",
+    "6 km/h",
+    "--to",
+    "m/s",
+    "--json"
+   ],
+   "expected_exit": 1,
+   "exit_code": 1,
+   "passed": true,
+   "observed": {
+    "value": "25/18",
+    "unit": "m/s",
+    "check": {
+     "expression": "6 km/h",
+     "expected_base_value": "5/3",
+     "difference_base_value": "-5/18",
+     "base_unit": "m*s^-1",
+     "matches": false
+    }
+   }
+  },
+  {
+   "name": "invalid dimension claim",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/unit-flint/unit_flint.py",
+    "0 m",
+    "--expect",
+    "0 s",
+    "--json"
+   ],
+   "expected_exit": 2,
+   "exit_code": 2,
+   "passed": true,
+   "diagnostic": "unit-flint: expected dimension s does not match result m\n  0 s\n  ^\n"
+  },
+  {
+   "name": "frozen benchmark",
+   "command": [
+    "python3",
+    "-B",
+    "line-1/tools/frozen-benchmark/frozen_benchmark.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "check": {
+     "schema": "frozen-benchmark-check-v1",
+     "status": "complete_observations",
+     "plan_sha256": "13d5c3882c0082a7c603ad464645f312f6ebe6bee4622cc9f4c35710e8086f8e",
+     "manifest_bytes_sha256": "ebecf5db72911452a8cbb59c5a38497db7e270ad661e47a4f939e5cd6c1f497b",
+     "observation_bytes_sha256": "ba14a98d2ee63fe84b8f2d970559af3b0e9e11126a9f0cce72e34c56d906bd9b",
+     "normalized_csv_sha256": "3ee1c2e479379e624def23b5e5f8f960ecac7b8bd4c9c38f24154c35ce9fa691",
+     "case_count": 3,
+     "candidates": [
+      "synthetic-fast-v1",
+      "synthetic-careful-v1"
+     ],
+     "baseline": "synthetic-parser-v1",
+     "pass_rule": "Synthetic fixture only: output equals the case expected value exactly.",
+     "alpha": "0.05",
+     "limits": [
+      "Consistency with a pinned plan does not prove preregistration or honest execution.",
+      "Case IDs do not bind case payloads; keep the actual inputs and immutable system versions.",
+      "Independence, pass-rule application and absence of repeated looks are not verified."
+     ]
+    },
+    "rejected": {
+     "missing_case": "missing planned cases: 1",
+     "unplanned_case": "unplanned observed case ID: extra",
+     "family_drift": "CSV header differs from complete planned candidate family and order"
+    },
+    "normalized_csv": "case,baseline,synthetic-fast-v1,synthetic-careful-v1\nempty,1,1,1\nunicode,0,1,1\ntruncated,0,0,1\n"
+   }
+  },
+  {
+   "name": "JSON citations",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/json-citations/json_citations.py",
+    "--demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "truncated": false,
+    "finding_count": 5,
+    "assessment": "review-required",
+    "sha256": "6041529b8515405f820466096a25d48876a0c98f3d6576de4a74189b9f53f2d2"
+   }
+  },
+  {
+   "name": "actual record citations",
+   "command": [
+    "python3",
+    "-B",
+    "line-2/tools/json-citations/json_citations.py",
+    "--file",
+    "dist/line-2/23.json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "truncated": false,
+    "finding_count": 0,
+    "assessment": "no-covered-patterns-found",
+    "sha256": "f13b8825b51e461677535b7704fa8d36f249afdba87c82e8368cf49bf3433ebb"
+   }
+  },
+  {
+   "name": "event order witness",
+   "command": [
+    "python3",
+    "-B",
+    "line-3/tools/order-witness/order_witness.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "same_group_certain_order": {
+     "clock_model": {
+      "uncertainty_ms": 0
+     },
+     "format": "order-witness/1",
+     "interpretation": "Temporal order under asserted clock bounds; no causal claim.",
+     "left": {
+      "end_utc_exclusive": "2026-10-18T10:00:01Z",
+      "line": 1,
+      "line_sha256": "b9e5f05c23074c0b38a1b151747c9bb662ef4f34bd6a1ced4f2fcd204502c10e",
+      "overlap_group": 1,
+      "source": "a.log",
+      "start_utc": "2026-10-18T10:00:00Z"
+     },
+     "relation": "left-before-right",
+     "replay": {
+      "clock_uncertainty_ms": 0,
+      "events": 3,
+      "omitted": 0,
+      "sources": 3,
+      "verified": true
+     },
+     "right": {
+      "end_utc_exclusive": "2026-10-18T10:00:03Z",
+      "line": 1,
+      "line_sha256": "8ea3cacc2e9e7620217a3ead6515a373cdf761628e328b034d004f1710e0d349",
+      "overlap_group": 1,
+      "source": "c.log",
+      "start_utc": "2026-10-18T10:00:02Z"
+     }
+    },
+    "overlap": {
+     "clock_model": {
+      "uncertainty_ms": 0
+     },
+     "format": "order-witness/1",
+     "interpretation": "Temporal order under asserted clock bounds; no causal claim.",
+     "left": {
+      "end_utc_exclusive": "2026-10-18T10:00:01Z",
+      "line": 1,
+      "line_sha256": "b9e5f05c23074c0b38a1b151747c9bb662ef4f34bd6a1ced4f2fcd204502c10e",
+      "overlap_group": 1,
+      "source": "a.log",
+      "start_utc": "2026-10-18T10:00:00Z"
+     },
+     "relation": "unresolved-overlap",
+     "replay": {
+      "clock_uncertainty_ms": 0,
+      "events": 3,
+      "omitted": 0,
+      "sources": 3,
+      "verified": true
+     },
+     "right": {
+      "end_utc_exclusive": "2026-10-18T10:01:00Z",
+      "line": 1,
+      "line_sha256": "c85e4529c382982322e795ea30b2ddb6a9d34dd525e1a0b69b889d9848a36db1",
+      "overlap_group": 1,
+      "source": "bridge.log",
+      "start_utc": "2026-10-18T10:00:00Z"
+     }
+    },
+    "widened": {
+     "clock_model": {
+      "assumption": "Each source clock differs from UTC by at most this bound at every event.",
+      "kind": "asserted_symmetric_bound",
+      "precision_assumption": "Timestamps are truncated to their displayed precision.",
+      "uncertainty_ms": 750
+     },
+     "format": "order-witness/1",
+     "interpretation": "Temporal order under asserted clock bounds; no causal claim.",
+     "left": {
+      "end_utc_exclusive": "2026-10-18T10:00:01.750000Z",
+      "line": 1,
+      "line_sha256": "b9e5f05c23074c0b38a1b151747c9bb662ef4f34bd6a1ced4f2fcd204502c10e",
+      "overlap_group": 1,
+      "source": "a.log",
+      "start_utc": "2026-10-18T09:59:59.250000Z"
+     },
+     "relation": "unresolved-overlap",
+     "replay": {
+      "clock_uncertainty_ms": 750,
+      "events": 2,
+      "omitted": 0,
+      "sources": 2,
+      "verified": true
+     },
+     "right": {
+      "end_utc_exclusive": "2026-10-18T10:00:03.750000Z",
+      "line": 1,
+      "line_sha256": "8ea3cacc2e9e7620217a3ead6515a373cdf761628e328b034d004f1710e0d349",
+      "overlap_group": 1,
+      "source": "c.log",
+      "start_utc": "2026-10-18T10:00:01.250000Z"
+     }
+    }
+   }
+  },
+  {
+   "name": "inclusive duration bounds",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/unit-flint/unit_flint.py",
+    "5 MiB / (2 MiB/s)",
+    "--at-least",
+    "2000 ms",
+    "--at-most",
+    "3 s",
+    "--to",
+    "s",
+    "--json"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "value": "2.5",
+    "unit": "s",
+    "bounds": {
+     "base_unit": "s",
+     "inclusive": true,
+     "at_least": {
+      "expression": "2000 ms",
+      "base_value": "2",
+      "passes": true
+     },
+     "at_most": {
+      "expression": "3 s",
+      "base_value": "3",
+      "passes": true
+     },
+     "passes": true
+    }
+   }
+  },
+  {
+   "name": "duration bound failed",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/unit-flint/unit_flint.py",
+    "5 MiB / (2 MiB/s)",
+    "--at-most",
+    "2400 ms",
+    "--json"
+   ],
+   "expected_exit": 1,
+   "exit_code": 1,
+   "passed": true,
+   "observed": {
+    "value": "2.5",
+    "unit": "s",
+    "bounds": {
+     "base_unit": "s",
+     "inclusive": true,
+     "at_most": {
+      "expression": "2400 ms",
+      "base_value": "2.4",
+      "passes": false
+     },
+     "passes": false
+    }
+   }
+  },
+  {
+   "name": "reversed duration bounds",
+   "command": [
+    "python3",
+    "-B",
+    "line-4/tools/unit-flint/unit_flint.py",
+    "2.5 s",
+    "--at-least",
+    "3 s",
+    "--at-most",
+    "2 s",
+    "--json"
+   ],
+   "expected_exit": 2,
+   "exit_code": 2,
+   "passed": true,
+   "diagnostic": "unit-flint: lower bound exceeds upper bound\n  2 s\n  ^\n"
+  },
+  {
+   "name": "shared reviewed timeline",
+   "command": [
+    "python3",
+    "-B",
+    "shared/reviewed-timeline/reviewed_timeline.py",
+    "--demo",
+    "--clock-bound",
+    "0.75 s"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "assessment": "review-required"
+   }
+  },
+  {
+   "name": "shared replay review",
+   "command": [
+    "python3",
+    "-B",
+    "shared/replay-review/replay_review.py",
+    "demo"
+   ],
+   "expected_exit": 0,
+   "exit_code": 0,
+   "passed": true,
+   "observed": {
+    "finding_count": 7,
+    "assessment": "review-required",
+    "replay": {
+     "clock_uncertainty_ms": 750,
+     "events": 2,
+     "omitted": 1,
+     "sources": 2,
+     "verified": true
+    },
+    "tampered_timeline_rejected": true,
+    "review_errors": 0,
+    "json_lines_checked": 2,
+    "digest_pin_checked": true
+   }
+  }
+ ],
+ "note": "Demos and fixtures are synthetic; the actual record scan checks real workspace bytes. No live system performance or incident is claimed."
 }

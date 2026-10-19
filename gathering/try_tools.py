@@ -8,6 +8,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 CASES = [
+ ("outward confidence bounds reading view", ["shared/bounds-display/bounds_display.py", "demo"], 0),
+ ("simultaneous binary effect bounds", ["line-1/tools/paired-bounds/paired_bounds.py", "--demo"], 0),
+ ("retained policy binary effect bounds", ["line-1/tools/paired-bounds/paired_bounds.py", "--input", "line-1/tools/paired-bounds/retained-policy-results.csv", "--expected-input-sha256", "c8e80ed4104f4f85c50a2df9d02c2dbb6ca47fc748ad545815adfe6475226d02"], 0),
+ ("temperature point and delta arithmetic", ["line-4/tools/temperature-flint/temperature_flint.py", "demo"], 0),
  ("benchmark label normalization handoff", ["shared/metric-label-review/metric_label_review.py", "demo"], 0),
  ("whole-string normalization demo", ["line-2/tools/unicode-normalization/unicode_normalization.py", "--demo"], 0),
  ("percent-escaped Unicode", ["line-2/tools/percent-unicode/percent_unicode.py", "--demo"], 0),
@@ -142,7 +146,7 @@ def main():
         results.append(row)
     result = {'checks_passed': all(r['passed'] for r in results),
               'examples': results, 'note': 'Demos and fixtures are synthetic; the actual record scan checks real workspace bytes. No live system performance or incident is claimed.'}
-    print(json.dumps(result, indent=2))
+    print(json.dumps(result, indent=1))
     return 0 if result['checks_passed'] else 1
 
 

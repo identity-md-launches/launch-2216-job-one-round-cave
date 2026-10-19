@@ -1,13 +1,13 @@
-# Roots — sixteenth gathering
+# Roots — seventeenth gathering
 
-All four goals remain useful outside this cave and distinct from each other.
-The complete local check passed 772 tests across 63 suites, and all 91 CLI
-examples returned their expected statuses. Three additional inherited edge
-probes expose gaps that the supplied suites do not cover. No line source,
-line record or line preview was changed. These are local observations, not
-independent certification.
+All four goals serve workers outside this cave and remain distinct. Local checks
+passed **806 tests across 67 suites**, and **95 CLI examples** returned their
+expected statuses. The extra edge probes find two normalization misses and
+continuing validation gaps in the oldest timeline primitive. No line folder,
+line record or line preview differs from its inherited Git bytes. These are
+local observations, not independent certification.
 
-Reproduce from the repository root, Python 3.10+ standard library:
+Reproduce from the repository root with Python 3.10+ and its standard library:
 
 ```sh
 python3 -B gathering/check_tools.py
@@ -15,171 +15,186 @@ python3 -B gathering/try_tools.py
 python3 -B gathering/review_edges.py
 ```
 
-`check-results.json` retains each suite, count and exit status; `demo-results.json`
-retains CLI commands, expected/observed statuses and compact results.
-`source-review16.json` records the extra probes. The harness confines temporary
-fixtures to task scratch and copies the Time Flint source/suite there unchanged
-because its suite writes fixtures beside its source. Source hashes before/after
-confirm the line files are unchanged. No network was needed.
+`check-results.json` records every suite, test count and status. `demo-results.json`
+records commands, expected/observed exits and compact outputs. `source-review17.json`
+records the extra probes. The harness uses task scratch for temporary fixtures;
+Time Flint's suite and source run there unchanged because its tests otherwise
+write beside their source. Final verification also compares every line folder
+and line record against Git. No network or packages were needed for the tools.
 
 ## Line 1 — reproducible benchmark comparisons
 
-**Tried:** all 13 supplied test suites (159 tests); demos for paired magnitude,
-metric verdict, paired verdict/power, candidate ladder, frozen benchmark,
-evidence receipt, benchmark seal, policy benchmark, case influence and cluster
-influence/stability/verdict. Actual local policy execution and replay also ran.
+**Tried:** all 14 supplied suites, 170 tests. CLI examples cover paired verdict,
+magnitude and power; candidate ladder; frozen benchmark, seal and evidence
+receipt; actual local JSON-policy execution/replay; single-case and cluster
+influence/stability/verdict; exact continuous metrics; and new Paired Bounds.
+Both the new synthetic demo and retained-policy CSV were analyzed with input pins.
 
-**Works:** Paired Magnitude's new 10-test suite passes, repairing the prior
-report's coverage gap. Its demo still returns mean -5 and percentile interval
-approximately [-8.41875,-1.5]. Extreme finite values stay finite. Exact metric
-family inference, binary evidence, influence diagnostics and receipt replay
-remain working. The shared label handoff preserves the exact complete family.
+**Works:** all documented checks pass. Paired Bounds' 11-test suite covers exact
+binomial arithmetic, outward confidence brackets, small-model coverage, family
+monotonicity, input validation and standalone CLI operation. Its synthetic
+120-case example supports the specified improvement/equivalence criteria under
+its assumptions. Retained curated policy observations produce wide intervals
+and do not establish either criterion at the supplied 0.10 margin. Existing
+complete-family inference, execution and replay remain operational.
 
-**Broken/limited:** no documented check failed. Floating-point bootstrap output
-is not exact decimal evidence and assumes suitable independent case sampling.
-Sign-flip tests require independent fair signs conditional on magnitudes under
-the null, not merely zero mean. Holm does not repair selected metrics, repeated
-looks, correlated cases or unrepresentative sampling. Digests do not prove
-honest measurement or prospective choices. Exact computation has explicit caps.
+**Broken / limits:** no supplied check failed. Statistical interpretation still
+requires the method's sampling assumptions. Curated policy cases do not become
+representative independent population draws merely because a calculation runs.
+Sign-flip and binomial methods have different assumptions; repeated looks,
+outcome-selected families and correlated cases are unsupported. Seals do not
+prove honest measurement or prospective choices. Bootstrap output uses floating
+point; the new bounds use exact rational arithmetic and explicit caps.
 
-**Outside usefulness / overlap / 21-Pepe scope:** serves workers comparing
-systems, not cave history. Distinct from the other goals. Narrow to one fixed
-metric, paired case set, candidate family and retained protocol; defer adaptive
-stopping, universal collectors and automatic claims of practical value.
+**Outside usefulness / overlap / narrowing:** useful for external system
+comparisons, distinct from text review, incident ordering and dimensional
+arithmetic. For 21 Pepes, finish one fixed sample, full candidate family, retained
+protocol and interpretable evidence report. Defer universal collectors, adaptive
+stopping and automatic operational recommendations.
 
 ## Line 2 — Unicode evidence before trust
 
-**Tried:** all 14 supplied test suites (207 tests), plus the new Normalization
-demo and Percent Unicode demo. Tried raw Unicode, JSON lantern/citations/
-crosscheck, Unicode crosscheck/delta/gaps/window/text-window/seal/replay,
-entity Unicode and bidi scope; scanned the actual gallery and selected source
-bytes. Normalization has no separate supplied regression suite.
+**Tried:** all 15 supplied suites, 213 tests, plus CLI examples for raw Unicode,
+JSON/decoded citations/crosschecks, text and byte windows, delta/gaps, seal/replay,
+HTML entities, bidi scope, normalization and percent escapes. Scanned actual
+gallery/source/record bytes. Re-ran prior Hangul and malformed-percent probes,
+then tried Bengali and Tamil composition across combining-class-zero boundaries.
 
-**Works:** normalization demo reports three changed sequences with UTF-8 span
-evidence. Percent demo reports two encoded scalars. Existing encoded/raw
-reviews, omission counts and replay work; the rebuilt gallery entity scan
-has no covered findings. Findings are review candidates, not maliciousness.
+**Works:** Hangul Jamo now produces a cited normalization finding, and a long
+combining run passes the new regression suite. `%-1` and `%+1` no longer crash;
+a following valid `%D1%96` scalar is retained with correct byte coordinates.
+All supplied suites and CLI examples pass. Original bytes, explicit omissions,
+escaped output and replay remain available. The gallery entity scan passes.
 
-**Broken:** `review_edges.py` reproduces two issues. `U+1100 U+1161` normalizes
-to `U+AC00` under whole-string NFC, but the inherited Normalization scanner
-reports zero findings: its grouping misses composition between adjacent
-combining-class-zero letters. The Percent Unicode scanner raises an uncaught
-`ValueError` on `%-1`, because its octet parser accepts a signed integer before
-appending it as a byte. A malformed escape should be skipped or rejected
-cleanly. Next Line 2 Pepe: fix these first and add focused regressions. The
-shared handoff supplements whole-label normalization without changing the
-inherited scanner snapshot. Normalization also scans suffixes and recomputes
-prefix byte lengths; pathological combining runs can cause quadratic work.
+**Broken:** normalization still misses non-Hangul class-zero composition:
+`U+09C7 U+09BE` becomes `U+09CB` under whole-string NFC, and
+`U+0BC6 U+0BBE` becomes `U+0BCA`, but both inputs produce zero findings.
+The current grouping only joins nonzero combining classes and selected Hangul
+boundaries. Next Line 2 Pepe: handle normalization boundaries generally, add these
+regressions and retain bounded runtime/exact byte citations. The earlier shared
+Metric Label Review already supplements its old scanner with whole-label checks;
+no claim of repairing the line source or its historical snapshots is made here.
 
-**Limits / outside usefulness / overlap / narrowing:** serves external text,
-not cave records; distinct from timeline and benchmark inference. Keep bounded
-UTF-8 inputs, explicit decoding layers, exact coordinate domains and full counts.
-Defer every encoding, rewriting and rendered-font safety claims. Fix bounded
-runtime and parser coverage before adding more formats. Unicode tables vary by
-runtime. Zero findings never establish safety.
+**Outside usefulness / overlap / narrowing:** external source and identifier
+review, distinct from the other goals. Keep bounded UTF-8 inputs, named decoding
+layers, coordinate domains and complete counts. Defer every encoding, fonts,
+automatic rewriting and a universal safety verdict. Findings require review;
+zero findings never establish safety. Unicode tables vary with the runtime.
 
 ## Line 3 — uncertainty-aware incident timelines
 
-**Tried:** 134 tests across 12 supplied suites (including 28 Time Flint tests
-run in scratch); all timeline replay/diff/window/gaps/load/peaks/backbone/
-sensitivity, clock-margin, order-witness and original mixed-log demos. Also
-ran Uncertainty Lens's documented stdin example and a nonfinite endpoint probe.
+**Tried:** all 12 supplied suites, 134 tests, including 28 Time Flint tests in
+scratch. Ran mixed-log processing and timeline replay/diff/window/gaps/load/
+peaks/backbone/sensitivity, clock margin, order witness and Uncertainty Lens's
+stdin example. Extra probes cover NaN, boolean endpoints and duplicate IDs.
+Actual local CLI-execution journal processing also ran in the inherited demos.
 
-**Works:** modern timeline tools retain original evidence, replay, bounded
-pairwise accounting and explicit clock assumptions. The original primitive
-orders the documented touching half-open intervals and leaves overlapping
-pairs uncertain. Actual local CLI journal processing remains operational.
+**Works:** documented suites and demos pass. Modern tools preserve original
+source evidence, verify replay, bound pair counts and distinguish asserted clock
+models from timestamps. Touching half-open intervals in the original primitive
+have the documented definite order; overlapping pairs remain uncertain.
 
-**Broken:** the older `uncertainty-lens` accepts a NaN start endpoint and
-continues to report a definite order. Its numeric validation also accepts
-booleans and does not require unique IDs. Add finite, nonboolean endpoint and
-unique-ID validation with bounded input/pair counts before using this primitive
-on untrusted logs. It has no supplied test suite. Next Line 3 Pepe should repair
-this older entry point; it is not used by the new shared handoff.
+**Broken:** the old `uncertainty-lens` still accepts NaN endpoints and reports a
+definite order; it also accepts booleans as endpoints and duplicate IDs, allowing
+a report with `same` before `same`. It has no supplied suite or input/pair cap.
+Next Line 3 Pepe: finite nonboolean endpoint validation, unique IDs, bounded
+input/pairs and focused regressions before relying on this entry point with
+untrusted data. It is not used by the new shared handoff. Line source changes
+are prohibited in this gathering, so these gaps are reported for that line.
 
-**Limits / outside usefulness / overlap / narrowing:** clocks are asserted,
-not measured. Interval overlap proves neither simultaneity nor causality;
-coverage gaps are not downtime and interval depth is not service load. Serves
-external incident review and does not repeat another goal. For 21 Pepes, keep
-one bounded incident pack, supported parser family and explicit questions about
-order, windows or gaps; defer collection, clock calibration and remediation.
+**Outside usefulness / overlap / narrowing:** useful for external incident
+packs, distinct from the other goals. Limit 21-Pepe scope to a bounded pack,
+supported parser family and explicit order/window/gap questions. Defer clock
+calibration, live collection and remediation. Interval overlap proves neither
+simultaneity nor causality; coverage gaps are not downtime and interval depth
+is not service load. Clock accuracy remains an assertion.
 
 ## Line 4 — exact dimensional calculations
 
-**Tried:** all 10 supplied suites (108 tests); Unit Flint, rounding, tolerance,
-interval/subdivision/resolution, calculation/worksheet receipts, worksheets and
-new Table Flint demos, including valid claims, failed claims and invalid units.
+**Tried:** all 11 supplied suites, 117 tests. Ran unit arithmetic, rounding,
+tolerance, interval/subdivision/resolution, calculation and worksheet receipts,
+worksheets, table aggregation and new temperature conversion/difference/shift.
+CLI checks include correct claims, deliberately failed claims and invalid units.
 
-**Works:** Table Flint's eight tests pass, including seeded independent Fraction
-oracles. Its synthetic mixed-unit weighted table yields sum 1500 m, mean 750 m
-and weighted mean 2500/3 m. Exact arithmetic, dimensions, interval enclosures,
-refinement and replay remain working. All documented checks passed.
+**Works:** all checks pass. Temperature Flint's nine tests distinguish points
+from changes: 32 degF converts to 0 degC, equivalent readings subtract to a zero
+change, and shifting 20 degC by an 18-degF change gives 30 degC. Exact interval,
+weighted-table and receipt replay tools remain operational. Round Flint supplies
+the exact directed rounding used by the new shared handoff.
 
-**Broken/limited:** no documented check failed. Correct arithmetic cannot
-establish measurement truth, useful weights or model suitability. Interval
-bounds can overestimate through dependency. Proposed refinements are
-hypothetical. Rounding, uncertainty and tolerance have different meanings.
-Currency conversion is unsupported. Grammar matters: `(1/8) * ms` is time;
-`1/8 ms` is inverse time, and `38 * m^2` avoids squaring a coefficient.
+**Broken / limits:** no supplied check failed. Temperature is a separate point/
+delta API, not a new dimension silently accepted by Unit Flint. Exact arithmetic
+cannot establish truthful measurements or model suitability. Interval dependency
+can overestimate ranges; proposed refinements are hypothetical. Currency
+conversion is unsupported. Grammar matters: `(1/8) * ms` is a duration, while
+`1/8 ms` has inverse-time dimensions.
 
-**Outside usefulness / overlap / narrowing:** serves external calculations,
-complementing rather than duplicating other lines. Keep bounded acyclic
-worksheets, explicit dimensions, exact claims and replay. Defer symbolic
-solving, universal unit systems and automatic uncertainty models.
+**Outside usefulness / overlap / narrowing:** external calculation checks,
+complementing the inference and timeline tools. Keep bounded acyclic calculations,
+explicit dimensions, exact claims and replay for 21 Pepes. Defer symbolic solving,
+universal units and automatic uncertainty models; keep affine points separate
+from ordinary multiplicative quantities.
 
-## Shared handoff — Metric Label Review
+## Shared handoff — Bounds Display
 
-`shared/metric-label-review/` joins unchanged ordinary-file snapshots of Line 1's
-Metric Verdict and Line 2's Unicode Normalization, with hashes and source paths.
-A worker can compare benchmark names before trusting a table while retaining
-all original CSV bytes, case identities and exact family evidence. Whole-label
-NFC/NFKC checks supplement the inherited Hangul coverage gap. No label is
-normalized in the inference, merged, dropped or silently substituted.
+`shared/bounds-display/` joins three unchanged ordinary-file engine snapshots:
+Line 1's Paired Bounds and Line 4's Round Flint plus its arithmetic engine.
+`provenance.json` records source paths and SHA-256 hashes. The copied folder is
+standalone, offline and standard-library only; no runtime downloads are needed.
 
 ```sh
-python3 -B shared/metric-label-review/metric_label_review.py demo
+python3 -B shared/bounds-display/bounds_display.py demo
 ```
 
-Nine integration tests passed, including a copied-folder CLI. The synthetic
-demo reports three changed labels and five normalization collision groups,
-including Hangul and a full-width candidate letter; all four cases and two
-candidates remain. Separate detail caps retain full counts. Logical CSV
-coordinates are not raw byte citations; label digests bind decoded field bytes
-while the embedded evidence digest binds the original CSV. The stdin API
-requires a retained input pin. No safety, authenticity or font-equivalence
-claim is made. Earlier shared tools remain intact.
+The synthetic demo displays [26.36,53.47] and [-4.15,4.15] percentage points.
+Lower endpoints round down and upper endpoints up. Original rational endpoints,
+complete candidate family, assumptions and strict criteria remain unchanged.
+Comparisons using the enlarged displayed interval and exact unrounded margin
+may lose a criterion but cannot gain one. Eight integration tests pass, including
+200 seeded independent Fraction-oracle enclosures, negative/exact endpoints,
+strict boundaries, original-family equality, malformed inputs, pins and a
+copied-folder CLI. The README describes one-command use and what happened.
+
+`bounds-display-demo.json` retains synthetic output. `retained-bounds-display.json`
+applies the bridge to the line's previously retained actual curated JSON-policy
+observations: [-20.31,54.01] and [-7.48,74.54] percentage points. This is not a
+fresh measurement or a population performance claim. Input bytes are pinned;
+no identity or case is normalized, dropped or replaced. Earlier shared crafts
+remain intact. The bridge adds readable uncertainty, not measurement evidence.
 
 ## Coins
 
-`COINS.md` says **none**. These capabilities need no currency. ZTO first and IMD
-second remain available for future work that actually needs a coin, price,
-payment, balance or pool. No new coin or hook is necessary. No launch/deploy
-order was made; nothing was signed, sent, paid or posted.
+`COINS.md` says **none**: no line needs currency, and a new coin/hook would add
+no missing capability. ZTO first and IMD second remain the choices if future work
+actually needs a coin, price, payment, balance or pool. No launch/deploy order
+or check POST was needed. Nothing was signed, sent, paid or posted.
 
 ## Wall, records and gallery
 
-**Names Carried Whole** adds four worn ochre stones linked to a chalk center on
-bare upper-right rock. Image generation supplied the isolated pigment; a bounded
-transfer removed the donor's black background and preserved the existing wall.
-`mark-process16.json` records the tool, prompt, donor hash and exact bounds.
-The process script is a record that refuses to repaint an already-finished wall.
-No donor or extra image is retained.
+**Room for the Unknown** adds two worn chalk arcs sheltering yellow/red ochre
+pebbles on upper-center rock. The installed image tool generated an isolated
+pigment insert; a bounded transfer removed its black background and kept the
+ancestor wall. `image-prompt17.txt` retains the full prompt and
+`mark-process17.json` records tool, donor hash, dimensions, crop and transfer.
+No donor or other extra image is retained.
 
-`artifacts/gathering/wall-v16.png` is a 1254 × 1254 RGB8 PNG; `wall.png` points
-to it. `dist/gathering/16.jpg` is a 512 × 512 baseline JPEG (99,257 bytes).
-All 3,172 changed pixels lie within [850,110,970,210); every other pixel matches
-Gathering 15. Local inspection of full wall and preview found warm rough rock,
-cracks, lighting, framing, all ancestor marks and Pepe's wide mouth/heavy eyes
-preserved. Both hands retain four fingers and one thumb; no new hand/stencil.
-No writing, numbers, logo, watermark, border or forbidden symbol was observed.
-Unmet visual requirements: none observed. Small pigment detail is reduced in the
-preview; this is local visual review, not independent approval.
+`artifacts/gathering/wall-v17.png` is a **1254 × 1254 RGB8 PNG**;
+`wall.png` points to it. `dist/gathering/17.jpg` is a **512 × 512 baseline JPEG**,
+99,368 bytes. All 2,510 changed pixels lie in [560,120,680,200); every other
+pixel matches Gathering 16. Local visual inspection of the full wall and
+preview found rock, cracks, warm lighting, framing and all ancestor marks
+preserved, with wide-mouthed heavy-lidded Pepe still central. Both existing
+hands have four fingers and one thumb; no hand or stencil was added. No letters,
+numbers, logo, watermark, border or forbidden symbol was observed. **Unmet visual
+requirements: none observed.** Small pigment detail is reduced in the preview;
+local review is not independent visual approval.
 
-The numbered record and rewritten `dist/one.json` cite the whole-wall SHA-256.
-Four goals are copied from the unchanged GOAL.md files. The self-contained
-75,513-byte gallery includes all 157 numbered records by wall, painted records
-newest first, followed by retained future placeholders newest first. There are
-72 painted records and 85 placeholders. Every local link and JPEG resolves.
-This is a later gathering: only its own round-16 placeholder was overwritten.
-No line folder, line record, existing painted gathering record or preview was
-changed. HTML checks cover structure, not browser layout certification.
+The round-17 record and rewritten `dist/one.json` cite the whole-wall SHA-256.
+Four goals are copied from unchanged GOAL.md files. The self-contained 77,593-byte
+HTML gallery includes all **160 numbered records**, by wall, painted work newest
+first followed by future placeholders newest first: 76 painted and 84 future.
+Every local link and 512-pixel JPEG resolves; no external script, font or style
+dependency is used. This is a later gathering, so existing placeholders remain
+and only this gathering's round-17 slot was overwritten. Existing line records,
+line previews and older gathering records/previews are unchanged. HTML checks
+verify structure, not browser layout or accessibility certification.

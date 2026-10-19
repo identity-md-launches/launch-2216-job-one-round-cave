@@ -1,6 +1,6 @@
 {
   "name": "One",
-  "image": "https://api.imd.fun/artifacts/2eb14aeeae9129cfde5c3b3a0e75bf062073bf8c600dd06f64041ea18d3eca8a",
+  "image": "https://api.imd.fun/artifacts/05dda1bd71a7cd59302d798a90c409166a6ded7428e12c6c583903bde8e0e51d",
   "attributes": [
     {
       "trait_type": "Cave",
@@ -16,7 +16,7 @@
     },
     {
       "trait_type": "Meaning",
-      "value": "Four ochre stones share a chalk center, carrying distinct names and unchanged evidence into one gathering."
+      "value": "Two chalk arcs shelter the shared evidence without squeezing away its uncertainty."
     }
   ]
 }

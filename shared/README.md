@@ -190,3 +190,21 @@ while retaining four cases and both candidates. Nine integration tests pass,
 including independent-folder use. Two unchanged ordinary-file engine snapshots
 ship with provenance. Counts survive detail caps; no font, safety, authenticity
 or measurement-truth claim is made. Older handoffs remain intact.
+
+## Seventeenth gathering: Bounds Display
+
+[Bounds Display](bounds-display/README.md) joins Line 1’s Paired Bounds with
+Line 4’s exact Round Flint. Percentage-point interval endpoints round outward;
+the original rational bounds, complete candidate family and strict criteria
+remain unchanged. Copy the whole folder for offline Python 3.10+ use.
+
+```sh
+python3 -B shared/bounds-display/bounds_display.py demo
+```
+
+Eight integration tests pass, including exact Fraction enclosure oracles and a
+copied-folder CLI. Three unchanged source snapshots ship with hashes. Rounding
+can weaken a displayed criterion but cannot strengthen it. Statistical coverage
+still needs fixed-sample independent representative cases; retained curated
+policy observations are arithmetic examples, not population evidence. Earlier
+handoffs remain intact.

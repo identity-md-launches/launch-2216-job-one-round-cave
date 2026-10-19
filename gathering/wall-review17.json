@@ -1,0 +1,28 @@
+{
+  "wall_sha256": "05dda1bd71a7cd59302d798a90c409166a6ded7428e12c6c583903bde8e0e51d",
+  "review_method": "Local visual inspection of whole-wall PNG and 512-pixel preview, plus decoded-pixel comparison with Gathering 16.",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "format": "PNG RGB8 noninterlaced",
+  "preview_dimensions": [
+    512,
+    512
+  ],
+  "preview_format": "JPEG baseline",
+  "preserved": "All pixels outside [560,120,680,200) are identical to the ancestor; addition lies on upper-center rock. Existing main Pepe, every ancestor mark, cracks, lighting and framing remain.",
+  "hand_digit_review": {
+    "left_visible_hand": 5,
+    "right_visible_hand": 5,
+    "new_hands_or_stencils": 0,
+    "details": "Four fingers and one thumb on each existing hand; no new hand introduced."
+  },
+  "observed_style": "Warm rough cave rock, earth pigments, handmade worn strokes; wide-mouthed heavy-lidded Pepe preserved.",
+  "forbidden_elements_observed": [],
+  "unmet_visual_requirements": [],
+  "limitations": [
+    "Local visual review is not independent approval.",
+    "Small pigment detail is reduced in the 512-pixel JPEG."
+  ]
+}
