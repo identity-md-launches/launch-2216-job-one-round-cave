@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import bisect
 import hashlib
 import json
 import sys
@@ -19,10 +20,10 @@ def _octet_run(data: bytes, start: int) -> tuple[bytes, list[int], int]:
     pos = start
     while pos + 2 < len(data) and data[pos] == 0x25:
         pair = data[pos + 1:pos + 3]
-        try:
-            value = int(pair, 16)
-        except ValueError:
+        # int(b"-1", 16) accepts a sign. %HH admits only two hex digits.
+        if any(c not in b"0123456789abcdefABCDEF" for c in pair):
             break
+        value = int(pair, 16)
         decoded.append(value)
         positions.append(pos)
         pos += 3
@@ -32,6 +33,8 @@ def _octet_run(data: bytes, start: int) -> tuple[bytes, list[int], int]:
 def scan(data: bytes, max_findings: int = 100) -> dict:
     """Report valid percent-encoded non-ASCII UTF-8 scalars in original bytes."""
     findings = []
+    total = 0
+    newline_offsets = [pos for pos, byte in enumerate(data) if byte == 0x0A]
     i = 0
     while i < len(data):
         if data[i] != 0x25 or i + 2 >= len(data):
@@ -55,31 +58,34 @@ def scan(data: bytes, max_findings: int = 100) -> dict:
                 continue
             if len(char) == 1 and ord(char) > 0x7F:
                 lo, hi = positions[j], positions[j + width - 1] + 3
-                cp = ord(char)
-                findings.append({
-                    "codepoint": f"U+{cp:04X}",
-                    "name": unicodedata.name(char, "UNNAMED"),
-                    "category": unicodedata.category(char),
-                    "decoded": f"\\u{{{cp:X}}}",
-                    "source_byte_range": [lo, hi],
-                    "source_line": data.count(b"\n", 0, lo) + 1,
-                    "source_byte_column": lo - data.rfind(b"\n", 0, lo),
-                    "source_escape": data[lo:hi].decode("ascii"),
-                })
+                total += 1
+                if len(findings) < max_findings:
+                    cp = ord(char)
+                    line = bisect.bisect_left(newline_offsets, lo)
+                    previous_newline = newline_offsets[line - 1] if line else -1
+                    findings.append({
+                        "codepoint": f"U+{cp:04X}",
+                        "name": unicodedata.name(char, "UNNAMED"),
+                        "category": unicodedata.category(char),
+                        "decoded": f"\\u{{{cp:X}}}",
+                        "source_byte_range": [lo, hi],
+                        "source_line": line + 1,
+                        "source_byte_column": lo - previous_newline,
+                        "source_escape": data[lo:hi].decode("ascii"),
+                    })
             j += width
         i = max(end, i + 1)
-    total = len(findings)
     return {
         "schema_version": 1,
-        "tool": "percent-unicode/1",
+        "tool": "percent-unicode/2",
         "source_sha256": hashlib.sha256(data).hexdigest(),
         "source_bytes": len(data),
         "unicode_version": unicodedata.unidata_version,
         "analysis_complete": True,
         "findings": total,
-        "retained_details": min(total, max_findings),
-        "omitted_details": max(0, total - max_findings),
-        "details": findings[:max_findings],
+        "retained_details": len(findings),
+        "omitted_details": total - len(findings),
+        "details": findings,
         "coverage": "Valid UTF-8 non-ASCII scalar values formed by consecutive literal %HH octets.",
         "limitations": [
             "Review candidates only; percent escapes can be legitimate.",

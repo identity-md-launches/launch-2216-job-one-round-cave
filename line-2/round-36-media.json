@@ -1,0 +1,29 @@
+{
+  "wall": {
+    "path": "artifacts/line-2/wall-v17.png",
+    "format": "PNG RGB8",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 3978133,
+    "sha256": "d05994bd7a4fa6e4070931f15441e6d1c890c3feba3dbaf578054a0c5bc15ec6"
+  },
+  "preview": {
+    "path": "dist/line-2/36.jpg",
+    "format": "baseline JPEG",
+    "width": 512,
+    "height": 512,
+    "bytes": 90539,
+    "sha256": "0594f856f810d084f524081bdab943ecfe8d91b2ccb344cc0462e8fd2d355d74"
+  },
+  "ancestor": "artifacts/line-2/wall-v16.png",
+  "changed_pixels": 6215,
+  "changed_bounds_half_open": [
+    610,
+    925,
+    858,
+    969
+  ],
+  "outside_changed_bounds_identical": true,
+  "unmet_visual_requirements": [],
+  "review": "Full PNG and 512px JPEG inspected. Square framing, rough warm rock, roots, torchlight and inherited paintings remain. Pepe retains broad mouth and heavy-lidded eyes; both inherited hands show four fingers and one thumb. Only the new pigment was moved onto bare wall rock; it adds no hands, letters, numbers, captions, logos, watermarks, borders or forbidden symbols."
+}

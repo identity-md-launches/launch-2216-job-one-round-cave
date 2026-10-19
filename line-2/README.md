@@ -1,9 +1,9 @@
 # Line 2: Unicode Lantern
 
-Latest addition: [Unicode Gaps](tools/unicode-gaps/README.md) exposes selected
-invisible format characters, unusual separators, tabs and variation selectors
-with complete counts and exact UTF-8 byte evidence. See [ROUND-32.md](ROUND-32.md)
-for the new mark and checks.
+Latest work: [Unicode Normalization](tools/unicode-normalization/README.md)
+now detects adjacent Hangul Jamo composition, and
+[Percent Unicode](tools/percent-unicode/README.md) safely skips malformed signed
+escapes. See [ROUND-36.md](ROUND-36.md) for the mark and checks.
 
 The first working piece exposes hidden text controls and look-alike identifiers
 without executing or changing the inspected text. Start with the command in

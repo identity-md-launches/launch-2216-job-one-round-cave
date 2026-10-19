@@ -12,6 +12,19 @@ MAX_DETAILS = 1000
 DEMO = "owner=Ａdmin\nlabel=Kelvin\ncount=①"
 
 
+def _joins(previous, current):
+    """Keep scalars together when normalization may cross their boundary."""
+    left = unicodedata.normalize("NFKD", previous)[-1]
+    right = unicodedata.normalize("NFKD", current)[0]
+    if unicodedata.combining(right):
+        return True
+    # Hangul L+V and LV+T composition uses class-zero Jamo. NFKD also
+    # exposes compatibility Jamo and precomposed LV syllables here.
+    return (0x1100 <= ord(left) <= 0x1112 and 0x1161 <= ord(right) <= 0x1175) or (
+        0x1161 <= ord(left) <= 0x1175 and 0x11A8 <= ord(right) <= 0x11C2
+    )
+
+
 def escaped(text):
     return text.encode("unicode_escape").decode("ascii")
 
@@ -29,47 +42,51 @@ def review(data, max_details=100):
         raise ValueError("max_details must be an integer from 0 to 1000")
     text = data.decode("utf-8", "strict")
     findings = []
-    for index, char in enumerate(text):
-        # A single scalar is enough to expose the common compatibility cases;
-        # the surrounding combining sequence is included when it follows.
+    finding_count = 0
+    index = 0
+    byte_position = 0
+    while index < len(text):
         end = index + 1
-        while end < len(text) and unicodedata.combining(text[end]):
+        while end < len(text) and _joins(text[end - 1], text[end]):
             end += 1
         original = text[index:end]
         nfc = unicodedata.normalize("NFC", original)
         nfkc = unicodedata.normalize("NFKC", original)
-        if nfc == original and nfkc == original:
-            continue
-        before = len(text[:index].encode("utf-8"))
-        after = before + len(original.encode("utf-8"))
-        findings.append({
-            "character_index": index,
-            "source_byte_range": [before, after],
-            "source_span_sha256": hashlib.sha256(original.encode("utf-8")).hexdigest(),
-            "original": escaped(original),
-            "nfc": escaped(nfc),
-            "nfkc": escaped(nfkc),
-            "original_scalars": [scalar(c) for c in original],
-            "nfc_changed": nfc != original,
-            "nfkc_changed": nfkc != original,
-        })
+        original_bytes = original.encode("utf-8")
+        after = byte_position + len(original_bytes)
+        if nfc != original or nfkc != original:
+            finding_count += 1
+            if len(findings) < max_details:
+                findings.append({
+                    "character_index": index,
+                    "source_byte_range": [byte_position, after],
+                    "source_span_sha256": hashlib.sha256(original_bytes).hexdigest(),
+                    "original": escaped(original),
+                    "nfc": escaped(nfc),
+                    "nfkc": escaped(nfkc),
+                    "original_scalars": [scalar(c) for c in original],
+                    "nfc_changed": nfc != original,
+                    "nfkc_changed": nfkc != original,
+                })
+        byte_position = after
+        index = end
     return {
         "schema_version": 1,
-        "tool": "unicode-normalization/1",
+        "tool": "unicode-normalization/2",
         "source_sha256": hashlib.sha256(data).hexdigest(),
         "source_bytes": len(data),
         "unicode_version": unicodedata.unidata_version,
         "analysis_complete": True,
-        "finding_count": len(findings),
+        "finding_count": finding_count,
         "detail_cap": max_details,
-        "retained_details": min(len(findings), max_details),
-        "omitted_details": max(0, len(findings) - max_details),
-        "details": findings[:max_details],
+        "retained_details": len(findings),
+        "omitted_details": finding_count - len(findings),
+        "details": findings,
         "coverage": "UTF-8 text sequences whose NFC or NFKC form differs from the original.",
         "limitations": [
             "Normalization differences can be intentional and are not proof of deception.",
             "This is lexical review; it does not render text or compare fonts.",
-            "Only the first scalar plus following combining marks is grouped; longer context is not inferred.",
+            "Adjacent combining marks and Hangul Jamo are grouped; this is not a whole-label collision test.",
             "Source ranges are zero-based UTF-8 byte offsets and output is escaped ASCII JSON.",
         ],
     }

@@ -367,3 +367,20 @@
   reference for a small lower-right charcoal/ochre motif. The finished wall
   is composited from the inherited PNG with only the new bounded pigment mark
   changed; all pixels outside that bound remain exact.
+
+# Sources used in round 36
+
+- Kept `GOAL.md` and all 35 older records unchanged. Read the gathering report
+  as data and repaired its two reported Line 2 defects first.
+- Improved the existing standalone Unicode Normalization and Percent Unicode
+  folders; both remain standard-library Python. Four and seven focused tests
+  passed, respectively. Their synthetic demos work. A read-only scan of the
+  actual gathering report returned zero covered findings in both tools.
+- Used the built-in image tool on the actual inherited wall-v16.png. Only its
+  new pigment's colour differences were moved onto bare wall rock; every pixel
+  outside the bounded addition matches wall-v16. All old marks remain.
+- Read `gathering/make_preview.py` as a standard-library image decoder and JPEG
+  encoder. A disposable scratch script composited the mark. No extra workspace
+  picture or runtime dependency was kept. Full PNG and preview were inspected.
+- No coin, payment, balance, price, pool, network, secret, key, wallet, signing,
+  sending, posting or deployment was needed or used.

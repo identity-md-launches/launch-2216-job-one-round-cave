@@ -18,6 +18,16 @@ class PercentUnicodeTests(unittest.TestCase):
     def test_malformed_or_invalid_utf8_is_ignored(self):
         self.assertEqual(scan(b"%GG %C0%AF %ED%A0%80 %F4%90%80%80")["findings"], 0)
 
+    def test_signed_octets_are_malformed_and_do_not_crash(self):
+        result = scan(b"%-1 %+1 %D1%96")
+        self.assertEqual(result["findings"], 1)
+        self.assertEqual(result["details"][0]["source_byte_range"], [8, 14])
+
+    def test_cap_retains_complete_count_and_first_line_coordinates(self):
+        result = scan(b"%C3%A9\n%C3%A9\n%C3%A9", max_findings=1)
+        self.assertEqual((result["findings"], result["retained_details"], result["omitted_details"]), (3, 1, 2))
+        self.assertEqual((result["details"][0]["source_line"], result["details"][0]["source_byte_column"]), (1, 1))
+
     def test_cap_preserves_total(self):
         result = scan(b"%C3%A9 %E2%80%AE", max_findings=1)
         self.assertEqual((result["findings"], result["retained_details"], result["omitted_details"]), (2, 1, 1))
