@@ -123,3 +123,15 @@ python3 -B line-4/tools/table-flint/table_flint.py demo
 
 The synthetic demo checks `1500 m` total, `750 m` ordinary mean and `2500/3 m`
 weighted mean. It checks the supplied data, not the measurements' truth.
+
+Mark 34 adds [Temperature Flint](tools/temperature-flint/README.md), which
+checks exact temperature conversions while distinguishing readings (points)
+from temperature changes (deltas). Its offline demo converts 32 degF to 0 degC,
+checks equivalent mixed-scale readings and shifts 20 degC by an 18 degF change
+to obtain 30 degC:
+
+```sh
+python3 -B line-4/tools/temperature-flint/temperature_flint.py demo
+```
+
+All three claims pass. Exact conversion does not establish sensor accuracy.

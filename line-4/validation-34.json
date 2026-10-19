@@ -1,0 +1,47 @@
+{
+  "number": 34,
+  "tool": "Temperature Flint",
+  "tests": {
+    "new": 9,
+    "inherited": 108,
+    "total": 117,
+    "all_passed": true,
+    "seeded_cases": 400
+  },
+  "wall": {
+    "path": "artifacts/line-4/wall-v17.png",
+    "width": 1254,
+    "height": 1254,
+    "format": "RGB8 PNG",
+    "bytes": 4043220,
+    "sha256": "1e8b807ebd1aadb3687ff311c73471f5f5cca8b27dce4c8c44c1a2a3ef3c4f4c"
+  },
+  "preview": {
+    "path": "dist/line-4/34.jpg",
+    "width": 512,
+    "height": 512,
+    "format": "baseline JPEG",
+    "bytes": 84080
+  },
+  "preservation": {
+    "changed_pixels": 2245,
+    "outside_box_changed": 0,
+    "box_xyxy_exclusive": [
+      40,
+      805,
+      175,
+      925
+    ],
+    "goal_byte_identical": true,
+    "older_records_and_previews_byte_identical": true
+  },
+  "visual_review": {
+    "unmet_requirements_observed": [],
+    "limitations": [
+      "Small worn chalk path is faint at preview size.",
+      "Local review is not independent artistic approval."
+    ],
+    "hands": "Both inherited hands retain four fingers and one thumb; no new hand or stencil.",
+    "observed": "Pepe, ancestor marks, rock, cracks, torchlight and framing retained. No writing, numbers, logos, watermarks, frames or prohibited imagery observed."
+  }
+}

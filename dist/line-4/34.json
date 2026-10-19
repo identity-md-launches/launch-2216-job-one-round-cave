@@ -1,0 +1,30 @@
+{
+  "name": "The Warmth Between",
+  "image": "https://api.imd.fun/artifacts/1e8b807ebd1aadb3687ff311c73471f5f5cca8b27dce4c8c44c1a2a3ef3c4f4c",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Roots"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 4"
+    },
+    {
+      "trait_type": "Number",
+      "value": 34
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Temperature Flint"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "A charcoal coal and an ochre ember joined by chalk distinguish a reading from a change in warmth."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Exact dimensional calculation checks"
+    }
+  ]
+}

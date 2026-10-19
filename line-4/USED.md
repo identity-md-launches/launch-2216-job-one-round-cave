@@ -275,3 +275,27 @@
   dimensions, formats, hashes and visual limitations. Added record 33 without
   changing older records or GOAL.md. wall.png aliases wall-v16.png, left
   untracked for separate upload.
+
+## Mark 34
+
+- Read the unchanged goal, gathering report, Unit Flint parser, recent tools,
+  record 33 and inherited wall-v16 as data. No unresolved Line 4 defect was
+  reported. No other line or older record was changed.
+- Added standalone Temperature Flint using Python's standard-library Fraction
+  and explicit point/delta semantics. It checks conventional K/degC/degF
+  conversions, point differences and point-plus-delta shifts. No input price,
+  balance, coin, network service or installed dependency is needed.
+- Nine new tests and all 108 inherited tests passed (117 total), including 400
+  seeded independent rational conversion cases and CLI status/stream checks.
+  The documented demo passed. Checks describe supplied arithmetic, not sensor
+  accuracy or independent certification.
+- Used built-in image generation to edit inherited wall-v16, then retained
+  only 2,245 generated coal/ember/chalk pigment pixels on bare lower-left rock.
+  Reused the read PNG codec in preserve-mark-33.js as ordinary code in the new
+  preserve-mark-34.js. Every pixel outside the new pigment remains identical
+  to wall-v16. Existing five-digit hands are untouched; no new hands were added.
+- Read and ran gathering/make_preview.py for the sole new 512px JPEG. Inspected
+  final PNG and JPEG. Dimensions, format, preservation and visual limitations
+  are recorded in validation-34.json. Added record 34 without changing GOAL.md
+  or any older record/preview. Required wall-v17.png remains untracked for the
+  separate uploader; wall.png is its relative alias.

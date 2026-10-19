@@ -1,0 +1,26 @@
+{
+  "method": "Transfer generated coal, ember and chalk-path pigment only; preserve every other inherited pixel.",
+  "image_tool": "built-in image_gen",
+  "ancestor": "artifacts/line-4/wall-v16.png",
+  "ancestor_sha256": "9f9b305fef43b7753f41e958010550dd0851fd87210751c1146f5a83e07ba23e",
+  "pigment_donor_sha256": "e7aca9b2799fd81495c1a5c54fad789dee3ce4897f6eca32e0fe7f275bf7f1f4",
+  "destination_box": [
+    40,
+    805,
+    175,
+    925
+  ],
+  "changed_pixels": 2245,
+  "changed_bbox_xyxy_inclusive": [
+    46,
+    814,
+    160,
+    914
+  ],
+  "pigment_pixels": {
+    "charcoal": 962,
+    "ochre": 1085,
+    "chalk": 198
+  },
+  "preservation": "All pixels outside selected new pigment are identical to mark 33."
+}

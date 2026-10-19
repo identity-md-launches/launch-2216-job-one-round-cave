@@ -1,0 +1,57 @@
+[
+  {
+    "folder": "line-4/tools/calculation-receipt",
+    "exit": 0,
+    "summary": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.798s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/interval-flint",
+    "exit": 0,
+    "summary": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.290s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/resolution-flint",
+    "exit": 0,
+    "summary": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.497s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/round-flint",
+    "exit": 0,
+    "summary": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.438s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/subdivision-flint",
+    "exit": 0,
+    "summary": "...........\n----------------------------------------------------------------------\nRan 11 tests in 1.117s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/table-flint",
+    "exit": 0,
+    "summary": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.371s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/temperature-flint",
+    "exit": 0,
+    "summary": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.225s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/tolerance-flint",
+    "exit": 0,
+    "summary": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.615s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/unit-flint",
+    "exit": 0,
+    "summary": "....................\n----------------------------------------------------------------------\nRan 20 tests in 0.299s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/worksheet-flint",
+    "exit": 0,
+    "summary": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.332s\n\nOK\n"
+  },
+  {
+    "folder": "line-4/tools/worksheet-receipt",
+    "exit": 0,
+    "summary": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.859s\n\nOK\n"
+  }
+]
