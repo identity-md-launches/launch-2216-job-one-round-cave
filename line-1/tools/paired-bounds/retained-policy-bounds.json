@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "input_sha256": "c8e80ed4104f4f85c50a2df9d02c2dbb6ca47fc748ad545815adfe6475226d02",
+  "paired_cases": 18,
+  "candidate_count": 2,
+  "familywise_alpha": {
+    "numerator": "1",
+    "denominator": "20"
+  },
+  "simultaneous_coverage_at_least": {
+    "numerator": "19",
+    "denominator": "20"
+  },
+  "practical_margin": {
+    "numerator": "1",
+    "denominator": "10"
+  },
+  "method": "Clopper\u2013Pearson binomial win/loss bounds; Bonferroni over all 4m tails; subtract bounds",
+  "one_sided_tail_budget": {
+    "numerator": "1",
+    "denominator": "160"
+  },
+  "outward_grid_bits": 32,
+  "candidates": [
+    {
+      "name": "reject-constants-v1",
+      "candidate_only_pass": 4,
+      "baseline_only_pass": 0,
+      "observed_difference": {
+        "numerator": "2",
+        "denominator": "9"
+      },
+      "win_probability_bounds": [
+        {
+          "numerator": "91556687",
+          "denominator": "2147483648"
+        },
+        {
+          "numerator": "2319648301",
+          "denominator": "4294967296"
+        }
+      ],
+      "loss_probability_bounds": [
+        {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        {
+          "numerator": "32976181",
+          "denominator": "134217728"
+        }
+      ],
+      "candidate_minus_baseline_bounds": [
+        {
+          "numerator": "-436062209",
+          "denominator": "2147483648"
+        },
+        {
+          "numerator": "2319648301",
+          "denominator": "4294967296"
+        }
+      ],
+      "candidate_exceeds_positive_margin": false,
+      "baseline_exceeds_positive_margin": false,
+      "entire_interval_strictly_inside_equivalence_margin": false
+    },
+    {
+      "name": "unique-finite-v1",
+      "candidate_only_pass": 8,
+      "baseline_only_pass": 0,
+      "observed_difference": {
+        "numerator": "4",
+        "denominator": "9"
+      },
+      "win_probability_bounds": [
+        {
+          "numerator": "734019969",
+          "denominator": "4294967296"
+        },
+        {
+          "numerator": "3201162157",
+          "denominator": "4294967296"
+        }
+      ],
+      "loss_probability_bounds": [
+        {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        {
+          "numerator": "32976181",
+          "denominator": "134217728"
+        }
+      ],
+      "candidate_minus_baseline_bounds": [
+        {
+          "numerator": "-321217823",
+          "denominator": "4294967296"
+        },
+        {
+          "numerator": "3201162157",
+          "denominator": "4294967296"
+        }
+      ],
+      "candidate_exceeds_positive_margin": false,
+      "baseline_exceeds_positive_margin": false,
+      "entire_interval_strictly_inside_equivalence_margin": false
+    }
+  ],
+  "assumptions": [
+    "Independent identically distributed case vectors from the target population; dependence within a row is allowed.",
+    "One fixed final sample size; complete prespecified candidate family, pass rule, alpha and practical margin.",
+    "Each row evaluates the same case once under baseline and every candidate; no selected or omitted outcomes.",
+    "Correlated cases, repeated looks, optional stopping and selected families invalidate the stated coverage.",
+    "Coverage is a repeated-sampling guarantee under these assumptions, not a posterior probability.",
+    "Conservative intervals may be wide; an inconclusive interval is not evidence of equivalence.",
+    "Pins prove byte identity, not honest measurement, prospective choice or representative sampling."
+  ],
+  "data_kind": "retained_curated_policy_observations_not_random_sample",
+  "source_path": "line-1/tools/cluster-stability/policy-results.csv",
+  "provenance_note": "Exact retained observations copied unchanged; policies not reexecuted in this step. Curated cases violate the population sampling interpretation; use as arithmetic demonstration only."
+}

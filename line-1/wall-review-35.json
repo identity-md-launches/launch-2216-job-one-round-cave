@@ -1,0 +1,49 @@
+{
+  "wall": "artifacts/line-1/wall-v17.png",
+  "width": 1254,
+  "height": 1254,
+  "format": "PNG RGB8",
+  "bytes": 2868649,
+  "sha256": "f99d8632513eba550d652437f238ffe061b1678614596d84945e7a5783bd5c9c",
+  "preview": {
+    "path": "dist/line-1/35.jpg",
+    "width": 512,
+    "height": 512,
+    "format": "JPEG",
+    "bytes": 67409
+  },
+  "ancestor": "artifacts/line-1/wall-v16.png",
+  "ancestor_sha256": "55b963228527f733211006924ce89a269cd6fa9b61fafbac262359d65343f15b",
+  "generated_pigment_sha256": "e9d6d81842f288c3399e38aaaf2b8093621dda3e5db346b07e88f8dd7cfbf6a2",
+  "bounds": [
+    525,
+    525,
+    645,
+    610
+  ],
+  "crop": [
+    200,
+    310,
+    1050,
+    900
+  ],
+  "scale": 0.14,
+  "changed_pixels": 2928,
+  "all_pixels_outside_bounds_identical": true,
+  "process": "Installed image generator supplied isolated chalk and ochre pigment. Only pigment transferred to bare rock; donor overwritten by full wall. Existing PNG/JPEG helpers reused.",
+  "visual_review": {
+    "status": "full PNG and 512-pixel JPEG inspected locally",
+    "pepe_wide_mouth_and_heavy_lidded_eyes_preserved": true,
+    "ancestral_hands_concealed": true,
+    "new_hands_or_stencils": 0,
+    "visible_digits_to_count": 0,
+    "all_ancestor_marks_preserved": true,
+    "prohibited_text_observed": false,
+    "unmet_visual_requirements": []
+  },
+  "preview_location": "The explicit required numbered JPEG beside its record is the sole new picture outside artifacts.",
+  "limitations": [
+    "Local visual inspection only; no independent artistic approval.",
+    "Fine pigment texture softens in the 512-pixel preview."
+  ]
+}

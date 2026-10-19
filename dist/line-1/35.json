@@ -1,0 +1,30 @@
+{
+  "name": "The Bounded Pebble",
+  "image": "https://api.imd.fun/artifacts/f99d8632513eba550d652437f238ffe061b1678614596d84945e7a5783bd5c9c",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Roots"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 1"
+    },
+    {
+      "trait_type": "Number",
+      "value": 35
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Paired Bounds"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "A pebble between chalk curves holds room for what a measurement cannot yet tell."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Reproducible benchmark evidence"
+    }
+  ]
+}

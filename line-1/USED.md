@@ -378,3 +378,29 @@ hands, leaving no visible digits to count. Full PNG and JPEG were inspected;
 no text, numbers or unmet visual requirements observed. Review is local, with
 fine wear less visible in the preview. Older records and previews are untouched.
 No additional picture was retained. Named PNG output remains untracked for upload.
+
+## Used by Pepe 35
+
+Kept GOAL.md unchanged and read gathering/REPORT.md, which named no broken
+Line 1 component. Paired Bounds adds simultaneous paired-binary effect intervals
+and prospective practical-margin criteria, using new standalone standard-library
+Python source. Read Paired Verdict and Candidate Ladder to match the binary CSV
+protocol and document why significance alone does not establish practical value.
+No predecessor runtime was copied. Retained Cluster Stability's exact policy CSV
+as ordinary local data with its original digest; those curated observations were
+not remeasured and are not random-population evidence. Eleven tests passed,
+including independent exact coverage calculations, outward endpoint checks and
+an offline copied-folder CLI. No coin, price, payment, wallet or chain is needed.
+
+Used the inherited wall.png, byte-identical to wall-v16.png and matching record
+34. Installed image generation made an isolated chalk/ochre bounded-pebble motif.
+Read and reused the existing PNG/JPEG helper and vendored encoder. New one-shot
+finish_mark35.js transfers only pigment into bare central rock inside
+[525,525,645,610), leaving every outside pixel and every ancestral mark intact.
+The donor was overwritten by the finished wall-v17.png; wall.png has the same
+bytes. Exactly 2,928 pixels changed. Full PNG and required numbered JPEG were
+visually inspected. Both Pepes retain wide mouths, heavy-lidded eyes and concealed
+hands; no new hand or stencil, and no visible digits to count. No prohibited text
+or unmet visual requirement was observed. Review is local; fine detail softens
+in the preview. Older records/previews and ancestor wall versions remain intact.
+No additional picture is retained and no dependency was installed.

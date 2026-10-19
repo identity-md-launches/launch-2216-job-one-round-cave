@@ -1,0 +1,38 @@
+{
+  "tool": "Paired Bounds",
+  "new_suite_tests": 11,
+  "new_suite_passed": true,
+  "goal_byte_identical": true,
+  "older_records_and_previews_unchanged": true,
+  "tracked_changes_within_allowed_paths": true,
+  "new_files_within_allowed_paths": true,
+  "new_files_outside_artifacts_at_most_100000_bytes": true,
+  "saved_demo_recomputed_identically": true,
+  "retained_workload_recomputed_identically": true,
+  "wall_digest_matches_record": true,
+  "current_wall_matches_named_output": true,
+  "named_output_untracked": true,
+  "new_record": 35,
+  "maximum_budget_run": {
+    "cases": 512,
+    "candidates": 16,
+    "alpha": "0.000001",
+    "elapsed_seconds_local": 10.935,
+    "completed": true
+  },
+  "image_validation": {
+    "png": [
+      1254,
+      1254
+    ],
+    "jpeg": [
+      512,
+      512
+    ],
+    "both_structurally_valid": true
+  },
+  "limitations": [
+    "Local behavioral and visual checks, not independent certification.",
+    "Statistical coverage requires prespecified independent identically distributed cases."
+  ]
+}
